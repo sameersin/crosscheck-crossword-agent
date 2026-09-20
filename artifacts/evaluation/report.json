@@ -1,0 +1,4169 @@
+{
+  "available": true,
+  "generated_at": "2026-09-20T06:39:34.179775+00:00",
+  "model": "zai-org/GLM-5.3-Flash",
+  "dataset": {
+    "name": "Authored crossword smoke suite v1",
+    "split": "test",
+    "puzzle_count": 6,
+    "limitations": [
+      "Small authored smoke suite; not representative of newspaper crosswords.",
+      "Word squares repeat answers across directions and may be easier than ordinary puzzles.",
+      "Sparse blocked fixtures contain unchecked letters and primarily test structure.",
+      "The test split is held aside for local development, not guaranteed unseen by the language model.",
+      "No cryptic clues, rebus cells, multilingual clues, or image-extraction accuracy benchmark."
+    ]
+  },
+  "options": {
+    "max_rounds": 4,
+    "candidates_per_clue": 6,
+    "max_calls": 12,
+    "max_seconds": 180.0,
+    "max_search_nodes": 100000,
+    "batch_size": 12
+  },
+  "comparison": "Paired initial candidates reused in all arms. Full agent may spend extra calls on retries. No token price assumed.",
+  "summary": {
+    "baseline_first_choice": {
+      "puzzle_count": 6,
+      "correct_cells": 108,
+      "total_cells": 108,
+      "letter_accuracy": 1.0,
+      "correct_entries": 40,
+      "total_entries": 40,
+      "answer_accuracy": 1.0,
+      "unknown_letter_accuracy": 1.0,
+      "exact_puzzle_accuracy": 1,
+      "exact_puzzles": 6,
+      "completion": 1.0,
+      "complete_consistent_rate": 1,
+      "constraint_violation_count": 0,
+      "candidate_recall": 1.0,
+      "mean_elapsed_seconds": 1.3466666666645324,
+      "usage": {
+        "model_calls": 6,
+        "prompt_tokens": 2887,
+        "completion_tokens": 1055,
+        "total_tokens": 3942,
+        "estimated_cost_usd": null
+      }
+    },
+    "baseline_search": {
+      "puzzle_count": 6,
+      "correct_cells": 108,
+      "total_cells": 108,
+      "letter_accuracy": 1.0,
+      "correct_entries": 40,
+      "total_entries": 40,
+      "answer_accuracy": 1.0,
+      "unknown_letter_accuracy": 1.0,
+      "exact_puzzle_accuracy": 1,
+      "exact_puzzles": 6,
+      "completion": 1.0,
+      "complete_consistent_rate": 1,
+      "constraint_violation_count": 0,
+      "candidate_recall": 1.0,
+      "mean_elapsed_seconds": 1.3491666666668607,
+      "usage": {
+        "model_calls": 6,
+        "prompt_tokens": 2887,
+        "completion_tokens": 1055,
+        "total_tokens": 3942,
+        "estimated_cost_usd": null
+      }
+    },
+    "agent": {
+      "puzzle_count": 6,
+      "correct_cells": 108,
+      "total_cells": 108,
+      "letter_accuracy": 1.0,
+      "correct_entries": 40,
+      "total_entries": 40,
+      "answer_accuracy": 1.0,
+      "unknown_letter_accuracy": 1.0,
+      "exact_puzzle_accuracy": 1,
+      "exact_puzzles": 6,
+      "completion": 1.0,
+      "complete_consistent_rate": 1,
+      "constraint_violation_count": 0,
+      "candidate_recall": 1.0,
+      "mean_elapsed_seconds": 1.3491666666645323,
+      "usage": {
+        "model_calls": 6,
+        "prompt_tokens": 2887,
+        "completion_tokens": 1055,
+        "total_tokens": 3942,
+        "estimated_cost_usd": null
+      }
+    }
+  },
+  "puzzles": [
+    {
+      "puzzle_id": "test-ball-4",
+      "title": "Four by four",
+      "initial_generation_seconds": 2.10999999998603,
+      "initial_generation_errors": [],
+      "metrics": {
+        "baseline_first_choice": {
+          "puzzle_id": "test-ball-4",
+          "status": "complete_consistent",
+          "correct_cells": 16,
+          "total_cells": 16,
+          "letter_accuracy": 1.0,
+          "correct_unknown_cells": 16,
+          "unknown_cells": 16,
+          "unknown_letter_accuracy": 1.0,
+          "fixed_cells": 0,
+          "correct_entries": 8,
+          "total_entries": 8,
+          "answer_accuracy": 1.0,
+          "exact_puzzle": true,
+          "filled_cells": 16,
+          "completion": 1.0,
+          "filled_entries": 8,
+          "entry_completion": 1.0,
+          "complete_consistent": true,
+          "constraint_violation_count": 0,
+          "constraint_violations": [],
+          "candidate_hits": 8,
+          "candidate_recall": 1.0,
+          "elapsed_seconds": 2.10999999998603,
+          "search_nodes": 0,
+          "rounds": 1,
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 528,
+            "completion_tokens": 226,
+            "total_tokens": 754,
+            "estimated_cost_usd": null
+          },
+          "entries": [
+            {
+              "entry_id": "1A",
+              "answer": "BALL",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "1D",
+              "answer": "BALL",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "2D",
+              "answer": "AREA",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "3D",
+              "answer": "LEAD",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "4D",
+              "answer": "LADY",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "5A",
+              "answer": "AREA",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "6A",
+              "answer": "LEAD",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "7A",
+              "answer": "LADY",
+              "correct": true,
+              "candidate_hit": true
+            }
+          ]
+        },
+        "baseline_search": {
+          "puzzle_id": "test-ball-4",
+          "status": "complete_consistent",
+          "correct_cells": 16,
+          "total_cells": 16,
+          "letter_accuracy": 1.0,
+          "correct_unknown_cells": 16,
+          "unknown_cells": 16,
+          "unknown_letter_accuracy": 1.0,
+          "fixed_cells": 0,
+          "correct_entries": 8,
+          "total_entries": 8,
+          "answer_accuracy": 1.0,
+          "exact_puzzle": true,
+          "filled_cells": 16,
+          "completion": 1.0,
+          "filled_entries": 8,
+          "entry_completion": 1.0,
+          "complete_consistent": true,
+          "constraint_violation_count": 0,
+          "constraint_violations": [],
+          "candidate_hits": 8,
+          "candidate_recall": 1.0,
+          "elapsed_seconds": 2.10999999998603,
+          "search_nodes": 8,
+          "rounds": 1,
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 528,
+            "completion_tokens": 226,
+            "total_tokens": 754,
+            "estimated_cost_usd": null
+          },
+          "entries": [
+            {
+              "entry_id": "1A",
+              "answer": "BALL",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "1D",
+              "answer": "BALL",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "2D",
+              "answer": "AREA",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "3D",
+              "answer": "LEAD",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "4D",
+              "answer": "LADY",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "5A",
+              "answer": "AREA",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "6A",
+              "answer": "LEAD",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "7A",
+              "answer": "LADY",
+              "correct": true,
+              "candidate_hit": true
+            }
+          ]
+        },
+        "agent": {
+          "puzzle_id": "test-ball-4",
+          "status": "complete_consistent",
+          "correct_cells": 16,
+          "total_cells": 16,
+          "letter_accuracy": 1.0,
+          "correct_unknown_cells": 16,
+          "unknown_cells": 16,
+          "unknown_letter_accuracy": 1.0,
+          "fixed_cells": 0,
+          "correct_entries": 8,
+          "total_entries": 8,
+          "answer_accuracy": 1.0,
+          "exact_puzzle": true,
+          "filled_cells": 16,
+          "completion": 1.0,
+          "filled_entries": 8,
+          "entry_completion": 1.0,
+          "complete_consistent": true,
+          "constraint_violation_count": 0,
+          "constraint_violations": [],
+          "candidate_hits": 8,
+          "candidate_recall": 1.0,
+          "elapsed_seconds": 2.1249999999860303,
+          "search_nodes": 8,
+          "rounds": 1,
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 528,
+            "completion_tokens": 226,
+            "total_tokens": 754,
+            "estimated_cost_usd": null
+          },
+          "entries": [
+            {
+              "entry_id": "1A",
+              "answer": "BALL",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "1D",
+              "answer": "BALL",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "2D",
+              "answer": "AREA",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "3D",
+              "answer": "LEAD",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "4D",
+              "answer": "LADY",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "5A",
+              "answer": "AREA",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "6A",
+              "answer": "LEAD",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "7A",
+              "answer": "LADY",
+              "correct": true,
+              "candidate_hit": true
+            }
+          ]
+        }
+      },
+      "results": {
+        "baseline_first_choice": {
+          "puzzle_id": "test-ball-4",
+          "status": "complete_consistent",
+          "grid": [
+            "BALL",
+            "AREA",
+            "LEAD",
+            "LADY"
+          ],
+          "assignments": {
+            "1A": "BALL",
+            "1D": "BALL",
+            "2D": "AREA",
+            "3D": "LEAD",
+            "4D": "LADY",
+            "5A": "AREA",
+            "6A": "LEAD",
+            "7A": "LADY"
+          },
+          "unresolved_entries": [],
+          "constraint_violations": [],
+          "filled_cells": 16,
+          "total_cells": 16,
+          "elapsed_seconds": 2.10999999998603,
+          "rounds": 1,
+          "search_nodes": 0,
+          "stop_reason": "Independent highest-scored candidate for each clue; no crossing search.",
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 528,
+            "completion_tokens": 226,
+            "total_tokens": 754,
+            "estimated_cost_usd": null
+          },
+          "candidates": {
+            "1A": [
+              {
+                "answer": "BALL",
+                "score": 0.95
+              }
+            ],
+            "1D": [
+              {
+                "answer": "BALL",
+                "score": 0.95
+              }
+            ],
+            "2D": [
+              {
+                "answer": "AREA",
+                "score": 0.95
+              }
+            ],
+            "3D": [
+              {
+                "answer": "LEAD",
+                "score": 0.95
+              }
+            ],
+            "4D": [
+              {
+                "answer": "LADY",
+                "score": 0.9
+              }
+            ],
+            "5A": [
+              {
+                "answer": "AREA",
+                "score": 0.95
+              }
+            ],
+            "6A": [
+              {
+                "answer": "LEAD",
+                "score": 0.95
+              }
+            ],
+            "7A": [
+              {
+                "answer": "LADY",
+                "score": 0.9
+              }
+            ]
+          },
+          "initial_candidates": {
+            "1A": [
+              {
+                "answer": "BALL",
+                "score": 0.95
+              }
+            ],
+            "1D": [
+              {
+                "answer": "BALL",
+                "score": 0.95
+              }
+            ],
+            "2D": [
+              {
+                "answer": "AREA",
+                "score": 0.95
+              }
+            ],
+            "3D": [
+              {
+                "answer": "LEAD",
+                "score": 0.95
+              }
+            ],
+            "4D": [
+              {
+                "answer": "LADY",
+                "score": 0.9
+              }
+            ],
+            "5A": [
+              {
+                "answer": "AREA",
+                "score": 0.95
+              }
+            ],
+            "6A": [
+              {
+                "answer": "LEAD",
+                "score": 0.95
+              }
+            ],
+            "7A": [
+              {
+                "answer": "LADY",
+                "score": 0.9
+              }
+            ]
+          },
+          "events": [],
+          "model": "zai-org/GLM-5.3-Flash"
+        },
+        "baseline_search": {
+          "puzzle_id": "test-ball-4",
+          "status": "complete_consistent",
+          "grid": [
+            "BALL",
+            "AREA",
+            "LEAD",
+            "LADY"
+          ],
+          "assignments": {
+            "1A": "BALL",
+            "5A": "AREA",
+            "6A": "LEAD",
+            "7A": "LADY",
+            "1D": "BALL",
+            "2D": "AREA",
+            "3D": "LEAD",
+            "4D": "LADY"
+          },
+          "unresolved_entries": [],
+          "constraint_violations": [],
+          "filled_cells": 16,
+          "total_cells": 16,
+          "elapsed_seconds": 2.10999999998603,
+          "rounds": 1,
+          "search_nodes": 8,
+          "stop_reason": "One constraint search using the shared initial candidates.",
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 528,
+            "completion_tokens": 226,
+            "total_tokens": 754,
+            "estimated_cost_usd": null
+          },
+          "candidates": {
+            "1A": [
+              {
+                "answer": "BALL",
+                "score": 0.95
+              }
+            ],
+            "1D": [
+              {
+                "answer": "BALL",
+                "score": 0.95
+              }
+            ],
+            "2D": [
+              {
+                "answer": "AREA",
+                "score": 0.95
+              }
+            ],
+            "3D": [
+              {
+                "answer": "LEAD",
+                "score": 0.95
+              }
+            ],
+            "4D": [
+              {
+                "answer": "LADY",
+                "score": 0.9
+              }
+            ],
+            "5A": [
+              {
+                "answer": "AREA",
+                "score": 0.95
+              }
+            ],
+            "6A": [
+              {
+                "answer": "LEAD",
+                "score": 0.95
+              }
+            ],
+            "7A": [
+              {
+                "answer": "LADY",
+                "score": 0.9
+              }
+            ]
+          },
+          "initial_candidates": {
+            "1A": [
+              {
+                "answer": "BALL",
+                "score": 0.95
+              }
+            ],
+            "1D": [
+              {
+                "answer": "BALL",
+                "score": 0.95
+              }
+            ],
+            "2D": [
+              {
+                "answer": "AREA",
+                "score": 0.95
+              }
+            ],
+            "3D": [
+              {
+                "answer": "LEAD",
+                "score": 0.95
+              }
+            ],
+            "4D": [
+              {
+                "answer": "LADY",
+                "score": 0.9
+              }
+            ],
+            "5A": [
+              {
+                "answer": "AREA",
+                "score": 0.95
+              }
+            ],
+            "6A": [
+              {
+                "answer": "LEAD",
+                "score": 0.95
+              }
+            ],
+            "7A": [
+              {
+                "answer": "LADY",
+                "score": 0.9
+              }
+            ]
+          },
+          "events": [],
+          "model": "zai-org/GLM-5.3-Flash"
+        },
+        "agent": {
+          "puzzle_id": "test-ball-4",
+          "status": "complete_consistent",
+          "grid": [
+            "BALL",
+            "AREA",
+            "LEAD",
+            "LADY"
+          ],
+          "assignments": {
+            "1A": "BALL",
+            "5A": "AREA",
+            "6A": "LEAD",
+            "7A": "LADY",
+            "1D": "BALL",
+            "2D": "AREA",
+            "3D": "LEAD",
+            "4D": "LADY"
+          },
+          "unresolved_entries": [],
+          "constraint_violations": [],
+          "filled_cells": 16,
+          "total_cells": 16,
+          "elapsed_seconds": 2.1249999999860303,
+          "rounds": 1,
+          "search_nodes": 8,
+          "stop_reason": "complete_consistent",
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 528,
+            "completion_tokens": 226,
+            "total_tokens": 754,
+            "estimated_cost_usd": null
+          },
+          "candidates": {
+            "1A": [
+              {
+                "answer": "BALL",
+                "score": 0.95
+              }
+            ],
+            "1D": [
+              {
+                "answer": "BALL",
+                "score": 0.95
+              }
+            ],
+            "2D": [
+              {
+                "answer": "AREA",
+                "score": 0.95
+              }
+            ],
+            "3D": [
+              {
+                "answer": "LEAD",
+                "score": 0.95
+              }
+            ],
+            "4D": [
+              {
+                "answer": "LADY",
+                "score": 0.9
+              }
+            ],
+            "5A": [
+              {
+                "answer": "AREA",
+                "score": 0.95
+              }
+            ],
+            "6A": [
+              {
+                "answer": "LEAD",
+                "score": 0.95
+              }
+            ],
+            "7A": [
+              {
+                "answer": "LADY",
+                "score": 0.9
+              }
+            ]
+          },
+          "initial_candidates": {
+            "1A": [
+              {
+                "answer": "BALL",
+                "score": 0.95
+              }
+            ],
+            "1D": [
+              {
+                "answer": "BALL",
+                "score": 0.95
+              }
+            ],
+            "2D": [
+              {
+                "answer": "AREA",
+                "score": 0.95
+              }
+            ],
+            "3D": [
+              {
+                "answer": "LEAD",
+                "score": 0.95
+              }
+            ],
+            "4D": [
+              {
+                "answer": "LADY",
+                "score": 0.9
+              }
+            ],
+            "5A": [
+              {
+                "answer": "AREA",
+                "score": 0.95
+              }
+            ],
+            "6A": [
+              {
+                "answer": "LEAD",
+                "score": 0.95
+              }
+            ],
+            "7A": [
+              {
+                "answer": "LADY",
+                "score": 0.9
+              }
+            ]
+          },
+          "events": [
+            {
+              "sequence": 1,
+              "kind": "started",
+              "message": "Validated 8 entries. Beginning bounded solve.",
+              "elapsed_seconds": 0.0,
+              "data": {
+                "entry_count": 8,
+                "grid": [
+                  "....",
+                  "....",
+                  "....",
+                  "...."
+                ],
+                "model": "zai-org/GLM-5.3-Flash"
+              }
+            },
+            {
+              "sequence": 2,
+              "kind": "searching",
+              "message": "Checking candidate combinations against lengths, fixed letters, and crossings.",
+              "elapsed_seconds": 0.0,
+              "data": {}
+            },
+            {
+              "sequence": 3,
+              "kind": "search_complete",
+              "message": "Placed 8 of 8 entries consistently.",
+              "elapsed_seconds": 0.0,
+              "data": {
+                "grid": [
+                  "BALL",
+                  "AREA",
+                  "LEAD",
+                  "LADY"
+                ],
+                "assignments": {
+                  "1A": "BALL",
+                  "5A": "AREA",
+                  "6A": "LEAD",
+                  "7A": "LADY",
+                  "1D": "BALL",
+                  "2D": "AREA",
+                  "3D": "LEAD",
+                  "4D": "LADY"
+                },
+                "nodes": 8,
+                "round": 1,
+                "filled_cells": 16,
+                "total_cells": 16
+              }
+            },
+            {
+              "sequence": 4,
+              "kind": "finished",
+              "message": "All entries fit. Correctness requires an independent answer key.",
+              "elapsed_seconds": 0.015,
+              "data": {
+                "status": "complete_consistent",
+                "stop_reason": "complete_consistent"
+              }
+            }
+          ],
+          "model": "zai-org/GLM-5.3-Flash"
+        }
+      }
+    },
+    {
+      "puzzle_id": "test-heart-5",
+      "title": "Five by five",
+      "initial_generation_seconds": 1.2660000000032596,
+      "initial_generation_errors": [],
+      "metrics": {
+        "baseline_first_choice": {
+          "puzzle_id": "test-heart-5",
+          "status": "complete_consistent",
+          "correct_cells": 25,
+          "total_cells": 25,
+          "letter_accuracy": 1.0,
+          "correct_unknown_cells": 25,
+          "unknown_cells": 25,
+          "unknown_letter_accuracy": 1.0,
+          "fixed_cells": 0,
+          "correct_entries": 10,
+          "total_entries": 10,
+          "answer_accuracy": 1.0,
+          "exact_puzzle": true,
+          "filled_cells": 25,
+          "completion": 1.0,
+          "filled_entries": 10,
+          "entry_completion": 1.0,
+          "complete_consistent": true,
+          "constraint_violation_count": 0,
+          "constraint_violations": [],
+          "candidate_hits": 10,
+          "candidate_recall": 1.0,
+          "elapsed_seconds": 1.2660000000032596,
+          "search_nodes": 0,
+          "rounds": 1,
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 620,
+            "completion_tokens": 211,
+            "total_tokens": 831,
+            "estimated_cost_usd": null
+          },
+          "entries": [
+            {
+              "entry_id": "1A",
+              "answer": "HEART",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "1D",
+              "answer": "HEART",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "2D",
+              "answer": "EMBER",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "3D",
+              "answer": "ABUSE",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "4D",
+              "answer": "RESIN",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "5D",
+              "answer": "TREND",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "6A",
+              "answer": "EMBER",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "7A",
+              "answer": "ABUSE",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "8A",
+              "answer": "RESIN",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "9A",
+              "answer": "TREND",
+              "correct": true,
+              "candidate_hit": true
+            }
+          ]
+        },
+        "baseline_search": {
+          "puzzle_id": "test-heart-5",
+          "status": "complete_consistent",
+          "correct_cells": 25,
+          "total_cells": 25,
+          "letter_accuracy": 1.0,
+          "correct_unknown_cells": 25,
+          "unknown_cells": 25,
+          "unknown_letter_accuracy": 1.0,
+          "fixed_cells": 0,
+          "correct_entries": 10,
+          "total_entries": 10,
+          "answer_accuracy": 1.0,
+          "exact_puzzle": true,
+          "filled_cells": 25,
+          "completion": 1.0,
+          "filled_entries": 10,
+          "entry_completion": 1.0,
+          "complete_consistent": true,
+          "constraint_violation_count": 0,
+          "constraint_violations": [],
+          "candidate_hits": 10,
+          "candidate_recall": 1.0,
+          "elapsed_seconds": 1.2660000000032596,
+          "search_nodes": 10,
+          "rounds": 1,
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 620,
+            "completion_tokens": 211,
+            "total_tokens": 831,
+            "estimated_cost_usd": null
+          },
+          "entries": [
+            {
+              "entry_id": "1A",
+              "answer": "HEART",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "1D",
+              "answer": "HEART",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "2D",
+              "answer": "EMBER",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "3D",
+              "answer": "ABUSE",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "4D",
+              "answer": "RESIN",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "5D",
+              "answer": "TREND",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "6A",
+              "answer": "EMBER",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "7A",
+              "answer": "ABUSE",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "8A",
+              "answer": "RESIN",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "9A",
+              "answer": "TREND",
+              "correct": true,
+              "candidate_hit": true
+            }
+          ]
+        },
+        "agent": {
+          "puzzle_id": "test-heart-5",
+          "status": "complete_consistent",
+          "correct_cells": 25,
+          "total_cells": 25,
+          "letter_accuracy": 1.0,
+          "correct_unknown_cells": 25,
+          "unknown_cells": 25,
+          "unknown_letter_accuracy": 1.0,
+          "fixed_cells": 0,
+          "correct_entries": 10,
+          "total_entries": 10,
+          "answer_accuracy": 1.0,
+          "exact_puzzle": true,
+          "filled_cells": 25,
+          "completion": 1.0,
+          "filled_entries": 10,
+          "entry_completion": 1.0,
+          "complete_consistent": true,
+          "constraint_violation_count": 0,
+          "constraint_violations": [],
+          "candidate_hits": 10,
+          "candidate_recall": 1.0,
+          "elapsed_seconds": 1.2660000000032596,
+          "search_nodes": 10,
+          "rounds": 1,
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 620,
+            "completion_tokens": 211,
+            "total_tokens": 831,
+            "estimated_cost_usd": null
+          },
+          "entries": [
+            {
+              "entry_id": "1A",
+              "answer": "HEART",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "1D",
+              "answer": "HEART",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "2D",
+              "answer": "EMBER",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "3D",
+              "answer": "ABUSE",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "4D",
+              "answer": "RESIN",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "5D",
+              "answer": "TREND",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "6A",
+              "answer": "EMBER",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "7A",
+              "answer": "ABUSE",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "8A",
+              "answer": "RESIN",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "9A",
+              "answer": "TREND",
+              "correct": true,
+              "candidate_hit": true
+            }
+          ]
+        }
+      },
+      "results": {
+        "baseline_first_choice": {
+          "puzzle_id": "test-heart-5",
+          "status": "complete_consistent",
+          "grid": [
+            "HEART",
+            "EMBER",
+            "ABUSE",
+            "RESIN",
+            "TREND"
+          ],
+          "assignments": {
+            "1A": "HEART",
+            "1D": "HEART",
+            "2D": "EMBER",
+            "3D": "ABUSE",
+            "4D": "RESIN",
+            "5D": "TREND",
+            "6A": "EMBER",
+            "7A": "ABUSE",
+            "8A": "RESIN",
+            "9A": "TREND"
+          },
+          "unresolved_entries": [],
+          "constraint_violations": [],
+          "filled_cells": 25,
+          "total_cells": 25,
+          "elapsed_seconds": 1.2660000000032596,
+          "rounds": 1,
+          "search_nodes": 0,
+          "stop_reason": "Independent highest-scored candidate for each clue; no crossing search.",
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 620,
+            "completion_tokens": 211,
+            "total_tokens": 831,
+            "estimated_cost_usd": null
+          },
+          "candidates": {
+            "1A": [
+              {
+                "answer": "HEART",
+                "score": 0.98
+              }
+            ],
+            "1D": [
+              {
+                "answer": "HEART",
+                "score": 0.98
+              }
+            ],
+            "2D": [
+              {
+                "answer": "EMBER",
+                "score": 0.95
+              }
+            ],
+            "3D": [
+              {
+                "answer": "ABUSE",
+                "score": 0.9
+              }
+            ],
+            "4D": [
+              {
+                "answer": "RESIN",
+                "score": 0.9
+              }
+            ],
+            "5D": [
+              {
+                "answer": "TREND",
+                "score": 0.9
+              }
+            ],
+            "6A": [
+              {
+                "answer": "EMBER",
+                "score": 0.95
+              }
+            ],
+            "7A": [
+              {
+                "answer": "ABUSE",
+                "score": 0.9
+              }
+            ],
+            "8A": [
+              {
+                "answer": "RESIN",
+                "score": 0.9
+              }
+            ],
+            "9A": [
+              {
+                "answer": "TREND",
+                "score": 0.9
+              }
+            ]
+          },
+          "initial_candidates": {
+            "1A": [
+              {
+                "answer": "HEART",
+                "score": 0.98
+              }
+            ],
+            "1D": [
+              {
+                "answer": "HEART",
+                "score": 0.98
+              }
+            ],
+            "2D": [
+              {
+                "answer": "EMBER",
+                "score": 0.95
+              }
+            ],
+            "3D": [
+              {
+                "answer": "ABUSE",
+                "score": 0.9
+              }
+            ],
+            "4D": [
+              {
+                "answer": "RESIN",
+                "score": 0.9
+              }
+            ],
+            "5D": [
+              {
+                "answer": "TREND",
+                "score": 0.9
+              }
+            ],
+            "6A": [
+              {
+                "answer": "EMBER",
+                "score": 0.95
+              }
+            ],
+            "7A": [
+              {
+                "answer": "ABUSE",
+                "score": 0.9
+              }
+            ],
+            "8A": [
+              {
+                "answer": "RESIN",
+                "score": 0.9
+              }
+            ],
+            "9A": [
+              {
+                "answer": "TREND",
+                "score": 0.9
+              }
+            ]
+          },
+          "events": [],
+          "model": "zai-org/GLM-5.3-Flash"
+        },
+        "baseline_search": {
+          "puzzle_id": "test-heart-5",
+          "status": "complete_consistent",
+          "grid": [
+            "HEART",
+            "EMBER",
+            "ABUSE",
+            "RESIN",
+            "TREND"
+          ],
+          "assignments": {
+            "1A": "HEART",
+            "6A": "EMBER",
+            "7A": "ABUSE",
+            "8A": "RESIN",
+            "9A": "TREND",
+            "1D": "HEART",
+            "2D": "EMBER",
+            "3D": "ABUSE",
+            "4D": "RESIN",
+            "5D": "TREND"
+          },
+          "unresolved_entries": [],
+          "constraint_violations": [],
+          "filled_cells": 25,
+          "total_cells": 25,
+          "elapsed_seconds": 1.2660000000032596,
+          "rounds": 1,
+          "search_nodes": 10,
+          "stop_reason": "One constraint search using the shared initial candidates.",
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 620,
+            "completion_tokens": 211,
+            "total_tokens": 831,
+            "estimated_cost_usd": null
+          },
+          "candidates": {
+            "1A": [
+              {
+                "answer": "HEART",
+                "score": 0.98
+              }
+            ],
+            "1D": [
+              {
+                "answer": "HEART",
+                "score": 0.98
+              }
+            ],
+            "2D": [
+              {
+                "answer": "EMBER",
+                "score": 0.95
+              }
+            ],
+            "3D": [
+              {
+                "answer": "ABUSE",
+                "score": 0.9
+              }
+            ],
+            "4D": [
+              {
+                "answer": "RESIN",
+                "score": 0.9
+              }
+            ],
+            "5D": [
+              {
+                "answer": "TREND",
+                "score": 0.9
+              }
+            ],
+            "6A": [
+              {
+                "answer": "EMBER",
+                "score": 0.95
+              }
+            ],
+            "7A": [
+              {
+                "answer": "ABUSE",
+                "score": 0.9
+              }
+            ],
+            "8A": [
+              {
+                "answer": "RESIN",
+                "score": 0.9
+              }
+            ],
+            "9A": [
+              {
+                "answer": "TREND",
+                "score": 0.9
+              }
+            ]
+          },
+          "initial_candidates": {
+            "1A": [
+              {
+                "answer": "HEART",
+                "score": 0.98
+              }
+            ],
+            "1D": [
+              {
+                "answer": "HEART",
+                "score": 0.98
+              }
+            ],
+            "2D": [
+              {
+                "answer": "EMBER",
+                "score": 0.95
+              }
+            ],
+            "3D": [
+              {
+                "answer": "ABUSE",
+                "score": 0.9
+              }
+            ],
+            "4D": [
+              {
+                "answer": "RESIN",
+                "score": 0.9
+              }
+            ],
+            "5D": [
+              {
+                "answer": "TREND",
+                "score": 0.9
+              }
+            ],
+            "6A": [
+              {
+                "answer": "EMBER",
+                "score": 0.95
+              }
+            ],
+            "7A": [
+              {
+                "answer": "ABUSE",
+                "score": 0.9
+              }
+            ],
+            "8A": [
+              {
+                "answer": "RESIN",
+                "score": 0.9
+              }
+            ],
+            "9A": [
+              {
+                "answer": "TREND",
+                "score": 0.9
+              }
+            ]
+          },
+          "events": [],
+          "model": "zai-org/GLM-5.3-Flash"
+        },
+        "agent": {
+          "puzzle_id": "test-heart-5",
+          "status": "complete_consistent",
+          "grid": [
+            "HEART",
+            "EMBER",
+            "ABUSE",
+            "RESIN",
+            "TREND"
+          ],
+          "assignments": {
+            "1A": "HEART",
+            "6A": "EMBER",
+            "7A": "ABUSE",
+            "8A": "RESIN",
+            "9A": "TREND",
+            "1D": "HEART",
+            "2D": "EMBER",
+            "3D": "ABUSE",
+            "4D": "RESIN",
+            "5D": "TREND"
+          },
+          "unresolved_entries": [],
+          "constraint_violations": [],
+          "filled_cells": 25,
+          "total_cells": 25,
+          "elapsed_seconds": 1.2660000000032596,
+          "rounds": 1,
+          "search_nodes": 10,
+          "stop_reason": "complete_consistent",
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 620,
+            "completion_tokens": 211,
+            "total_tokens": 831,
+            "estimated_cost_usd": null
+          },
+          "candidates": {
+            "1A": [
+              {
+                "answer": "HEART",
+                "score": 0.98
+              }
+            ],
+            "1D": [
+              {
+                "answer": "HEART",
+                "score": 0.98
+              }
+            ],
+            "2D": [
+              {
+                "answer": "EMBER",
+                "score": 0.95
+              }
+            ],
+            "3D": [
+              {
+                "answer": "ABUSE",
+                "score": 0.9
+              }
+            ],
+            "4D": [
+              {
+                "answer": "RESIN",
+                "score": 0.9
+              }
+            ],
+            "5D": [
+              {
+                "answer": "TREND",
+                "score": 0.9
+              }
+            ],
+            "6A": [
+              {
+                "answer": "EMBER",
+                "score": 0.95
+              }
+            ],
+            "7A": [
+              {
+                "answer": "ABUSE",
+                "score": 0.9
+              }
+            ],
+            "8A": [
+              {
+                "answer": "RESIN",
+                "score": 0.9
+              }
+            ],
+            "9A": [
+              {
+                "answer": "TREND",
+                "score": 0.9
+              }
+            ]
+          },
+          "initial_candidates": {
+            "1A": [
+              {
+                "answer": "HEART",
+                "score": 0.98
+              }
+            ],
+            "1D": [
+              {
+                "answer": "HEART",
+                "score": 0.98
+              }
+            ],
+            "2D": [
+              {
+                "answer": "EMBER",
+                "score": 0.95
+              }
+            ],
+            "3D": [
+              {
+                "answer": "ABUSE",
+                "score": 0.9
+              }
+            ],
+            "4D": [
+              {
+                "answer": "RESIN",
+                "score": 0.9
+              }
+            ],
+            "5D": [
+              {
+                "answer": "TREND",
+                "score": 0.9
+              }
+            ],
+            "6A": [
+              {
+                "answer": "EMBER",
+                "score": 0.95
+              }
+            ],
+            "7A": [
+              {
+                "answer": "ABUSE",
+                "score": 0.9
+              }
+            ],
+            "8A": [
+              {
+                "answer": "RESIN",
+                "score": 0.9
+              }
+            ],
+            "9A": [
+              {
+                "answer": "TREND",
+                "score": 0.9
+              }
+            ]
+          },
+          "events": [
+            {
+              "sequence": 1,
+              "kind": "started",
+              "message": "Validated 10 entries. Beginning bounded solve.",
+              "elapsed_seconds": 0.0,
+              "data": {
+                "entry_count": 10,
+                "grid": [
+                  ".....",
+                  ".....",
+                  ".....",
+                  ".....",
+                  "....."
+                ],
+                "model": "zai-org/GLM-5.3-Flash"
+              }
+            },
+            {
+              "sequence": 2,
+              "kind": "searching",
+              "message": "Checking candidate combinations against lengths, fixed letters, and crossings.",
+              "elapsed_seconds": 0.0,
+              "data": {}
+            },
+            {
+              "sequence": 3,
+              "kind": "search_complete",
+              "message": "Placed 10 of 10 entries consistently.",
+              "elapsed_seconds": 0.0,
+              "data": {
+                "grid": [
+                  "HEART",
+                  "EMBER",
+                  "ABUSE",
+                  "RESIN",
+                  "TREND"
+                ],
+                "assignments": {
+                  "1A": "HEART",
+                  "6A": "EMBER",
+                  "7A": "ABUSE",
+                  "8A": "RESIN",
+                  "9A": "TREND",
+                  "1D": "HEART",
+                  "2D": "EMBER",
+                  "3D": "ABUSE",
+                  "4D": "RESIN",
+                  "5D": "TREND"
+                },
+                "nodes": 10,
+                "round": 1,
+                "filled_cells": 25,
+                "total_cells": 25
+              }
+            },
+            {
+              "sequence": 4,
+              "kind": "finished",
+              "message": "All entries fit. Correctness requires an independent answer key.",
+              "elapsed_seconds": 0.0,
+              "data": {
+                "status": "complete_consistent",
+                "stop_reason": "complete_consistent"
+              }
+            }
+          ],
+          "model": "zai-org/GLM-5.3-Flash"
+        }
+      }
+    },
+    {
+      "puzzle_id": "test-fixed-4",
+      "title": "A few letters supplied",
+      "initial_generation_seconds": 1.5160000000032596,
+      "initial_generation_errors": [],
+      "metrics": {
+        "baseline_first_choice": {
+          "puzzle_id": "test-fixed-4",
+          "status": "complete_consistent",
+          "correct_cells": 16,
+          "total_cells": 16,
+          "letter_accuracy": 1.0,
+          "correct_unknown_cells": 13,
+          "unknown_cells": 13,
+          "unknown_letter_accuracy": 1.0,
+          "fixed_cells": 3,
+          "correct_entries": 8,
+          "total_entries": 8,
+          "answer_accuracy": 1.0,
+          "exact_puzzle": true,
+          "filled_cells": 16,
+          "completion": 1.0,
+          "filled_entries": 8,
+          "entry_completion": 1.0,
+          "complete_consistent": true,
+          "constraint_violation_count": 0,
+          "constraint_violations": [],
+          "candidate_hits": 8,
+          "candidate_recall": 1.0,
+          "elapsed_seconds": 1.5160000000032596,
+          "search_nodes": 0,
+          "rounds": 1,
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 535,
+            "completion_tokens": 235,
+            "total_tokens": 770,
+            "estimated_cost_usd": null
+          },
+          "entries": [
+            {
+              "entry_id": "1A",
+              "answer": "ROSE",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "1D",
+              "answer": "ROSE",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "2D",
+              "answer": "OVEN",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "3D",
+              "answer": "SEND",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "4D",
+              "answer": "ENDS",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "5A",
+              "answer": "OVEN",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "6A",
+              "answer": "SEND",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "7A",
+              "answer": "ENDS",
+              "correct": true,
+              "candidate_hit": true
+            }
+          ]
+        },
+        "baseline_search": {
+          "puzzle_id": "test-fixed-4",
+          "status": "complete_consistent",
+          "correct_cells": 16,
+          "total_cells": 16,
+          "letter_accuracy": 1.0,
+          "correct_unknown_cells": 13,
+          "unknown_cells": 13,
+          "unknown_letter_accuracy": 1.0,
+          "fixed_cells": 3,
+          "correct_entries": 8,
+          "total_entries": 8,
+          "answer_accuracy": 1.0,
+          "exact_puzzle": true,
+          "filled_cells": 16,
+          "completion": 1.0,
+          "filled_entries": 8,
+          "entry_completion": 1.0,
+          "complete_consistent": true,
+          "constraint_violation_count": 0,
+          "constraint_violations": [],
+          "candidate_hits": 8,
+          "candidate_recall": 1.0,
+          "elapsed_seconds": 1.5160000000032596,
+          "search_nodes": 8,
+          "rounds": 1,
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 535,
+            "completion_tokens": 235,
+            "total_tokens": 770,
+            "estimated_cost_usd": null
+          },
+          "entries": [
+            {
+              "entry_id": "1A",
+              "answer": "ROSE",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "1D",
+              "answer": "ROSE",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "2D",
+              "answer": "OVEN",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "3D",
+              "answer": "SEND",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "4D",
+              "answer": "ENDS",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "5A",
+              "answer": "OVEN",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "6A",
+              "answer": "SEND",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "7A",
+              "answer": "ENDS",
+              "correct": true,
+              "candidate_hit": true
+            }
+          ]
+        },
+        "agent": {
+          "puzzle_id": "test-fixed-4",
+          "status": "complete_consistent",
+          "correct_cells": 16,
+          "total_cells": 16,
+          "letter_accuracy": 1.0,
+          "correct_unknown_cells": 13,
+          "unknown_cells": 13,
+          "unknown_letter_accuracy": 1.0,
+          "fixed_cells": 3,
+          "correct_entries": 8,
+          "total_entries": 8,
+          "answer_accuracy": 1.0,
+          "exact_puzzle": true,
+          "filled_cells": 16,
+          "completion": 1.0,
+          "filled_entries": 8,
+          "entry_completion": 1.0,
+          "complete_consistent": true,
+          "constraint_violation_count": 0,
+          "constraint_violations": [],
+          "candidate_hits": 8,
+          "candidate_recall": 1.0,
+          "elapsed_seconds": 1.5160000000032596,
+          "search_nodes": 8,
+          "rounds": 1,
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 535,
+            "completion_tokens": 235,
+            "total_tokens": 770,
+            "estimated_cost_usd": null
+          },
+          "entries": [
+            {
+              "entry_id": "1A",
+              "answer": "ROSE",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "1D",
+              "answer": "ROSE",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "2D",
+              "answer": "OVEN",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "3D",
+              "answer": "SEND",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "4D",
+              "answer": "ENDS",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "5A",
+              "answer": "OVEN",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "6A",
+              "answer": "SEND",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "7A",
+              "answer": "ENDS",
+              "correct": true,
+              "candidate_hit": true
+            }
+          ]
+        }
+      },
+      "results": {
+        "baseline_first_choice": {
+          "puzzle_id": "test-fixed-4",
+          "status": "complete_consistent",
+          "grid": [
+            "ROSE",
+            "OVEN",
+            "SEND",
+            "ENDS"
+          ],
+          "assignments": {
+            "1A": "ROSE",
+            "1D": "ROSE",
+            "2D": "OVEN",
+            "3D": "SEND",
+            "4D": "ENDS",
+            "5A": "OVEN",
+            "6A": "SEND",
+            "7A": "ENDS"
+          },
+          "unresolved_entries": [],
+          "constraint_violations": [],
+          "filled_cells": 16,
+          "total_cells": 16,
+          "elapsed_seconds": 1.5160000000032596,
+          "rounds": 1,
+          "search_nodes": 0,
+          "stop_reason": "Independent highest-scored candidate for each clue; no crossing search.",
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 535,
+            "completion_tokens": 235,
+            "total_tokens": 770,
+            "estimated_cost_usd": null
+          },
+          "candidates": {
+            "1A": [
+              {
+                "answer": "ROSE",
+                "score": 0.95
+              }
+            ],
+            "1D": [
+              {
+                "answer": "ROSE",
+                "score": 0.9
+              }
+            ],
+            "2D": [
+              {
+                "answer": "OVEN",
+                "score": 0.9
+              }
+            ],
+            "3D": [
+              {
+                "answer": "SEND",
+                "score": 0.95
+              }
+            ],
+            "4D": [
+              {
+                "answer": "ENDS",
+                "score": 0.95
+              }
+            ],
+            "5A": [
+              {
+                "answer": "OVEN",
+                "score": 0.9
+              }
+            ],
+            "6A": [
+              {
+                "answer": "SEND",
+                "score": 0.85
+              },
+              {
+                "answer": "MAIL",
+                "score": 0.8
+              }
+            ],
+            "7A": [
+              {
+                "answer": "ENDS",
+                "score": 0.9
+              }
+            ]
+          },
+          "initial_candidates": {
+            "1A": [
+              {
+                "answer": "ROSE",
+                "score": 0.95
+              }
+            ],
+            "1D": [
+              {
+                "answer": "ROSE",
+                "score": 0.9
+              }
+            ],
+            "2D": [
+              {
+                "answer": "OVEN",
+                "score": 0.9
+              }
+            ],
+            "3D": [
+              {
+                "answer": "SEND",
+                "score": 0.95
+              }
+            ],
+            "4D": [
+              {
+                "answer": "ENDS",
+                "score": 0.95
+              }
+            ],
+            "5A": [
+              {
+                "answer": "OVEN",
+                "score": 0.9
+              }
+            ],
+            "6A": [
+              {
+                "answer": "SEND",
+                "score": 0.85
+              },
+              {
+                "answer": "MAIL",
+                "score": 0.8
+              }
+            ],
+            "7A": [
+              {
+                "answer": "ENDS",
+                "score": 0.9
+              }
+            ]
+          },
+          "events": [],
+          "model": "zai-org/GLM-5.3-Flash"
+        },
+        "baseline_search": {
+          "puzzle_id": "test-fixed-4",
+          "status": "complete_consistent",
+          "grid": [
+            "ROSE",
+            "OVEN",
+            "SEND",
+            "ENDS"
+          ],
+          "assignments": {
+            "1A": "ROSE",
+            "5A": "OVEN",
+            "7A": "ENDS",
+            "1D": "ROSE",
+            "6A": "SEND",
+            "2D": "OVEN",
+            "3D": "SEND",
+            "4D": "ENDS"
+          },
+          "unresolved_entries": [],
+          "constraint_violations": [],
+          "filled_cells": 16,
+          "total_cells": 16,
+          "elapsed_seconds": 1.5160000000032596,
+          "rounds": 1,
+          "search_nodes": 8,
+          "stop_reason": "One constraint search using the shared initial candidates.",
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 535,
+            "completion_tokens": 235,
+            "total_tokens": 770,
+            "estimated_cost_usd": null
+          },
+          "candidates": {
+            "1A": [
+              {
+                "answer": "ROSE",
+                "score": 0.95
+              }
+            ],
+            "1D": [
+              {
+                "answer": "ROSE",
+                "score": 0.9
+              }
+            ],
+            "2D": [
+              {
+                "answer": "OVEN",
+                "score": 0.9
+              }
+            ],
+            "3D": [
+              {
+                "answer": "SEND",
+                "score": 0.95
+              }
+            ],
+            "4D": [
+              {
+                "answer": "ENDS",
+                "score": 0.95
+              }
+            ],
+            "5A": [
+              {
+                "answer": "OVEN",
+                "score": 0.9
+              }
+            ],
+            "6A": [
+              {
+                "answer": "SEND",
+                "score": 0.85
+              },
+              {
+                "answer": "MAIL",
+                "score": 0.8
+              }
+            ],
+            "7A": [
+              {
+                "answer": "ENDS",
+                "score": 0.9
+              }
+            ]
+          },
+          "initial_candidates": {
+            "1A": [
+              {
+                "answer": "ROSE",
+                "score": 0.95
+              }
+            ],
+            "1D": [
+              {
+                "answer": "ROSE",
+                "score": 0.9
+              }
+            ],
+            "2D": [
+              {
+                "answer": "OVEN",
+                "score": 0.9
+              }
+            ],
+            "3D": [
+              {
+                "answer": "SEND",
+                "score": 0.95
+              }
+            ],
+            "4D": [
+              {
+                "answer": "ENDS",
+                "score": 0.95
+              }
+            ],
+            "5A": [
+              {
+                "answer": "OVEN",
+                "score": 0.9
+              }
+            ],
+            "6A": [
+              {
+                "answer": "SEND",
+                "score": 0.85
+              },
+              {
+                "answer": "MAIL",
+                "score": 0.8
+              }
+            ],
+            "7A": [
+              {
+                "answer": "ENDS",
+                "score": 0.9
+              }
+            ]
+          },
+          "events": [],
+          "model": "zai-org/GLM-5.3-Flash"
+        },
+        "agent": {
+          "puzzle_id": "test-fixed-4",
+          "status": "complete_consistent",
+          "grid": [
+            "ROSE",
+            "OVEN",
+            "SEND",
+            "ENDS"
+          ],
+          "assignments": {
+            "1A": "ROSE",
+            "5A": "OVEN",
+            "7A": "ENDS",
+            "1D": "ROSE",
+            "6A": "SEND",
+            "2D": "OVEN",
+            "3D": "SEND",
+            "4D": "ENDS"
+          },
+          "unresolved_entries": [],
+          "constraint_violations": [],
+          "filled_cells": 16,
+          "total_cells": 16,
+          "elapsed_seconds": 1.5160000000032596,
+          "rounds": 1,
+          "search_nodes": 8,
+          "stop_reason": "complete_consistent",
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 535,
+            "completion_tokens": 235,
+            "total_tokens": 770,
+            "estimated_cost_usd": null
+          },
+          "candidates": {
+            "1A": [
+              {
+                "answer": "ROSE",
+                "score": 0.95
+              }
+            ],
+            "1D": [
+              {
+                "answer": "ROSE",
+                "score": 0.9
+              }
+            ],
+            "2D": [
+              {
+                "answer": "OVEN",
+                "score": 0.9
+              }
+            ],
+            "3D": [
+              {
+                "answer": "SEND",
+                "score": 0.95
+              }
+            ],
+            "4D": [
+              {
+                "answer": "ENDS",
+                "score": 0.95
+              }
+            ],
+            "5A": [
+              {
+                "answer": "OVEN",
+                "score": 0.9
+              }
+            ],
+            "6A": [
+              {
+                "answer": "SEND",
+                "score": 0.85
+              },
+              {
+                "answer": "MAIL",
+                "score": 0.8
+              }
+            ],
+            "7A": [
+              {
+                "answer": "ENDS",
+                "score": 0.9
+              }
+            ]
+          },
+          "initial_candidates": {
+            "1A": [
+              {
+                "answer": "ROSE",
+                "score": 0.95
+              }
+            ],
+            "1D": [
+              {
+                "answer": "ROSE",
+                "score": 0.9
+              }
+            ],
+            "2D": [
+              {
+                "answer": "OVEN",
+                "score": 0.9
+              }
+            ],
+            "3D": [
+              {
+                "answer": "SEND",
+                "score": 0.95
+              }
+            ],
+            "4D": [
+              {
+                "answer": "ENDS",
+                "score": 0.95
+              }
+            ],
+            "5A": [
+              {
+                "answer": "OVEN",
+                "score": 0.9
+              }
+            ],
+            "6A": [
+              {
+                "answer": "SEND",
+                "score": 0.85
+              },
+              {
+                "answer": "MAIL",
+                "score": 0.8
+              }
+            ],
+            "7A": [
+              {
+                "answer": "ENDS",
+                "score": 0.9
+              }
+            ]
+          },
+          "events": [
+            {
+              "sequence": 1,
+              "kind": "started",
+              "message": "Validated 8 entries. Beginning bounded solve.",
+              "elapsed_seconds": 0.0,
+              "data": {
+                "entry_count": 8,
+                "grid": [
+                  "R...",
+                  "..E.",
+                  "....",
+                  "...S"
+                ],
+                "model": "zai-org/GLM-5.3-Flash"
+              }
+            },
+            {
+              "sequence": 2,
+              "kind": "searching",
+              "message": "Checking candidate combinations against lengths, fixed letters, and crossings.",
+              "elapsed_seconds": 0.0,
+              "data": {}
+            },
+            {
+              "sequence": 3,
+              "kind": "search_complete",
+              "message": "Placed 8 of 8 entries consistently.",
+              "elapsed_seconds": 0.0,
+              "data": {
+                "grid": [
+                  "ROSE",
+                  "OVEN",
+                  "SEND",
+                  "ENDS"
+                ],
+                "assignments": {
+                  "1A": "ROSE",
+                  "5A": "OVEN",
+                  "7A": "ENDS",
+                  "1D": "ROSE",
+                  "6A": "SEND",
+                  "2D": "OVEN",
+                  "3D": "SEND",
+                  "4D": "ENDS"
+                },
+                "nodes": 8,
+                "round": 1,
+                "filled_cells": 16,
+                "total_cells": 16
+              }
+            },
+            {
+              "sequence": 4,
+              "kind": "finished",
+              "message": "All entries fit. Correctness requires an independent answer key.",
+              "elapsed_seconds": 0.0,
+              "data": {
+                "status": "complete_consistent",
+                "stop_reason": "complete_consistent"
+              }
+            }
+          ],
+          "model": "zai-org/GLM-5.3-Flash"
+        }
+      }
+    },
+    {
+      "puzzle_id": "test-captain-5x7",
+      "title": "A rectangular crossing",
+      "initial_generation_seconds": 0.6570000000065193,
+      "initial_generation_errors": [],
+      "metrics": {
+        "baseline_first_choice": {
+          "puzzle_id": "test-captain-5x7",
+          "status": "complete_consistent",
+          "correct_cells": 11,
+          "total_cells": 11,
+          "letter_accuracy": 1.0,
+          "correct_unknown_cells": 11,
+          "unknown_cells": 11,
+          "unknown_letter_accuracy": 1.0,
+          "fixed_cells": 0,
+          "correct_entries": 2,
+          "total_entries": 2,
+          "answer_accuracy": 1.0,
+          "exact_puzzle": true,
+          "filled_cells": 11,
+          "completion": 1.0,
+          "filled_entries": 2,
+          "entry_completion": 1.0,
+          "complete_consistent": true,
+          "constraint_violation_count": 0,
+          "constraint_violations": [],
+          "candidate_hits": 2,
+          "candidate_recall": 1.0,
+          "elapsed_seconds": 0.6570000000065193,
+          "search_nodes": 0,
+          "rounds": 1,
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 303,
+            "completion_tokens": 66,
+            "total_tokens": 369,
+            "estimated_cost_usd": null
+          },
+          "entries": [
+            {
+              "entry_id": "1D",
+              "answer": "WATER",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "2A",
+              "answer": "CAPTAIN",
+              "correct": true,
+              "candidate_hit": true
+            }
+          ]
+        },
+        "baseline_search": {
+          "puzzle_id": "test-captain-5x7",
+          "status": "complete_consistent",
+          "correct_cells": 11,
+          "total_cells": 11,
+          "letter_accuracy": 1.0,
+          "correct_unknown_cells": 11,
+          "unknown_cells": 11,
+          "unknown_letter_accuracy": 1.0,
+          "fixed_cells": 0,
+          "correct_entries": 2,
+          "total_entries": 2,
+          "answer_accuracy": 1.0,
+          "exact_puzzle": true,
+          "filled_cells": 11,
+          "completion": 1.0,
+          "filled_entries": 2,
+          "entry_completion": 1.0,
+          "complete_consistent": true,
+          "constraint_violation_count": 0,
+          "constraint_violations": [],
+          "candidate_hits": 2,
+          "candidate_recall": 1.0,
+          "elapsed_seconds": 0.6570000000065193,
+          "search_nodes": 2,
+          "rounds": 1,
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 303,
+            "completion_tokens": 66,
+            "total_tokens": 369,
+            "estimated_cost_usd": null
+          },
+          "entries": [
+            {
+              "entry_id": "1D",
+              "answer": "WATER",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "2A",
+              "answer": "CAPTAIN",
+              "correct": true,
+              "candidate_hit": true
+            }
+          ]
+        },
+        "agent": {
+          "puzzle_id": "test-captain-5x7",
+          "status": "complete_consistent",
+          "correct_cells": 11,
+          "total_cells": 11,
+          "letter_accuracy": 1.0,
+          "correct_unknown_cells": 11,
+          "unknown_cells": 11,
+          "unknown_letter_accuracy": 1.0,
+          "fixed_cells": 0,
+          "correct_entries": 2,
+          "total_entries": 2,
+          "answer_accuracy": 1.0,
+          "exact_puzzle": true,
+          "filled_cells": 11,
+          "completion": 1.0,
+          "filled_entries": 2,
+          "entry_completion": 1.0,
+          "complete_consistent": true,
+          "constraint_violation_count": 0,
+          "constraint_violations": [],
+          "candidate_hits": 2,
+          "candidate_recall": 1.0,
+          "elapsed_seconds": 0.6570000000065193,
+          "search_nodes": 2,
+          "rounds": 1,
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 303,
+            "completion_tokens": 66,
+            "total_tokens": 369,
+            "estimated_cost_usd": null
+          },
+          "entries": [
+            {
+              "entry_id": "1D",
+              "answer": "WATER",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "2A",
+              "answer": "CAPTAIN",
+              "correct": true,
+              "candidate_hit": true
+            }
+          ]
+        }
+      },
+      "results": {
+        "baseline_first_choice": {
+          "puzzle_id": "test-captain-5x7",
+          "status": "complete_consistent",
+          "grid": [
+            "###W###",
+            "###A###",
+            "CAPTAIN",
+            "###E###",
+            "###R###"
+          ],
+          "assignments": {
+            "1D": "WATER",
+            "2A": "CAPTAIN"
+          },
+          "unresolved_entries": [],
+          "constraint_violations": [],
+          "filled_cells": 11,
+          "total_cells": 11,
+          "elapsed_seconds": 0.6570000000065193,
+          "rounds": 1,
+          "search_nodes": 0,
+          "stop_reason": "Independent highest-scored candidate for each clue; no crossing search.",
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 303,
+            "completion_tokens": 66,
+            "total_tokens": 369,
+            "estimated_cost_usd": null
+          },
+          "candidates": {
+            "1D": [
+              {
+                "answer": "WATER",
+                "score": 0.99
+              }
+            ],
+            "2A": [
+              {
+                "answer": "CAPTAIN",
+                "score": 0.95
+              },
+              {
+                "answer": "SKIPPER",
+                "score": 0.9
+              },
+              {
+                "answer": "COMMAND",
+                "score": 0.3
+              }
+            ]
+          },
+          "initial_candidates": {
+            "1D": [
+              {
+                "answer": "WATER",
+                "score": 0.99
+              }
+            ],
+            "2A": [
+              {
+                "answer": "CAPTAIN",
+                "score": 0.95
+              },
+              {
+                "answer": "SKIPPER",
+                "score": 0.9
+              },
+              {
+                "answer": "COMMAND",
+                "score": 0.3
+              }
+            ]
+          },
+          "events": [],
+          "model": "zai-org/GLM-5.3-Flash"
+        },
+        "baseline_search": {
+          "puzzle_id": "test-captain-5x7",
+          "status": "complete_consistent",
+          "grid": [
+            "###W###",
+            "###A###",
+            "CAPTAIN",
+            "###E###",
+            "###R###"
+          ],
+          "assignments": {
+            "1D": "WATER",
+            "2A": "CAPTAIN"
+          },
+          "unresolved_entries": [],
+          "constraint_violations": [],
+          "filled_cells": 11,
+          "total_cells": 11,
+          "elapsed_seconds": 0.6570000000065193,
+          "rounds": 1,
+          "search_nodes": 2,
+          "stop_reason": "One constraint search using the shared initial candidates.",
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 303,
+            "completion_tokens": 66,
+            "total_tokens": 369,
+            "estimated_cost_usd": null
+          },
+          "candidates": {
+            "1D": [
+              {
+                "answer": "WATER",
+                "score": 0.99
+              }
+            ],
+            "2A": [
+              {
+                "answer": "CAPTAIN",
+                "score": 0.95
+              },
+              {
+                "answer": "SKIPPER",
+                "score": 0.9
+              },
+              {
+                "answer": "COMMAND",
+                "score": 0.3
+              }
+            ]
+          },
+          "initial_candidates": {
+            "1D": [
+              {
+                "answer": "WATER",
+                "score": 0.99
+              }
+            ],
+            "2A": [
+              {
+                "answer": "CAPTAIN",
+                "score": 0.95
+              },
+              {
+                "answer": "SKIPPER",
+                "score": 0.9
+              },
+              {
+                "answer": "COMMAND",
+                "score": 0.3
+              }
+            ]
+          },
+          "events": [],
+          "model": "zai-org/GLM-5.3-Flash"
+        },
+        "agent": {
+          "puzzle_id": "test-captain-5x7",
+          "status": "complete_consistent",
+          "grid": [
+            "###W###",
+            "###A###",
+            "CAPTAIN",
+            "###E###",
+            "###R###"
+          ],
+          "assignments": {
+            "1D": "WATER",
+            "2A": "CAPTAIN"
+          },
+          "unresolved_entries": [],
+          "constraint_violations": [],
+          "filled_cells": 11,
+          "total_cells": 11,
+          "elapsed_seconds": 0.6570000000065193,
+          "rounds": 1,
+          "search_nodes": 2,
+          "stop_reason": "complete_consistent",
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 303,
+            "completion_tokens": 66,
+            "total_tokens": 369,
+            "estimated_cost_usd": null
+          },
+          "candidates": {
+            "1D": [
+              {
+                "answer": "WATER",
+                "score": 0.99
+              }
+            ],
+            "2A": [
+              {
+                "answer": "CAPTAIN",
+                "score": 0.95
+              },
+              {
+                "answer": "SKIPPER",
+                "score": 0.9
+              },
+              {
+                "answer": "COMMAND",
+                "score": 0.3
+              }
+            ]
+          },
+          "initial_candidates": {
+            "1D": [
+              {
+                "answer": "WATER",
+                "score": 0.99
+              }
+            ],
+            "2A": [
+              {
+                "answer": "CAPTAIN",
+                "score": 0.95
+              },
+              {
+                "answer": "SKIPPER",
+                "score": 0.9
+              },
+              {
+                "answer": "COMMAND",
+                "score": 0.3
+              }
+            ]
+          },
+          "events": [
+            {
+              "sequence": 1,
+              "kind": "started",
+              "message": "Validated 2 entries. Beginning bounded solve.",
+              "elapsed_seconds": 0.0,
+              "data": {
+                "entry_count": 2,
+                "grid": [
+                  "###.###",
+                  "###.###",
+                  ".......",
+                  "###.###",
+                  "###.###"
+                ],
+                "model": "zai-org/GLM-5.3-Flash"
+              }
+            },
+            {
+              "sequence": 2,
+              "kind": "searching",
+              "message": "Checking candidate combinations against lengths, fixed letters, and crossings.",
+              "elapsed_seconds": 0.0,
+              "data": {}
+            },
+            {
+              "sequence": 3,
+              "kind": "search_complete",
+              "message": "Placed 2 of 2 entries consistently.",
+              "elapsed_seconds": 0.0,
+              "data": {
+                "grid": [
+                  "###W###",
+                  "###A###",
+                  "CAPTAIN",
+                  "###E###",
+                  "###R###"
+                ],
+                "assignments": {
+                  "1D": "WATER",
+                  "2A": "CAPTAIN"
+                },
+                "nodes": 2,
+                "round": 1,
+                "filled_cells": 11,
+                "total_cells": 11
+              }
+            },
+            {
+              "sequence": 4,
+              "kind": "finished",
+              "message": "All entries fit. Correctness requires an independent answer key.",
+              "elapsed_seconds": 0.0,
+              "data": {
+                "status": "complete_consistent",
+                "stop_reason": "complete_consistent"
+              }
+            }
+          ],
+          "model": "zai-org/GLM-5.3-Flash"
+        }
+      }
+    },
+    {
+      "puzzle_id": "test-citrus-7",
+      "title": "Seven by seven crossings",
+      "initial_generation_seconds": 1.2339999999967404,
+      "initial_generation_errors": [],
+      "metrics": {
+        "baseline_first_choice": {
+          "puzzle_id": "test-citrus-7",
+          "status": "complete_consistent",
+          "correct_cells": 25,
+          "total_cells": 25,
+          "letter_accuracy": 1.0,
+          "correct_unknown_cells": 25,
+          "unknown_cells": 25,
+          "unknown_letter_accuracy": 1.0,
+          "fixed_cells": 0,
+          "correct_entries": 4,
+          "total_entries": 4,
+          "answer_accuracy": 1.0,
+          "exact_puzzle": true,
+          "filled_cells": 25,
+          "completion": 1.0,
+          "filled_entries": 4,
+          "entry_completion": 1.0,
+          "complete_consistent": true,
+          "constraint_violation_count": 0,
+          "constraint_violations": [],
+          "candidate_hits": 4,
+          "candidate_recall": 1.0,
+          "elapsed_seconds": 1.2339999999967404,
+          "search_nodes": 0,
+          "rounds": 1,
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 376,
+            "completion_tokens": 120,
+            "total_tokens": 496,
+            "estimated_cost_usd": null
+          },
+          "entries": [
+            {
+              "entry_id": "1D",
+              "answer": "ORANGES",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "2A",
+              "answer": "CHARITY",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "3A",
+              "answer": "BANNERS",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "4A",
+              "answer": "LIBERTY",
+              "correct": true,
+              "candidate_hit": true
+            }
+          ]
+        },
+        "baseline_search": {
+          "puzzle_id": "test-citrus-7",
+          "status": "complete_consistent",
+          "correct_cells": 25,
+          "total_cells": 25,
+          "letter_accuracy": 1.0,
+          "correct_unknown_cells": 25,
+          "unknown_cells": 25,
+          "unknown_letter_accuracy": 1.0,
+          "fixed_cells": 0,
+          "correct_entries": 4,
+          "total_entries": 4,
+          "answer_accuracy": 1.0,
+          "exact_puzzle": true,
+          "filled_cells": 25,
+          "completion": 1.0,
+          "filled_entries": 4,
+          "entry_completion": 1.0,
+          "complete_consistent": true,
+          "constraint_violation_count": 0,
+          "constraint_violations": [],
+          "candidate_hits": 4,
+          "candidate_recall": 1.0,
+          "elapsed_seconds": 1.2339999999967404,
+          "search_nodes": 4,
+          "rounds": 1,
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 376,
+            "completion_tokens": 120,
+            "total_tokens": 496,
+            "estimated_cost_usd": null
+          },
+          "entries": [
+            {
+              "entry_id": "1D",
+              "answer": "ORANGES",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "2A",
+              "answer": "CHARITY",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "3A",
+              "answer": "BANNERS",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "4A",
+              "answer": "LIBERTY",
+              "correct": true,
+              "candidate_hit": true
+            }
+          ]
+        },
+        "agent": {
+          "puzzle_id": "test-citrus-7",
+          "status": "complete_consistent",
+          "correct_cells": 25,
+          "total_cells": 25,
+          "letter_accuracy": 1.0,
+          "correct_unknown_cells": 25,
+          "unknown_cells": 25,
+          "unknown_letter_accuracy": 1.0,
+          "fixed_cells": 0,
+          "correct_entries": 4,
+          "total_entries": 4,
+          "answer_accuracy": 1.0,
+          "exact_puzzle": true,
+          "filled_cells": 25,
+          "completion": 1.0,
+          "filled_entries": 4,
+          "entry_completion": 1.0,
+          "complete_consistent": true,
+          "constraint_violation_count": 0,
+          "constraint_violations": [],
+          "candidate_hits": 4,
+          "candidate_recall": 1.0,
+          "elapsed_seconds": 1.2339999999967404,
+          "search_nodes": 4,
+          "rounds": 1,
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 376,
+            "completion_tokens": 120,
+            "total_tokens": 496,
+            "estimated_cost_usd": null
+          },
+          "entries": [
+            {
+              "entry_id": "1D",
+              "answer": "ORANGES",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "2A",
+              "answer": "CHARITY",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "3A",
+              "answer": "BANNERS",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "4A",
+              "answer": "LIBERTY",
+              "correct": true,
+              "candidate_hit": true
+            }
+          ]
+        }
+      },
+      "results": {
+        "baseline_first_choice": {
+          "puzzle_id": "test-citrus-7",
+          "status": "complete_consistent",
+          "grid": [
+            "###O###",
+            "CHARITY",
+            "###A###",
+            "BANNERS",
+            "###G###",
+            "LIBERTY",
+            "###S###"
+          ],
+          "assignments": {
+            "1D": "ORANGES",
+            "2A": "CHARITY",
+            "3A": "BANNERS",
+            "4A": "LIBERTY"
+          },
+          "unresolved_entries": [],
+          "constraint_violations": [],
+          "filled_cells": 25,
+          "total_cells": 25,
+          "elapsed_seconds": 1.2339999999967404,
+          "rounds": 1,
+          "search_nodes": 0,
+          "stop_reason": "Independent highest-scored candidate for each clue; no crossing search.",
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 376,
+            "completion_tokens": 120,
+            "total_tokens": 496,
+            "estimated_cost_usd": null
+          },
+          "candidates": {
+            "1D": [
+              {
+                "answer": "ORANGES",
+                "score": 0.9
+              }
+            ],
+            "2A": [
+              {
+                "answer": "CHARITY",
+                "score": 0.9
+              }
+            ],
+            "3A": [
+              {
+                "answer": "BANNERS",
+                "score": 0.9
+              }
+            ],
+            "4A": [
+              {
+                "answer": "LIBERTY",
+                "score": 0.9
+              },
+              {
+                "answer": "RELEASE",
+                "score": 0.6
+              }
+            ]
+          },
+          "initial_candidates": {
+            "1D": [
+              {
+                "answer": "ORANGES",
+                "score": 0.9
+              }
+            ],
+            "2A": [
+              {
+                "answer": "CHARITY",
+                "score": 0.9
+              }
+            ],
+            "3A": [
+              {
+                "answer": "BANNERS",
+                "score": 0.9
+              }
+            ],
+            "4A": [
+              {
+                "answer": "LIBERTY",
+                "score": 0.9
+              },
+              {
+                "answer": "RELEASE",
+                "score": 0.6
+              }
+            ]
+          },
+          "events": [],
+          "model": "zai-org/GLM-5.3-Flash"
+        },
+        "baseline_search": {
+          "puzzle_id": "test-citrus-7",
+          "status": "complete_consistent",
+          "grid": [
+            "###O###",
+            "CHARITY",
+            "###A###",
+            "BANNERS",
+            "###G###",
+            "LIBERTY",
+            "###S###"
+          ],
+          "assignments": {
+            "1D": "ORANGES",
+            "2A": "CHARITY",
+            "3A": "BANNERS",
+            "4A": "LIBERTY"
+          },
+          "unresolved_entries": [],
+          "constraint_violations": [],
+          "filled_cells": 25,
+          "total_cells": 25,
+          "elapsed_seconds": 1.2339999999967404,
+          "rounds": 1,
+          "search_nodes": 4,
+          "stop_reason": "One constraint search using the shared initial candidates.",
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 376,
+            "completion_tokens": 120,
+            "total_tokens": 496,
+            "estimated_cost_usd": null
+          },
+          "candidates": {
+            "1D": [
+              {
+                "answer": "ORANGES",
+                "score": 0.9
+              }
+            ],
+            "2A": [
+              {
+                "answer": "CHARITY",
+                "score": 0.9
+              }
+            ],
+            "3A": [
+              {
+                "answer": "BANNERS",
+                "score": 0.9
+              }
+            ],
+            "4A": [
+              {
+                "answer": "LIBERTY",
+                "score": 0.9
+              },
+              {
+                "answer": "RELEASE",
+                "score": 0.6
+              }
+            ]
+          },
+          "initial_candidates": {
+            "1D": [
+              {
+                "answer": "ORANGES",
+                "score": 0.9
+              }
+            ],
+            "2A": [
+              {
+                "answer": "CHARITY",
+                "score": 0.9
+              }
+            ],
+            "3A": [
+              {
+                "answer": "BANNERS",
+                "score": 0.9
+              }
+            ],
+            "4A": [
+              {
+                "answer": "LIBERTY",
+                "score": 0.9
+              },
+              {
+                "answer": "RELEASE",
+                "score": 0.6
+              }
+            ]
+          },
+          "events": [],
+          "model": "zai-org/GLM-5.3-Flash"
+        },
+        "agent": {
+          "puzzle_id": "test-citrus-7",
+          "status": "complete_consistent",
+          "grid": [
+            "###O###",
+            "CHARITY",
+            "###A###",
+            "BANNERS",
+            "###G###",
+            "LIBERTY",
+            "###S###"
+          ],
+          "assignments": {
+            "1D": "ORANGES",
+            "2A": "CHARITY",
+            "3A": "BANNERS",
+            "4A": "LIBERTY"
+          },
+          "unresolved_entries": [],
+          "constraint_violations": [],
+          "filled_cells": 25,
+          "total_cells": 25,
+          "elapsed_seconds": 1.2339999999967404,
+          "rounds": 1,
+          "search_nodes": 4,
+          "stop_reason": "complete_consistent",
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 376,
+            "completion_tokens": 120,
+            "total_tokens": 496,
+            "estimated_cost_usd": null
+          },
+          "candidates": {
+            "1D": [
+              {
+                "answer": "ORANGES",
+                "score": 0.9
+              }
+            ],
+            "2A": [
+              {
+                "answer": "CHARITY",
+                "score": 0.9
+              }
+            ],
+            "3A": [
+              {
+                "answer": "BANNERS",
+                "score": 0.9
+              }
+            ],
+            "4A": [
+              {
+                "answer": "LIBERTY",
+                "score": 0.9
+              },
+              {
+                "answer": "RELEASE",
+                "score": 0.6
+              }
+            ]
+          },
+          "initial_candidates": {
+            "1D": [
+              {
+                "answer": "ORANGES",
+                "score": 0.9
+              }
+            ],
+            "2A": [
+              {
+                "answer": "CHARITY",
+                "score": 0.9
+              }
+            ],
+            "3A": [
+              {
+                "answer": "BANNERS",
+                "score": 0.9
+              }
+            ],
+            "4A": [
+              {
+                "answer": "LIBERTY",
+                "score": 0.9
+              },
+              {
+                "answer": "RELEASE",
+                "score": 0.6
+              }
+            ]
+          },
+          "events": [
+            {
+              "sequence": 1,
+              "kind": "started",
+              "message": "Validated 4 entries. Beginning bounded solve.",
+              "elapsed_seconds": 0.0,
+              "data": {
+                "entry_count": 4,
+                "grid": [
+                  "###.###",
+                  ".......",
+                  "###.###",
+                  ".......",
+                  "###.###",
+                  ".......",
+                  "###.###"
+                ],
+                "model": "zai-org/GLM-5.3-Flash"
+              }
+            },
+            {
+              "sequence": 2,
+              "kind": "searching",
+              "message": "Checking candidate combinations against lengths, fixed letters, and crossings.",
+              "elapsed_seconds": 0.0,
+              "data": {}
+            },
+            {
+              "sequence": 3,
+              "kind": "search_complete",
+              "message": "Placed 4 of 4 entries consistently.",
+              "elapsed_seconds": 0.0,
+              "data": {
+                "grid": [
+                  "###O###",
+                  "CHARITY",
+                  "###A###",
+                  "BANNERS",
+                  "###G###",
+                  "LIBERTY",
+                  "###S###"
+                ],
+                "assignments": {
+                  "1D": "ORANGES",
+                  "2A": "CHARITY",
+                  "3A": "BANNERS",
+                  "4A": "LIBERTY"
+                },
+                "nodes": 4,
+                "round": 1,
+                "filled_cells": 25,
+                "total_cells": 25
+              }
+            },
+            {
+              "sequence": 4,
+              "kind": "finished",
+              "message": "All entries fit. Correctness requires an independent answer key.",
+              "elapsed_seconds": 0.0,
+              "data": {
+                "status": "complete_consistent",
+                "stop_reason": "complete_consistent"
+              }
+            }
+          ],
+          "model": "zai-org/GLM-5.3-Flash"
+        }
+      }
+    },
+    {
+      "puzzle_id": "test-interlock-4",
+      "title": "Different answers meet",
+      "initial_generation_seconds": 1.2969999999913853,
+      "initial_generation_errors": [],
+      "metrics": {
+        "baseline_first_choice": {
+          "puzzle_id": "test-interlock-4",
+          "status": "complete_consistent",
+          "correct_cells": 15,
+          "total_cells": 15,
+          "letter_accuracy": 1.0,
+          "correct_unknown_cells": 15,
+          "unknown_cells": 15,
+          "unknown_letter_accuracy": 1.0,
+          "fixed_cells": 0,
+          "correct_entries": 8,
+          "total_entries": 8,
+          "answer_accuracy": 1.0,
+          "exact_puzzle": true,
+          "filled_cells": 15,
+          "completion": 1.0,
+          "filled_entries": 8,
+          "entry_completion": 1.0,
+          "complete_consistent": true,
+          "constraint_violation_count": 0,
+          "constraint_violations": [],
+          "candidate_hits": 8,
+          "candidate_recall": 1.0,
+          "elapsed_seconds": 1.2969999999913853,
+          "search_nodes": 0,
+          "rounds": 1,
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 525,
+            "completion_tokens": 197,
+            "total_tokens": 722,
+            "estimated_cost_usd": null
+          },
+          "entries": [
+            {
+              "entry_id": "1A",
+              "answer": "CATS",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "1D",
+              "answer": "CARS",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "2D",
+              "answer": "AREA",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "3D",
+              "answer": "TENT",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "4D",
+              "answer": "SAT",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "5A",
+              "answer": "AREA",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "6A",
+              "answer": "RENT",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "7A",
+              "answer": "SAT",
+              "correct": true,
+              "candidate_hit": true
+            }
+          ]
+        },
+        "baseline_search": {
+          "puzzle_id": "test-interlock-4",
+          "status": "complete_consistent",
+          "correct_cells": 15,
+          "total_cells": 15,
+          "letter_accuracy": 1.0,
+          "correct_unknown_cells": 15,
+          "unknown_cells": 15,
+          "unknown_letter_accuracy": 1.0,
+          "fixed_cells": 0,
+          "correct_entries": 8,
+          "total_entries": 8,
+          "answer_accuracy": 1.0,
+          "exact_puzzle": true,
+          "filled_cells": 15,
+          "completion": 1.0,
+          "filled_entries": 8,
+          "entry_completion": 1.0,
+          "complete_consistent": true,
+          "constraint_violation_count": 0,
+          "constraint_violations": [],
+          "candidate_hits": 8,
+          "candidate_recall": 1.0,
+          "elapsed_seconds": 1.312000000005355,
+          "search_nodes": 8,
+          "rounds": 1,
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 525,
+            "completion_tokens": 197,
+            "total_tokens": 722,
+            "estimated_cost_usd": null
+          },
+          "entries": [
+            {
+              "entry_id": "1A",
+              "answer": "CATS",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "1D",
+              "answer": "CARS",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "2D",
+              "answer": "AREA",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "3D",
+              "answer": "TENT",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "4D",
+              "answer": "SAT",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "5A",
+              "answer": "AREA",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "6A",
+              "answer": "RENT",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "7A",
+              "answer": "SAT",
+              "correct": true,
+              "candidate_hit": true
+            }
+          ]
+        },
+        "agent": {
+          "puzzle_id": "test-interlock-4",
+          "status": "complete_consistent",
+          "correct_cells": 15,
+          "total_cells": 15,
+          "letter_accuracy": 1.0,
+          "correct_unknown_cells": 15,
+          "unknown_cells": 15,
+          "unknown_letter_accuracy": 1.0,
+          "fixed_cells": 0,
+          "correct_entries": 8,
+          "total_entries": 8,
+          "answer_accuracy": 1.0,
+          "exact_puzzle": true,
+          "filled_cells": 15,
+          "completion": 1.0,
+          "filled_entries": 8,
+          "entry_completion": 1.0,
+          "complete_consistent": true,
+          "constraint_violation_count": 0,
+          "constraint_violations": [],
+          "candidate_hits": 8,
+          "candidate_recall": 1.0,
+          "elapsed_seconds": 1.2969999999913853,
+          "search_nodes": 8,
+          "rounds": 1,
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 525,
+            "completion_tokens": 197,
+            "total_tokens": 722,
+            "estimated_cost_usd": null
+          },
+          "entries": [
+            {
+              "entry_id": "1A",
+              "answer": "CATS",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "1D",
+              "answer": "CARS",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "2D",
+              "answer": "AREA",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "3D",
+              "answer": "TENT",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "4D",
+              "answer": "SAT",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "5A",
+              "answer": "AREA",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "6A",
+              "answer": "RENT",
+              "correct": true,
+              "candidate_hit": true
+            },
+            {
+              "entry_id": "7A",
+              "answer": "SAT",
+              "correct": true,
+              "candidate_hit": true
+            }
+          ]
+        }
+      },
+      "results": {
+        "baseline_first_choice": {
+          "puzzle_id": "test-interlock-4",
+          "status": "complete_consistent",
+          "grid": [
+            "CATS",
+            "AREA",
+            "RENT",
+            "SAT#"
+          ],
+          "assignments": {
+            "1A": "CATS",
+            "1D": "CARS",
+            "2D": "AREA",
+            "3D": "TENT",
+            "4D": "SAT",
+            "5A": "AREA",
+            "6A": "RENT",
+            "7A": "SAT"
+          },
+          "unresolved_entries": [],
+          "constraint_violations": [],
+          "filled_cells": 15,
+          "total_cells": 15,
+          "elapsed_seconds": 1.2969999999913853,
+          "rounds": 1,
+          "search_nodes": 0,
+          "stop_reason": "Independent highest-scored candidate for each clue; no crossing search.",
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 525,
+            "completion_tokens": 197,
+            "total_tokens": 722,
+            "estimated_cost_usd": null
+          },
+          "candidates": {
+            "1A": [
+              {
+                "answer": "CATS",
+                "score": 0.95
+              }
+            ],
+            "1D": [
+              {
+                "answer": "CARS",
+                "score": 0.9
+              }
+            ],
+            "2D": [
+              {
+                "answer": "AREA",
+                "score": 0.85
+              }
+            ],
+            "3D": [
+              {
+                "answer": "TENT",
+                "score": 0.95
+              }
+            ],
+            "4D": [
+              {
+                "answer": "SAT",
+                "score": 0.95
+              }
+            ],
+            "5A": [
+              {
+                "answer": "AREA",
+                "score": 0.9
+              }
+            ],
+            "6A": [
+              {
+                "answer": "RENT",
+                "score": 0.95
+              }
+            ],
+            "7A": [
+              {
+                "answer": "SAT",
+                "score": 0.9
+              }
+            ]
+          },
+          "initial_candidates": {
+            "1A": [
+              {
+                "answer": "CATS",
+                "score": 0.95
+              }
+            ],
+            "1D": [
+              {
+                "answer": "CARS",
+                "score": 0.9
+              }
+            ],
+            "2D": [
+              {
+                "answer": "AREA",
+                "score": 0.85
+              }
+            ],
+            "3D": [
+              {
+                "answer": "TENT",
+                "score": 0.95
+              }
+            ],
+            "4D": [
+              {
+                "answer": "SAT",
+                "score": 0.95
+              }
+            ],
+            "5A": [
+              {
+                "answer": "AREA",
+                "score": 0.9
+              }
+            ],
+            "6A": [
+              {
+                "answer": "RENT",
+                "score": 0.95
+              }
+            ],
+            "7A": [
+              {
+                "answer": "SAT",
+                "score": 0.9
+              }
+            ]
+          },
+          "events": [],
+          "model": "zai-org/GLM-5.3-Flash"
+        },
+        "baseline_search": {
+          "puzzle_id": "test-interlock-4",
+          "status": "complete_consistent",
+          "grid": [
+            "CATS",
+            "AREA",
+            "RENT",
+            "SAT#"
+          ],
+          "assignments": {
+            "1A": "CATS",
+            "5A": "AREA",
+            "6A": "RENT",
+            "7A": "SAT",
+            "1D": "CARS",
+            "2D": "AREA",
+            "3D": "TENT",
+            "4D": "SAT"
+          },
+          "unresolved_entries": [],
+          "constraint_violations": [],
+          "filled_cells": 15,
+          "total_cells": 15,
+          "elapsed_seconds": 1.312000000005355,
+          "rounds": 1,
+          "search_nodes": 8,
+          "stop_reason": "One constraint search using the shared initial candidates.",
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 525,
+            "completion_tokens": 197,
+            "total_tokens": 722,
+            "estimated_cost_usd": null
+          },
+          "candidates": {
+            "1A": [
+              {
+                "answer": "CATS",
+                "score": 0.95
+              }
+            ],
+            "1D": [
+              {
+                "answer": "CARS",
+                "score": 0.9
+              }
+            ],
+            "2D": [
+              {
+                "answer": "AREA",
+                "score": 0.85
+              }
+            ],
+            "3D": [
+              {
+                "answer": "TENT",
+                "score": 0.95
+              }
+            ],
+            "4D": [
+              {
+                "answer": "SAT",
+                "score": 0.95
+              }
+            ],
+            "5A": [
+              {
+                "answer": "AREA",
+                "score": 0.9
+              }
+            ],
+            "6A": [
+              {
+                "answer": "RENT",
+                "score": 0.95
+              }
+            ],
+            "7A": [
+              {
+                "answer": "SAT",
+                "score": 0.9
+              }
+            ]
+          },
+          "initial_candidates": {
+            "1A": [
+              {
+                "answer": "CATS",
+                "score": 0.95
+              }
+            ],
+            "1D": [
+              {
+                "answer": "CARS",
+                "score": 0.9
+              }
+            ],
+            "2D": [
+              {
+                "answer": "AREA",
+                "score": 0.85
+              }
+            ],
+            "3D": [
+              {
+                "answer": "TENT",
+                "score": 0.95
+              }
+            ],
+            "4D": [
+              {
+                "answer": "SAT",
+                "score": 0.95
+              }
+            ],
+            "5A": [
+              {
+                "answer": "AREA",
+                "score": 0.9
+              }
+            ],
+            "6A": [
+              {
+                "answer": "RENT",
+                "score": 0.95
+              }
+            ],
+            "7A": [
+              {
+                "answer": "SAT",
+                "score": 0.9
+              }
+            ]
+          },
+          "events": [],
+          "model": "zai-org/GLM-5.3-Flash"
+        },
+        "agent": {
+          "puzzle_id": "test-interlock-4",
+          "status": "complete_consistent",
+          "grid": [
+            "CATS",
+            "AREA",
+            "RENT",
+            "SAT#"
+          ],
+          "assignments": {
+            "1A": "CATS",
+            "5A": "AREA",
+            "6A": "RENT",
+            "7A": "SAT",
+            "1D": "CARS",
+            "2D": "AREA",
+            "3D": "TENT",
+            "4D": "SAT"
+          },
+          "unresolved_entries": [],
+          "constraint_violations": [],
+          "filled_cells": 15,
+          "total_cells": 15,
+          "elapsed_seconds": 1.2969999999913853,
+          "rounds": 1,
+          "search_nodes": 8,
+          "stop_reason": "complete_consistent",
+          "usage": {
+            "model_calls": 1,
+            "prompt_tokens": 525,
+            "completion_tokens": 197,
+            "total_tokens": 722,
+            "estimated_cost_usd": null
+          },
+          "candidates": {
+            "1A": [
+              {
+                "answer": "CATS",
+                "score": 0.95
+              }
+            ],
+            "1D": [
+              {
+                "answer": "CARS",
+                "score": 0.9
+              }
+            ],
+            "2D": [
+              {
+                "answer": "AREA",
+                "score": 0.85
+              }
+            ],
+            "3D": [
+              {
+                "answer": "TENT",
+                "score": 0.95
+              }
+            ],
+            "4D": [
+              {
+                "answer": "SAT",
+                "score": 0.95
+              }
+            ],
+            "5A": [
+              {
+                "answer": "AREA",
+                "score": 0.9
+              }
+            ],
+            "6A": [
+              {
+                "answer": "RENT",
+                "score": 0.95
+              }
+            ],
+            "7A": [
+              {
+                "answer": "SAT",
+                "score": 0.9
+              }
+            ]
+          },
+          "initial_candidates": {
+            "1A": [
+              {
+                "answer": "CATS",
+                "score": 0.95
+              }
+            ],
+            "1D": [
+              {
+                "answer": "CARS",
+                "score": 0.9
+              }
+            ],
+            "2D": [
+              {
+                "answer": "AREA",
+                "score": 0.85
+              }
+            ],
+            "3D": [
+              {
+                "answer": "TENT",
+                "score": 0.95
+              }
+            ],
+            "4D": [
+              {
+                "answer": "SAT",
+                "score": 0.95
+              }
+            ],
+            "5A": [
+              {
+                "answer": "AREA",
+                "score": 0.9
+              }
+            ],
+            "6A": [
+              {
+                "answer": "RENT",
+                "score": 0.95
+              }
+            ],
+            "7A": [
+              {
+                "answer": "SAT",
+                "score": 0.9
+              }
+            ]
+          },
+          "events": [
+            {
+              "sequence": 1,
+              "kind": "started",
+              "message": "Validated 8 entries. Beginning bounded solve.",
+              "elapsed_seconds": 0.0,
+              "data": {
+                "entry_count": 8,
+                "grid": [
+                  "....",
+                  "....",
+                  "....",
+                  "...#"
+                ],
+                "model": "zai-org/GLM-5.3-Flash"
+              }
+            },
+            {
+              "sequence": 2,
+              "kind": "searching",
+              "message": "Checking candidate combinations against lengths, fixed letters, and crossings.",
+              "elapsed_seconds": 0.0,
+              "data": {}
+            },
+            {
+              "sequence": 3,
+              "kind": "search_complete",
+              "message": "Placed 8 of 8 entries consistently.",
+              "elapsed_seconds": 0.0,
+              "data": {
+                "grid": [
+                  "CATS",
+                  "AREA",
+                  "RENT",
+                  "SAT#"
+                ],
+                "assignments": {
+                  "1A": "CATS",
+                  "5A": "AREA",
+                  "6A": "RENT",
+                  "7A": "SAT",
+                  "1D": "CARS",
+                  "2D": "AREA",
+                  "3D": "TENT",
+                  "4D": "SAT"
+                },
+                "nodes": 8,
+                "round": 1,
+                "filled_cells": 15,
+                "total_cells": 15
+              }
+            },
+            {
+              "sequence": 4,
+              "kind": "finished",
+              "message": "All entries fit. Correctness requires an independent answer key.",
+              "elapsed_seconds": 0.0,
+              "data": {
+                "status": "complete_consistent",
+                "stop_reason": "complete_consistent"
+              }
+            }
+          ],
+          "model": "zai-org/GLM-5.3-Flash"
+        }
+      }
+    }
+  ]
+}

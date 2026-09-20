@@ -1,0 +1,362 @@
+{
+  "source_image": "data/images/sample-crossword.png",
+  "http_extraction_verified": true,
+  "reference_match": true,
+  "job": {
+    "job_id": "5cf2e17f65a9408c8ae9dfd1fc56adb7",
+    "status": "completed",
+    "events": [
+      {
+        "sequence": 1,
+        "kind": "started",
+        "message": "Validated 8 entries. Beginning bounded solve.",
+        "elapsed_seconds": 0.0,
+        "data": {
+          "entry_count": 8,
+          "grid": [
+            "....",
+            "....",
+            "....",
+            "...."
+          ],
+          "model": "zai-org/GLM-5.3-Flash"
+        }
+      },
+      {
+        "sequence": 2,
+        "kind": "generating",
+        "message": "Requesting candidates for 1A, 1D, 2D, 3D, 4D, 5A, 6A, 7A.",
+        "elapsed_seconds": 0.0,
+        "data": {
+          "entry_ids": [
+            "1A",
+            "1D",
+            "2D",
+            "3D",
+            "4D",
+            "5A",
+            "6A",
+            "7A"
+          ],
+          "round": 1,
+          "call": 1
+        }
+      },
+      {
+        "sequence": 3,
+        "kind": "candidates_generated",
+        "message": "Accepted 9 new candidates; rejected 0 invalid fits.",
+        "elapsed_seconds": 2.5,
+        "data": {
+          "entry_ids": [
+            "1A",
+            "1D",
+            "2D",
+            "3D",
+            "4D",
+            "5A",
+            "6A",
+            "7A"
+          ],
+          "accepted": 9,
+          "rejected": 0,
+          "model_calls": 1
+        }
+      },
+      {
+        "sequence": 4,
+        "kind": "searching",
+        "message": "Checking candidate combinations against lengths, fixed letters, and crossings.",
+        "elapsed_seconds": 2.5,
+        "data": {}
+      },
+      {
+        "sequence": 5,
+        "kind": "search_complete",
+        "message": "Placed 8 of 8 entries consistently.",
+        "elapsed_seconds": 2.5,
+        "data": {
+          "grid": [
+            "MATH",
+            "AREA",
+            "TELL",
+            "HALL"
+          ],
+          "assignments": {
+            "1A": "MATH",
+            "5A": "AREA",
+            "6A": "TELL",
+            "7A": "HALL",
+            "1D": "MATH",
+            "2D": "AREA",
+            "3D": "TELL",
+            "4D": "HALL"
+          },
+          "nodes": 8,
+          "round": 1,
+          "filled_cells": 16,
+          "total_cells": 16
+        }
+      },
+      {
+        "sequence": 6,
+        "kind": "finished",
+        "message": "All entries fit. Correctness requires an independent answer key.",
+        "elapsed_seconds": 2.5,
+        "data": {
+          "status": "complete_consistent",
+          "stop_reason": "complete_consistent"
+        }
+      }
+    ],
+    "result": {
+      "puzzle_id": "image-puzzle",
+      "status": "complete_consistent",
+      "grid": [
+        "MATH",
+        "AREA",
+        "TELL",
+        "HALL"
+      ],
+      "assignments": {
+        "1A": "MATH",
+        "5A": "AREA",
+        "6A": "TELL",
+        "7A": "HALL",
+        "1D": "MATH",
+        "2D": "AREA",
+        "3D": "TELL",
+        "4D": "HALL"
+      },
+      "unresolved_entries": [],
+      "constraint_violations": [],
+      "filled_cells": 16,
+      "total_cells": 16,
+      "elapsed_seconds": 2.5,
+      "rounds": 1,
+      "search_nodes": 8,
+      "stop_reason": "complete_consistent",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 533,
+        "completion_tokens": 298,
+        "total_tokens": 831,
+        "estimated_cost_usd": null
+      },
+      "candidates": {
+        "1A": [
+          {
+            "answer": "MATH",
+            "score": 0.95
+          }
+        ],
+        "1D": [
+          {
+            "answer": "MATH",
+            "score": 0.9
+          }
+        ],
+        "2D": [
+          {
+            "answer": "AREA",
+            "score": 0.95
+          }
+        ],
+        "3D": [
+          {
+            "answer": "BLOW",
+            "score": 0.7
+          },
+          {
+            "answer": "TELL",
+            "score": 0.5
+          }
+        ],
+        "4D": [
+          {
+            "answer": "HALL",
+            "score": 0.8
+          }
+        ],
+        "5A": [
+          {
+            "answer": "AREA",
+            "score": 0.95
+          }
+        ],
+        "6A": [
+          {
+            "answer": "TELL",
+            "score": 0.85
+          }
+        ],
+        "7A": [
+          {
+            "answer": "HALL",
+            "score": 0.9
+          }
+        ]
+      },
+      "initial_candidates": {
+        "1A": [
+          {
+            "answer": "MATH",
+            "score": 0.95
+          }
+        ],
+        "1D": [
+          {
+            "answer": "MATH",
+            "score": 0.9
+          }
+        ],
+        "2D": [
+          {
+            "answer": "AREA",
+            "score": 0.95
+          }
+        ],
+        "3D": [
+          {
+            "answer": "BLOW",
+            "score": 0.7
+          },
+          {
+            "answer": "TELL",
+            "score": 0.5
+          }
+        ],
+        "4D": [
+          {
+            "answer": "HALL",
+            "score": 0.8
+          }
+        ],
+        "5A": [
+          {
+            "answer": "AREA",
+            "score": 0.95
+          }
+        ],
+        "6A": [
+          {
+            "answer": "TELL",
+            "score": 0.85
+          }
+        ],
+        "7A": [
+          {
+            "answer": "HALL",
+            "score": 0.9
+          }
+        ]
+      },
+      "events": [
+        {
+          "sequence": 1,
+          "kind": "started",
+          "message": "Validated 8 entries. Beginning bounded solve.",
+          "elapsed_seconds": 0.0,
+          "data": {
+            "entry_count": 8,
+            "grid": [
+              "....",
+              "....",
+              "....",
+              "...."
+            ],
+            "model": "zai-org/GLM-5.3-Flash"
+          }
+        },
+        {
+          "sequence": 2,
+          "kind": "generating",
+          "message": "Requesting candidates for 1A, 1D, 2D, 3D, 4D, 5A, 6A, 7A.",
+          "elapsed_seconds": 0.0,
+          "data": {
+            "entry_ids": [
+              "1A",
+              "1D",
+              "2D",
+              "3D",
+              "4D",
+              "5A",
+              "6A",
+              "7A"
+            ],
+            "round": 1,
+            "call": 1
+          }
+        },
+        {
+          "sequence": 3,
+          "kind": "candidates_generated",
+          "message": "Accepted 9 new candidates; rejected 0 invalid fits.",
+          "elapsed_seconds": 2.5,
+          "data": {
+            "entry_ids": [
+              "1A",
+              "1D",
+              "2D",
+              "3D",
+              "4D",
+              "5A",
+              "6A",
+              "7A"
+            ],
+            "accepted": 9,
+            "rejected": 0,
+            "model_calls": 1
+          }
+        },
+        {
+          "sequence": 4,
+          "kind": "searching",
+          "message": "Checking candidate combinations against lengths, fixed letters, and crossings.",
+          "elapsed_seconds": 2.5,
+          "data": {}
+        },
+        {
+          "sequence": 5,
+          "kind": "search_complete",
+          "message": "Placed 8 of 8 entries consistently.",
+          "elapsed_seconds": 2.5,
+          "data": {
+            "grid": [
+              "MATH",
+              "AREA",
+              "TELL",
+              "HALL"
+            ],
+            "assignments": {
+              "1A": "MATH",
+              "5A": "AREA",
+              "6A": "TELL",
+              "7A": "HALL",
+              "1D": "MATH",
+              "2D": "AREA",
+              "3D": "TELL",
+              "4D": "HALL"
+            },
+            "nodes": 8,
+            "round": 1,
+            "filled_cells": 16,
+            "total_cells": 16
+          }
+        },
+        {
+          "sequence": 6,
+          "kind": "finished",
+          "message": "All entries fit. Correctness requires an independent answer key.",
+          "elapsed_seconds": 2.5,
+          "data": {
+            "status": "complete_consistent",
+            "stop_reason": "complete_consistent"
+          }
+        }
+      ],
+      "model": "zai-org/GLM-5.3-Flash"
+    },
+    "error": null
+  }
+}

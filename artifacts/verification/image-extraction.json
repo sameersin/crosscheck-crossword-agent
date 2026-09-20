@@ -1,0 +1,37 @@
+{
+  "puzzle": {
+    "id": "image-puzzle",
+    "title": "School words",
+    "author": "",
+    "grid": [
+      "....",
+      "....",
+      "....",
+      "...."
+    ],
+    "clues": {
+      "across": {
+        "1": "School subject involving numbers, in the US",
+        "5": "Length times width, for a rectangle",
+        "6": "Give someone information",
+        "7": "Corridor in a school"
+      },
+      "down": {
+        "1": "Arithmetic and algebra, collectively, in the US",
+        "2": "Amount of surface inside a shape",
+        "3": "Reveal, as a secret",
+        "4": "Passage connecting rooms"
+      }
+    }
+  },
+  "warnings": [
+    "Review the grid, supplied letters, and every clue before solving. Image transcription may be imperfect."
+  ],
+  "usage": {
+    "model_calls": 1,
+    "prompt_tokens": 1927,
+    "completion_tokens": 114,
+    "total_tokens": 2041,
+    "estimated_cost_usd": null
+  }
+}

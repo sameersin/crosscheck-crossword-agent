@@ -1,0 +1,22 @@
+{
+  "id": "dev-pets-3",
+  "title": "A tiny beginning",
+  "author": "Assessment smoke-suite authors",
+  "grid": [
+    "...",
+    "...",
+    "..."
+  ],
+  "clues": {
+    "across": {
+      "1": "House pet that purrs",
+      "4": "Plural present form of be",
+      "5": "Number of fingers on two hands"
+    },
+    "down": {
+      "1": "Animal that may chase a mouse",
+      "2": "Verb in: You ___ welcome",
+      "3": "Five plus five"
+    }
+  }
+}

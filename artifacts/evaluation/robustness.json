@@ -1,0 +1,1647 @@
+{
+  "kind": "deterministic_mechanism_checks",
+  "generated_at": "2026-09-20T06:42:32.760357+00:00",
+  "provider": "scripted-fake-provider-not-an-llm",
+  "actual_network_calls": 0,
+  "fixture": "dev-mixed-3",
+  "limitations": [
+    "These scripted failure injections are not measurements of LLM performance.",
+    "The fake provider intentionally reads answers through the harness and supplies predefined candidates.",
+    "Usage.model_calls counts simulated provider invocations; tokens and dollar costs are not measured here.",
+    "Controller events and search outputs are produced by the actual implementation during this run."
+  ],
+  "all_cases_passed": true,
+  "case_count": 4,
+  "cases": [
+    {
+      "id": "missing_candidates_regenerated",
+      "description": "The fake provider initially omits 1A and 1D, then supplies reference answers when the real controller asks again.",
+      "injection": "Correct candidates deliberately withheld from the first scripted response.",
+      "passed": true,
+      "checks": {
+        "first_search_is_incomplete": true,
+        "repair_event_occurred": true,
+        "second_request_contains_missing_entries": true,
+        "final_status_is_complete": true,
+        "final_grid_matches_reference": true,
+        "missing_answer_was_added": true
+      },
+      "provider_requests": [
+        {
+          "call": 1,
+          "entry_ids": [
+            "1A",
+            "1D",
+            "2D",
+            "3D",
+            "4A",
+            "5A"
+          ],
+          "patterns": {
+            "1A": "...",
+            "1D": "...",
+            "2D": "...",
+            "3D": "...",
+            "4A": "...",
+            "5A": "..."
+          },
+          "previous": {
+            "1A": [],
+            "1D": [],
+            "2D": [],
+            "3D": [],
+            "4A": [],
+            "5A": []
+          },
+          "returned_candidates": {
+            "1A": [],
+            "1D": [],
+            "2D": [
+              {
+                "answer": "APY",
+                "score": 0.8
+              }
+            ],
+            "3D": [
+              {
+                "answer": "TEE",
+                "score": 0.8
+              }
+            ],
+            "4A": [
+              {
+                "answer": "APE",
+                "score": 0.8
+              }
+            ],
+            "5A": [
+              {
+                "answer": "RYE",
+                "score": 0.8
+              }
+            ]
+          }
+        },
+        {
+          "call": 2,
+          "entry_ids": [
+            "1A",
+            "1D",
+            "2D",
+            "3D",
+            "4A",
+            "5A"
+          ],
+          "patterns": {
+            "1A": ".AT",
+            "1D": ".AR",
+            "2D": ".PY",
+            "3D": ".EE",
+            "4A": ".PE",
+            "5A": ".YE"
+          },
+          "previous": {
+            "1A": [],
+            "1D": [],
+            "2D": [
+              "APY"
+            ],
+            "3D": [
+              "TEE"
+            ],
+            "4A": [
+              "APE"
+            ],
+            "5A": [
+              "RYE"
+            ]
+          },
+          "returned_candidates": {
+            "1A": [
+              {
+                "answer": "CAT",
+                "score": 0.8
+              }
+            ],
+            "1D": [
+              {
+                "answer": "CAR",
+                "score": 0.8
+              }
+            ],
+            "2D": [
+              {
+                "answer": "APY",
+                "score": 0.8
+              }
+            ],
+            "3D": [
+              {
+                "answer": "TEE",
+                "score": 0.8
+              }
+            ],
+            "4A": [
+              {
+                "answer": "APE",
+                "score": 0.8
+              }
+            ],
+            "5A": [
+              {
+                "answer": "RYE",
+                "score": 0.8
+              }
+            ]
+          }
+        }
+      ],
+      "metrics": {
+        "puzzle_id": "dev-mixed-3",
+        "status": "complete_consistent",
+        "correct_cells": 9,
+        "total_cells": 9,
+        "letter_accuracy": 1.0,
+        "correct_unknown_cells": 9,
+        "unknown_cells": 9,
+        "unknown_letter_accuracy": 1.0,
+        "fixed_cells": 0,
+        "correct_entries": 6,
+        "total_entries": 6,
+        "answer_accuracy": 1.0,
+        "exact_puzzle": true,
+        "filled_cells": 9,
+        "completion": 1.0,
+        "filled_entries": 6,
+        "entry_completion": 1.0,
+        "complete_consistent": true,
+        "constraint_violation_count": 0,
+        "constraint_violations": [],
+        "candidate_hits": 6,
+        "candidate_recall": 1.0,
+        "elapsed_seconds": 0.0,
+        "search_nodes": 10,
+        "rounds": 2,
+        "usage": {
+          "model_calls": 2,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0,
+          "estimated_cost_usd": null
+        },
+        "entries": [
+          {
+            "entry_id": "1A",
+            "answer": "CAT",
+            "correct": true,
+            "candidate_hit": true
+          },
+          {
+            "entry_id": "1D",
+            "answer": "CAR",
+            "correct": true,
+            "candidate_hit": true
+          },
+          {
+            "entry_id": "2D",
+            "answer": "APY",
+            "correct": true,
+            "candidate_hit": true
+          },
+          {
+            "entry_id": "3D",
+            "answer": "TEE",
+            "correct": true,
+            "candidate_hit": true
+          },
+          {
+            "entry_id": "4A",
+            "answer": "APE",
+            "correct": true,
+            "candidate_hit": true
+          },
+          {
+            "entry_id": "5A",
+            "answer": "RYE",
+            "correct": true,
+            "candidate_hit": true
+          }
+        ]
+      },
+      "result": {
+        "puzzle_id": "dev-mixed-3",
+        "status": "complete_consistent",
+        "grid": [
+          "CAT",
+          "APE",
+          "RYE"
+        ],
+        "assignments": {
+          "1A": "CAT",
+          "4A": "APE",
+          "5A": "RYE",
+          "1D": "CAR",
+          "2D": "APY",
+          "3D": "TEE"
+        },
+        "unresolved_entries": [],
+        "constraint_violations": [],
+        "filled_cells": 9,
+        "total_cells": 9,
+        "elapsed_seconds": 0.0,
+        "rounds": 2,
+        "search_nodes": 10,
+        "stop_reason": "complete_consistent",
+        "usage": {
+          "model_calls": 2,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0,
+          "estimated_cost_usd": null
+        },
+        "candidates": {
+          "1A": [
+            {
+              "answer": "CAT",
+              "score": 0.8
+            }
+          ],
+          "1D": [
+            {
+              "answer": "CAR",
+              "score": 0.8
+            }
+          ],
+          "2D": [
+            {
+              "answer": "APY",
+              "score": 0.8
+            }
+          ],
+          "3D": [
+            {
+              "answer": "TEE",
+              "score": 0.8
+            }
+          ],
+          "4A": [
+            {
+              "answer": "APE",
+              "score": 0.8
+            }
+          ],
+          "5A": [
+            {
+              "answer": "RYE",
+              "score": 0.8
+            }
+          ]
+        },
+        "initial_candidates": {
+          "1A": [],
+          "1D": [],
+          "2D": [
+            {
+              "answer": "APY",
+              "score": 0.8
+            }
+          ],
+          "3D": [
+            {
+              "answer": "TEE",
+              "score": 0.8
+            }
+          ],
+          "4A": [
+            {
+              "answer": "APE",
+              "score": 0.8
+            }
+          ],
+          "5A": [
+            {
+              "answer": "RYE",
+              "score": 0.8
+            }
+          ]
+        },
+        "events": [
+          {
+            "sequence": 1,
+            "kind": "started",
+            "message": "Validated 6 entries. Beginning bounded solve.",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "entry_count": 6,
+              "grid": [
+                "...",
+                "...",
+                "..."
+              ],
+              "model": "scripted-fake-provider-not-an-llm"
+            }
+          },
+          {
+            "sequence": 2,
+            "kind": "generating",
+            "message": "Requesting candidates for 1A, 1D, 2D, 3D, 4A, 5A.",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "entry_ids": [
+                "1A",
+                "1D",
+                "2D",
+                "3D",
+                "4A",
+                "5A"
+              ],
+              "round": 1,
+              "call": 1
+            }
+          },
+          {
+            "sequence": 3,
+            "kind": "candidates_generated",
+            "message": "Accepted 4 new candidates; rejected 0 invalid fits.",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "entry_ids": [
+                "1A",
+                "1D",
+                "2D",
+                "3D",
+                "4A",
+                "5A"
+              ],
+              "accepted": 4,
+              "rejected": 0,
+              "model_calls": 1
+            }
+          },
+          {
+            "sequence": 4,
+            "kind": "searching",
+            "message": "Checking candidate combinations against lengths, fixed letters, and crossings.",
+            "elapsed_seconds": 0.0,
+            "data": {}
+          },
+          {
+            "sequence": 5,
+            "kind": "search_complete",
+            "message": "Placed 4 of 6 entries consistently.",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "grid": [
+                ".AT",
+                "APE",
+                "RYE"
+              ],
+              "assignments": {
+                "2D": "APY",
+                "3D": "TEE",
+                "4A": "APE",
+                "5A": "RYE"
+              },
+              "nodes": 4,
+              "round": 1,
+              "filled_cells": 8,
+              "total_cells": 9
+            }
+          },
+          {
+            "sequence": 6,
+            "kind": "repair",
+            "message": "Revisiting 6 unresolved or neighboring entries; earlier guesses remain reversible.",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "entry_ids": [
+                "1A",
+                "1D",
+                "2D",
+                "3D",
+                "4A",
+                "5A"
+              ],
+              "round": 2
+            }
+          },
+          {
+            "sequence": 7,
+            "kind": "generating",
+            "message": "Requesting candidates for 1A, 1D, 2D, 3D, 4A, 5A.",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "entry_ids": [
+                "1A",
+                "1D",
+                "2D",
+                "3D",
+                "4A",
+                "5A"
+              ],
+              "round": 2,
+              "call": 2
+            }
+          },
+          {
+            "sequence": 8,
+            "kind": "candidates_generated",
+            "message": "Accepted 2 new candidates; rejected 0 invalid fits.",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "entry_ids": [
+                "1A",
+                "1D",
+                "2D",
+                "3D",
+                "4A",
+                "5A"
+              ],
+              "accepted": 2,
+              "rejected": 0,
+              "model_calls": 2
+            }
+          },
+          {
+            "sequence": 9,
+            "kind": "searching",
+            "message": "Checking candidate combinations against lengths, fixed letters, and crossings.",
+            "elapsed_seconds": 0.0,
+            "data": {}
+          },
+          {
+            "sequence": 10,
+            "kind": "search_complete",
+            "message": "Placed 6 of 6 entries consistently.",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "grid": [
+                "CAT",
+                "APE",
+                "RYE"
+              ],
+              "assignments": {
+                "1A": "CAT",
+                "4A": "APE",
+                "5A": "RYE",
+                "1D": "CAR",
+                "2D": "APY",
+                "3D": "TEE"
+              },
+              "nodes": 10,
+              "round": 2,
+              "filled_cells": 9,
+              "total_cells": 9
+            }
+          },
+          {
+            "sequence": 11,
+            "kind": "finished",
+            "message": "All entries fit. Correctness requires an independent answer key.",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "status": "complete_consistent",
+              "stop_reason": "complete_consistent"
+            }
+          }
+        ],
+        "model": "scripted-fake-provider-not-an-llm"
+      }
+    },
+    {
+      "id": "high_score_wrong_candidate_rejected",
+      "description": "DOG is deliberately ranked above CAT for 1A. Its letters conflict with the other scripted answers; constraint search chooses CAT.",
+      "injection": "Wrong but valid-length candidate assigned the highest uncalibrated model score.",
+      "passed": true,
+      "checks": {
+        "independent_first_choice_is_wrong": true,
+        "search_selects_lower_scored_compatible_answer": true,
+        "only_one_scripted_generation": true,
+        "no_regeneration_needed": true,
+        "final_grid_matches_reference": true
+      },
+      "provider_requests": [
+        {
+          "call": 1,
+          "entry_ids": [
+            "1A",
+            "1D",
+            "2D",
+            "3D",
+            "4A",
+            "5A"
+          ],
+          "patterns": {
+            "1A": "...",
+            "1D": "...",
+            "2D": "...",
+            "3D": "...",
+            "4A": "...",
+            "5A": "..."
+          },
+          "previous": {
+            "1A": [],
+            "1D": [],
+            "2D": [],
+            "3D": [],
+            "4A": [],
+            "5A": []
+          },
+          "returned_candidates": {
+            "1A": [
+              {
+                "answer": "DOG",
+                "score": 0.99
+              },
+              {
+                "answer": "CAT",
+                "score": 0.8
+              }
+            ],
+            "1D": [
+              {
+                "answer": "CAR",
+                "score": 0.8
+              }
+            ],
+            "2D": [
+              {
+                "answer": "APY",
+                "score": 0.8
+              }
+            ],
+            "3D": [
+              {
+                "answer": "TEE",
+                "score": 0.8
+              }
+            ],
+            "4A": [
+              {
+                "answer": "APE",
+                "score": 0.8
+              }
+            ],
+            "5A": [
+              {
+                "answer": "RYE",
+                "score": 0.8
+              }
+            ]
+          }
+        }
+      ],
+      "baseline_metrics": {
+        "puzzle_id": "dev-mixed-3",
+        "status": "partial",
+        "correct_cells": 6,
+        "total_cells": 9,
+        "letter_accuracy": 0.6666666666666666,
+        "correct_unknown_cells": 6,
+        "unknown_cells": 9,
+        "unknown_letter_accuracy": 0.6666666666666666,
+        "fixed_cells": 0,
+        "correct_entries": 2,
+        "total_entries": 6,
+        "answer_accuracy": 0.3333333333333333,
+        "exact_puzzle": false,
+        "filled_cells": 6,
+        "completion": 0.6666666666666666,
+        "filled_entries": 2,
+        "entry_completion": 0.3333333333333333,
+        "complete_consistent": false,
+        "constraint_violation_count": 9,
+        "constraint_violations": [
+          "1D and 1A: crossing conflict at row 1, column 1 (C versus D).",
+          "2D and 1A: crossing conflict at row 1, column 2 (A versus O).",
+          "3D and 1A: crossing conflict at row 1, column 3 (T versus G).",
+          "Displayed cell (0, 0) disagrees with 1A.",
+          "Displayed cell (0, 1) disagrees with 1A.",
+          "Displayed cell (0, 2) disagrees with 1A.",
+          "Displayed cell (0, 0) disagrees with 1D.",
+          "Displayed cell (0, 1) disagrees with 2D.",
+          "Displayed cell (0, 2) disagrees with 3D."
+        ],
+        "candidate_hits": 6,
+        "candidate_recall": 1.0,
+        "elapsed_seconds": 0.0,
+        "search_nodes": 0,
+        "rounds": 1,
+        "usage": {
+          "model_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0,
+          "estimated_cost_usd": null
+        },
+        "entries": [
+          {
+            "entry_id": "1A",
+            "answer": "...",
+            "correct": false,
+            "candidate_hit": true
+          },
+          {
+            "entry_id": "1D",
+            "answer": ".AR",
+            "correct": false,
+            "candidate_hit": true
+          },
+          {
+            "entry_id": "2D",
+            "answer": ".PY",
+            "correct": false,
+            "candidate_hit": true
+          },
+          {
+            "entry_id": "3D",
+            "answer": ".EE",
+            "correct": false,
+            "candidate_hit": true
+          },
+          {
+            "entry_id": "4A",
+            "answer": "APE",
+            "correct": true,
+            "candidate_hit": true
+          },
+          {
+            "entry_id": "5A",
+            "answer": "RYE",
+            "correct": true,
+            "candidate_hit": true
+          }
+        ]
+      },
+      "metrics": {
+        "puzzle_id": "dev-mixed-3",
+        "status": "complete_consistent",
+        "correct_cells": 9,
+        "total_cells": 9,
+        "letter_accuracy": 1.0,
+        "correct_unknown_cells": 9,
+        "unknown_cells": 9,
+        "unknown_letter_accuracy": 1.0,
+        "fixed_cells": 0,
+        "correct_entries": 6,
+        "total_entries": 6,
+        "answer_accuracy": 1.0,
+        "exact_puzzle": true,
+        "filled_cells": 9,
+        "completion": 1.0,
+        "filled_entries": 6,
+        "entry_completion": 1.0,
+        "complete_consistent": true,
+        "constraint_violation_count": 0,
+        "constraint_violations": [],
+        "candidate_hits": 6,
+        "candidate_recall": 1.0,
+        "elapsed_seconds": 0.0,
+        "search_nodes": 6,
+        "rounds": 1,
+        "usage": {
+          "model_calls": 1,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0,
+          "estimated_cost_usd": null
+        },
+        "entries": [
+          {
+            "entry_id": "1A",
+            "answer": "CAT",
+            "correct": true,
+            "candidate_hit": true
+          },
+          {
+            "entry_id": "1D",
+            "answer": "CAR",
+            "correct": true,
+            "candidate_hit": true
+          },
+          {
+            "entry_id": "2D",
+            "answer": "APY",
+            "correct": true,
+            "candidate_hit": true
+          },
+          {
+            "entry_id": "3D",
+            "answer": "TEE",
+            "correct": true,
+            "candidate_hit": true
+          },
+          {
+            "entry_id": "4A",
+            "answer": "APE",
+            "correct": true,
+            "candidate_hit": true
+          },
+          {
+            "entry_id": "5A",
+            "answer": "RYE",
+            "correct": true,
+            "candidate_hit": true
+          }
+        ]
+      },
+      "result": {
+        "puzzle_id": "dev-mixed-3",
+        "status": "complete_consistent",
+        "grid": [
+          "CAT",
+          "APE",
+          "RYE"
+        ],
+        "assignments": {
+          "1D": "CAR",
+          "2D": "APY",
+          "3D": "TEE",
+          "1A": "CAT",
+          "4A": "APE",
+          "5A": "RYE"
+        },
+        "unresolved_entries": [],
+        "constraint_violations": [],
+        "filled_cells": 9,
+        "total_cells": 9,
+        "elapsed_seconds": 0.0,
+        "rounds": 1,
+        "search_nodes": 6,
+        "stop_reason": "complete_consistent",
+        "usage": {
+          "model_calls": 1,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0,
+          "estimated_cost_usd": null
+        },
+        "candidates": {
+          "1A": [
+            {
+              "answer": "DOG",
+              "score": 0.99
+            },
+            {
+              "answer": "CAT",
+              "score": 0.8
+            }
+          ],
+          "1D": [
+            {
+              "answer": "CAR",
+              "score": 0.8
+            }
+          ],
+          "2D": [
+            {
+              "answer": "APY",
+              "score": 0.8
+            }
+          ],
+          "3D": [
+            {
+              "answer": "TEE",
+              "score": 0.8
+            }
+          ],
+          "4A": [
+            {
+              "answer": "APE",
+              "score": 0.8
+            }
+          ],
+          "5A": [
+            {
+              "answer": "RYE",
+              "score": 0.8
+            }
+          ]
+        },
+        "initial_candidates": {
+          "1A": [
+            {
+              "answer": "DOG",
+              "score": 0.99
+            },
+            {
+              "answer": "CAT",
+              "score": 0.8
+            }
+          ],
+          "1D": [
+            {
+              "answer": "CAR",
+              "score": 0.8
+            }
+          ],
+          "2D": [
+            {
+              "answer": "APY",
+              "score": 0.8
+            }
+          ],
+          "3D": [
+            {
+              "answer": "TEE",
+              "score": 0.8
+            }
+          ],
+          "4A": [
+            {
+              "answer": "APE",
+              "score": 0.8
+            }
+          ],
+          "5A": [
+            {
+              "answer": "RYE",
+              "score": 0.8
+            }
+          ]
+        },
+        "events": [
+          {
+            "sequence": 1,
+            "kind": "started",
+            "message": "Validated 6 entries. Beginning bounded solve.",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "entry_count": 6,
+              "grid": [
+                "...",
+                "...",
+                "..."
+              ],
+              "model": "scripted-fake-provider-not-an-llm"
+            }
+          },
+          {
+            "sequence": 2,
+            "kind": "generating",
+            "message": "Requesting candidates for 1A, 1D, 2D, 3D, 4A, 5A.",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "entry_ids": [
+                "1A",
+                "1D",
+                "2D",
+                "3D",
+                "4A",
+                "5A"
+              ],
+              "round": 1,
+              "call": 1
+            }
+          },
+          {
+            "sequence": 3,
+            "kind": "candidates_generated",
+            "message": "Accepted 7 new candidates; rejected 0 invalid fits.",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "entry_ids": [
+                "1A",
+                "1D",
+                "2D",
+                "3D",
+                "4A",
+                "5A"
+              ],
+              "accepted": 7,
+              "rejected": 0,
+              "model_calls": 1
+            }
+          },
+          {
+            "sequence": 4,
+            "kind": "searching",
+            "message": "Checking candidate combinations against lengths, fixed letters, and crossings.",
+            "elapsed_seconds": 0.0,
+            "data": {}
+          },
+          {
+            "sequence": 5,
+            "kind": "search_complete",
+            "message": "Placed 6 of 6 entries consistently.",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "grid": [
+                "CAT",
+                "APE",
+                "RYE"
+              ],
+              "assignments": {
+                "1D": "CAR",
+                "2D": "APY",
+                "3D": "TEE",
+                "1A": "CAT",
+                "4A": "APE",
+                "5A": "RYE"
+              },
+              "nodes": 6,
+              "round": 1,
+              "filled_cells": 9,
+              "total_cells": 9
+            }
+          },
+          {
+            "sequence": 6,
+            "kind": "finished",
+            "message": "All entries fit. Correctness requires an independent answer key.",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "status": "complete_consistent",
+              "stop_reason": "complete_consistent"
+            }
+          }
+        ],
+        "model": "scripted-fake-provider-not-an-llm"
+      }
+    },
+    {
+      "id": "budget_exhaustion_returns_partial",
+      "description": "The same candidate omissions are used, but a one-call budget prevents the second scripted response from being requested.",
+      "injection": "One-call limit with an incomplete candidate pool.",
+      "passed": true,
+      "checks": {
+        "no_call_beyond_budget": true,
+        "status_is_partial": true,
+        "stop_reason_is_call_budget": true,
+        "usable_partial_assignments_retained": true,
+        "partial_grid_has_a_blank": true,
+        "partial_assignments_are_consistent": true
+      },
+      "provider_requests": [
+        {
+          "call": 1,
+          "entry_ids": [
+            "1A",
+            "1D",
+            "2D",
+            "3D",
+            "4A",
+            "5A"
+          ],
+          "patterns": {
+            "1A": "...",
+            "1D": "...",
+            "2D": "...",
+            "3D": "...",
+            "4A": "...",
+            "5A": "..."
+          },
+          "previous": {
+            "1A": [],
+            "1D": [],
+            "2D": [],
+            "3D": [],
+            "4A": [],
+            "5A": []
+          },
+          "returned_candidates": {
+            "1A": [],
+            "1D": [],
+            "2D": [
+              {
+                "answer": "APY",
+                "score": 0.8
+              }
+            ],
+            "3D": [
+              {
+                "answer": "TEE",
+                "score": 0.8
+              }
+            ],
+            "4A": [
+              {
+                "answer": "APE",
+                "score": 0.8
+              }
+            ],
+            "5A": [
+              {
+                "answer": "RYE",
+                "score": 0.8
+              }
+            ]
+          }
+        }
+      ],
+      "metrics": {
+        "puzzle_id": "dev-mixed-3",
+        "status": "partial",
+        "correct_cells": 8,
+        "total_cells": 9,
+        "letter_accuracy": 0.8888888888888888,
+        "correct_unknown_cells": 8,
+        "unknown_cells": 9,
+        "unknown_letter_accuracy": 0.8888888888888888,
+        "fixed_cells": 0,
+        "correct_entries": 4,
+        "total_entries": 6,
+        "answer_accuracy": 0.6666666666666666,
+        "exact_puzzle": false,
+        "filled_cells": 8,
+        "completion": 0.8888888888888888,
+        "filled_entries": 4,
+        "entry_completion": 0.6666666666666666,
+        "complete_consistent": false,
+        "constraint_violation_count": 0,
+        "constraint_violations": [],
+        "candidate_hits": 4,
+        "candidate_recall": 0.6666666666666666,
+        "elapsed_seconds": 0.0,
+        "search_nodes": 4,
+        "rounds": 1,
+        "usage": {
+          "model_calls": 1,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0,
+          "estimated_cost_usd": null
+        },
+        "entries": [
+          {
+            "entry_id": "1A",
+            "answer": ".AT",
+            "correct": false,
+            "candidate_hit": false
+          },
+          {
+            "entry_id": "1D",
+            "answer": ".AR",
+            "correct": false,
+            "candidate_hit": false
+          },
+          {
+            "entry_id": "2D",
+            "answer": "APY",
+            "correct": true,
+            "candidate_hit": true
+          },
+          {
+            "entry_id": "3D",
+            "answer": "TEE",
+            "correct": true,
+            "candidate_hit": true
+          },
+          {
+            "entry_id": "4A",
+            "answer": "APE",
+            "correct": true,
+            "candidate_hit": true
+          },
+          {
+            "entry_id": "5A",
+            "answer": "RYE",
+            "correct": true,
+            "candidate_hit": true
+          }
+        ]
+      },
+      "result": {
+        "puzzle_id": "dev-mixed-3",
+        "status": "partial",
+        "grid": [
+          ".AT",
+          "APE",
+          "RYE"
+        ],
+        "assignments": {
+          "2D": "APY",
+          "3D": "TEE",
+          "4A": "APE",
+          "5A": "RYE"
+        },
+        "unresolved_entries": [
+          "1A",
+          "1D"
+        ],
+        "constraint_violations": [],
+        "filled_cells": 8,
+        "total_cells": 9,
+        "elapsed_seconds": 0.0,
+        "rounds": 1,
+        "search_nodes": 4,
+        "stop_reason": "call_budget",
+        "usage": {
+          "model_calls": 1,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0,
+          "estimated_cost_usd": null
+        },
+        "candidates": {
+          "1A": [],
+          "1D": [],
+          "2D": [
+            {
+              "answer": "APY",
+              "score": 0.8
+            }
+          ],
+          "3D": [
+            {
+              "answer": "TEE",
+              "score": 0.8
+            }
+          ],
+          "4A": [
+            {
+              "answer": "APE",
+              "score": 0.8
+            }
+          ],
+          "5A": [
+            {
+              "answer": "RYE",
+              "score": 0.8
+            }
+          ]
+        },
+        "initial_candidates": {
+          "1A": [],
+          "1D": [],
+          "2D": [
+            {
+              "answer": "APY",
+              "score": 0.8
+            }
+          ],
+          "3D": [
+            {
+              "answer": "TEE",
+              "score": 0.8
+            }
+          ],
+          "4A": [
+            {
+              "answer": "APE",
+              "score": 0.8
+            }
+          ],
+          "5A": [
+            {
+              "answer": "RYE",
+              "score": 0.8
+            }
+          ]
+        },
+        "events": [
+          {
+            "sequence": 1,
+            "kind": "started",
+            "message": "Validated 6 entries. Beginning bounded solve.",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "entry_count": 6,
+              "grid": [
+                "...",
+                "...",
+                "..."
+              ],
+              "model": "scripted-fake-provider-not-an-llm"
+            }
+          },
+          {
+            "sequence": 2,
+            "kind": "generating",
+            "message": "Requesting candidates for 1A, 1D, 2D, 3D, 4A, 5A.",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "entry_ids": [
+                "1A",
+                "1D",
+                "2D",
+                "3D",
+                "4A",
+                "5A"
+              ],
+              "round": 1,
+              "call": 1
+            }
+          },
+          {
+            "sequence": 3,
+            "kind": "candidates_generated",
+            "message": "Accepted 4 new candidates; rejected 0 invalid fits.",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "entry_ids": [
+                "1A",
+                "1D",
+                "2D",
+                "3D",
+                "4A",
+                "5A"
+              ],
+              "accepted": 4,
+              "rejected": 0,
+              "model_calls": 1
+            }
+          },
+          {
+            "sequence": 4,
+            "kind": "searching",
+            "message": "Checking candidate combinations against lengths, fixed letters, and crossings.",
+            "elapsed_seconds": 0.0,
+            "data": {}
+          },
+          {
+            "sequence": 5,
+            "kind": "search_complete",
+            "message": "Placed 4 of 6 entries consistently.",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "grid": [
+                ".AT",
+                "APE",
+                "RYE"
+              ],
+              "assignments": {
+                "2D": "APY",
+                "3D": "TEE",
+                "4A": "APE",
+                "5A": "RYE"
+              },
+              "nodes": 4,
+              "round": 1,
+              "filled_cells": 8,
+              "total_cells": 9
+            }
+          },
+          {
+            "sequence": 6,
+            "kind": "finished",
+            "message": "Stopped with a usable partial result (call_budget).",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "status": "partial",
+              "stop_reason": "call_budget"
+            }
+          }
+        ],
+        "model": "scripted-fake-provider-not-an-llm"
+      }
+    },
+    {
+      "id": "consistent_wrong_fill_detected",
+      "description": "The fake provider returns a completely crossing-compatible but clue-inappropriate fill. The independent answer key exposes the error.",
+      "injection": "A wrong full grid converted to internally consistent candidates.",
+      "passed": true,
+      "checks": {
+        "controller_reports_only_consistency": true,
+        "grid_is_fully_filled": true,
+        "grid_has_no_hard_constraint_violations": true,
+        "reference_evaluation_detects_incorrect_letters": true,
+        "reference_evaluation_rejects_exact_correctness": true
+      },
+      "provider_requests": [
+        {
+          "call": 1,
+          "entry_ids": [
+            "1A",
+            "1D",
+            "2D",
+            "3D",
+            "4A",
+            "5A"
+          ],
+          "patterns": {
+            "1A": "...",
+            "1D": "...",
+            "2D": "...",
+            "3D": "...",
+            "4A": "...",
+            "5A": "..."
+          },
+          "previous": {
+            "1A": [],
+            "1D": [],
+            "2D": [],
+            "3D": [],
+            "4A": [],
+            "5A": []
+          },
+          "returned_candidates": {
+            "1A": [
+              {
+                "answer": "DOG",
+                "score": 0.99
+              }
+            ],
+            "1D": [
+              {
+                "answer": "DOG",
+                "score": 0.99
+              }
+            ],
+            "2D": [
+              {
+                "answer": "ORE",
+                "score": 0.99
+              }
+            ],
+            "3D": [
+              {
+                "answer": "GET",
+                "score": 0.99
+              }
+            ],
+            "4A": [
+              {
+                "answer": "ORE",
+                "score": 0.99
+              }
+            ],
+            "5A": [
+              {
+                "answer": "GET",
+                "score": 0.99
+              }
+            ]
+          }
+        }
+      ],
+      "metrics": {
+        "puzzle_id": "dev-mixed-3",
+        "status": "complete_consistent",
+        "correct_cells": 1,
+        "total_cells": 9,
+        "letter_accuracy": 0.1111111111111111,
+        "correct_unknown_cells": 1,
+        "unknown_cells": 9,
+        "unknown_letter_accuracy": 0.1111111111111111,
+        "fixed_cells": 0,
+        "correct_entries": 0,
+        "total_entries": 6,
+        "answer_accuracy": 0.0,
+        "exact_puzzle": false,
+        "filled_cells": 9,
+        "completion": 1.0,
+        "filled_entries": 6,
+        "entry_completion": 1.0,
+        "complete_consistent": true,
+        "constraint_violation_count": 0,
+        "constraint_violations": [],
+        "candidate_hits": 0,
+        "candidate_recall": 0.0,
+        "elapsed_seconds": 0.0,
+        "search_nodes": 6,
+        "rounds": 1,
+        "usage": {
+          "model_calls": 1,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0,
+          "estimated_cost_usd": null
+        },
+        "entries": [
+          {
+            "entry_id": "1A",
+            "answer": "DOG",
+            "correct": false,
+            "candidate_hit": false
+          },
+          {
+            "entry_id": "1D",
+            "answer": "DOG",
+            "correct": false,
+            "candidate_hit": false
+          },
+          {
+            "entry_id": "2D",
+            "answer": "ORE",
+            "correct": false,
+            "candidate_hit": false
+          },
+          {
+            "entry_id": "3D",
+            "answer": "GET",
+            "correct": false,
+            "candidate_hit": false
+          },
+          {
+            "entry_id": "4A",
+            "answer": "ORE",
+            "correct": false,
+            "candidate_hit": false
+          },
+          {
+            "entry_id": "5A",
+            "answer": "GET",
+            "correct": false,
+            "candidate_hit": false
+          }
+        ]
+      },
+      "result": {
+        "puzzle_id": "dev-mixed-3",
+        "status": "complete_consistent",
+        "grid": [
+          "DOG",
+          "ORE",
+          "GET"
+        ],
+        "assignments": {
+          "1A": "DOG",
+          "4A": "ORE",
+          "5A": "GET",
+          "1D": "DOG",
+          "2D": "ORE",
+          "3D": "GET"
+        },
+        "unresolved_entries": [],
+        "constraint_violations": [],
+        "filled_cells": 9,
+        "total_cells": 9,
+        "elapsed_seconds": 0.0,
+        "rounds": 1,
+        "search_nodes": 6,
+        "stop_reason": "complete_consistent",
+        "usage": {
+          "model_calls": 1,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0,
+          "estimated_cost_usd": null
+        },
+        "candidates": {
+          "1A": [
+            {
+              "answer": "DOG",
+              "score": 0.99
+            }
+          ],
+          "1D": [
+            {
+              "answer": "DOG",
+              "score": 0.99
+            }
+          ],
+          "2D": [
+            {
+              "answer": "ORE",
+              "score": 0.99
+            }
+          ],
+          "3D": [
+            {
+              "answer": "GET",
+              "score": 0.99
+            }
+          ],
+          "4A": [
+            {
+              "answer": "ORE",
+              "score": 0.99
+            }
+          ],
+          "5A": [
+            {
+              "answer": "GET",
+              "score": 0.99
+            }
+          ]
+        },
+        "initial_candidates": {
+          "1A": [
+            {
+              "answer": "DOG",
+              "score": 0.99
+            }
+          ],
+          "1D": [
+            {
+              "answer": "DOG",
+              "score": 0.99
+            }
+          ],
+          "2D": [
+            {
+              "answer": "ORE",
+              "score": 0.99
+            }
+          ],
+          "3D": [
+            {
+              "answer": "GET",
+              "score": 0.99
+            }
+          ],
+          "4A": [
+            {
+              "answer": "ORE",
+              "score": 0.99
+            }
+          ],
+          "5A": [
+            {
+              "answer": "GET",
+              "score": 0.99
+            }
+          ]
+        },
+        "events": [
+          {
+            "sequence": 1,
+            "kind": "started",
+            "message": "Validated 6 entries. Beginning bounded solve.",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "entry_count": 6,
+              "grid": [
+                "...",
+                "...",
+                "..."
+              ],
+              "model": "scripted-fake-provider-not-an-llm"
+            }
+          },
+          {
+            "sequence": 2,
+            "kind": "generating",
+            "message": "Requesting candidates for 1A, 1D, 2D, 3D, 4A, 5A.",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "entry_ids": [
+                "1A",
+                "1D",
+                "2D",
+                "3D",
+                "4A",
+                "5A"
+              ],
+              "round": 1,
+              "call": 1
+            }
+          },
+          {
+            "sequence": 3,
+            "kind": "candidates_generated",
+            "message": "Accepted 6 new candidates; rejected 0 invalid fits.",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "entry_ids": [
+                "1A",
+                "1D",
+                "2D",
+                "3D",
+                "4A",
+                "5A"
+              ],
+              "accepted": 6,
+              "rejected": 0,
+              "model_calls": 1
+            }
+          },
+          {
+            "sequence": 4,
+            "kind": "searching",
+            "message": "Checking candidate combinations against lengths, fixed letters, and crossings.",
+            "elapsed_seconds": 0.0,
+            "data": {}
+          },
+          {
+            "sequence": 5,
+            "kind": "search_complete",
+            "message": "Placed 6 of 6 entries consistently.",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "grid": [
+                "DOG",
+                "ORE",
+                "GET"
+              ],
+              "assignments": {
+                "1A": "DOG",
+                "4A": "ORE",
+                "5A": "GET",
+                "1D": "DOG",
+                "2D": "ORE",
+                "3D": "GET"
+              },
+              "nodes": 6,
+              "round": 1,
+              "filled_cells": 9,
+              "total_cells": 9
+            }
+          },
+          {
+            "sequence": 6,
+            "kind": "finished",
+            "message": "All entries fit. Correctness requires an independent answer key.",
+            "elapsed_seconds": 0.0,
+            "data": {
+              "status": "complete_consistent",
+              "stop_reason": "complete_consistent"
+            }
+          }
+        ],
+        "model": "scripted-fake-provider-not-an-llm"
+      }
+    }
+  ]
+}

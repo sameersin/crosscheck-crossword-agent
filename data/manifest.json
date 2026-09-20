@@ -1,0 +1,114 @@
+{
+  "name": "Authored crossword smoke suite v1",
+  "version": 1,
+  "provenance": "Locally authored fixture instances and clues for this assessment. Common word-square arrangements are not claimed to be novel. No fixtures were imported from publishers or benchmark datasets.",
+  "limitations": [
+    "Small authored smoke suite; not representative of newspaper crosswords.",
+    "Word squares repeat answers across directions and may be easier than ordinary puzzles.",
+    "Sparse blocked fixtures contain unchecked letters and primarily test structure.",
+    "The test split is held aside for local development, not guaranteed unseen by the language model.",
+    "No cryptic clues, rebus cells, multilingual clues, or image-extraction accuracy benchmark."
+  ],
+  "puzzles": [
+    {
+      "id": "dev-pets-3",
+      "split": "dev",
+      "input": "puzzles/dev-pets-3.json",
+      "solution": "solutions/dev-pets-3.json",
+      "rows": 3,
+      "cols": 3,
+      "description": "fully checked word square",
+      "difficulty": "smoke; not independently calibrated"
+    },
+    {
+      "id": "dev-mixed-3",
+      "split": "dev",
+      "input": "puzzles/dev-mixed-3.json",
+      "solution": "solutions/dev-mixed-3.json",
+      "rows": 3,
+      "cols": 3,
+      "description": "fully checked asymmetric mini",
+      "difficulty": "smoke; not independently calibrated"
+    },
+    {
+      "id": "dev-school-4",
+      "split": "dev",
+      "input": "puzzles/dev-school-4.json",
+      "solution": "solutions/dev-school-4.json",
+      "rows": 4,
+      "cols": 4,
+      "description": "fully checked word square",
+      "difficulty": "smoke; not independently calibrated"
+    },
+    {
+      "id": "dev-cross-5",
+      "split": "dev",
+      "input": "puzzles/dev-cross-5.json",
+      "solution": "solutions/dev-cross-5.json",
+      "rows": 5,
+      "cols": 5,
+      "description": "sparse blocked cross",
+      "difficulty": "smoke; not independently calibrated"
+    },
+    {
+      "id": "test-ball-4",
+      "split": "test",
+      "input": "puzzles/test-ball-4.json",
+      "solution": "solutions/test-ball-4.json",
+      "rows": 4,
+      "cols": 4,
+      "description": "fully checked word square",
+      "difficulty": "smoke; not independently calibrated"
+    },
+    {
+      "id": "test-heart-5",
+      "split": "test",
+      "input": "puzzles/test-heart-5.json",
+      "solution": "solutions/test-heart-5.json",
+      "rows": 5,
+      "cols": 5,
+      "description": "fully checked word square",
+      "difficulty": "smoke; not independently calibrated"
+    },
+    {
+      "id": "test-fixed-4",
+      "split": "test",
+      "input": "puzzles/test-fixed-4.json",
+      "solution": "solutions/test-fixed-4.json",
+      "rows": 4,
+      "cols": 4,
+      "description": "fully checked word square with supplied letters",
+      "difficulty": "smoke; not independently calibrated"
+    },
+    {
+      "id": "test-captain-5x7",
+      "split": "test",
+      "input": "puzzles/test-captain-5x7.json",
+      "solution": "solutions/test-captain-5x7.json",
+      "rows": 5,
+      "cols": 7,
+      "description": "sparse blocked rectangular cross",
+      "difficulty": "smoke; not independently calibrated"
+    },
+    {
+      "id": "test-citrus-7",
+      "split": "test",
+      "input": "puzzles/test-citrus-7.json",
+      "solution": "solutions/test-citrus-7.json",
+      "rows": 7,
+      "cols": 7,
+      "description": "sparse blocked cross",
+      "difficulty": "smoke; not independently calibrated"
+    },
+    {
+      "id": "test-interlock-4",
+      "split": "test",
+      "input": "puzzles/test-interlock-4.json",
+      "solution": "solutions/test-interlock-4.json",
+      "rows": 4,
+      "cols": 4,
+      "description": "fully checked asymmetric blocked mini",
+      "difficulty": "smoke; not independently calibrated"
+    }
+  ]
+}

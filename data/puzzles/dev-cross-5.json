@@ -1,0 +1,22 @@
+{
+  "id": "dev-cross-5",
+  "title": "Three clues cross one",
+  "author": "Assessment smoke-suite authors",
+  "grid": [
+    ".....",
+    "##.##",
+    ".....",
+    "##.##",
+    "....."
+  ],
+  "clues": {
+    "across": {
+      "1": "Electrical energy supply",
+      "3": "Grab a ball thrown toward you",
+      "4": "Social gathering with invited guests"
+    },
+    "down": {
+      "2": "Clear liquid with the chemical formula H2O"
+    }
+  }
+}

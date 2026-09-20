@@ -1,0 +1,28 @@
+{
+  "id": "test-heart-5",
+  "title": "Five by five",
+  "author": "Assessment smoke-suite authors",
+  "grid": [
+    ".....",
+    ".....",
+    ".....",
+    ".....",
+    "....."
+  ],
+  "clues": {
+    "across": {
+      "1": "Organ that pumps blood",
+      "6": "Glowing remnant of a dying fire",
+      "7": "Cruel or harmful treatment",
+      "8": "Sticky substance secreted by some trees",
+      "9": "General direction of change"
+    },
+    "down": {
+      "1": "Symbol of love that is also a bodily organ",
+      "2": "Small glowing piece of coal or wood",
+      "3": "Mistreat cruelly",
+      "4": "Substance used to make some varnishes, obtained from trees",
+      "5": "Fashion or tendency gaining popularity"
+    }
+  }
+}

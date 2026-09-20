@@ -1,0 +1,25 @@
+{
+  "id": "test-interlock-4",
+  "title": "Different answers meet",
+  "author": "Assessment smoke-suite authors",
+  "grid": [
+    "....",
+    "....",
+    "....",
+    "...#"
+  ],
+  "clues": {
+    "across": {
+      "1": "Pets known for purring",
+      "5": "Surface quantity measured in square units",
+      "6": "Payment made to a landlord",
+      "7": "Was seated"
+    },
+    "down": {
+      "1": "Road vehicles with four wheels",
+      "2": "A region or extent of space",
+      "3": "Portable fabric shelter used for camping",
+      "4": "Took a seat, in the past"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "crossword-agent"
+version = "0.1.0"
+description = "A bounded crossword-solving agent with visual input and reproducible evaluation."
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115,<1", "uvicorn>=0.30,<1", "pydantic>=2.10,<3",
+  "pydantic-settings>=2.7,<3", "openai>=1.60,<3", "python-multipart>=0.0.20,<1",
+  "pillow>=11,<13", "httpx>=0.28,<1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "pytest-cov>=6,<8", "ruff>=0.9,<1"]
+
+[project.scripts]
+crossword = "crossword_agent.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/crossword_agent"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]

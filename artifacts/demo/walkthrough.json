@@ -1,0 +1,43 @@
+{
+  "type": "captured-screen walkthrough",
+  "synthetic_narration": true,
+  "duration_seconds": 48.38104308390023,
+  "scenes": [
+    {
+      "image": "01-workspace.png",
+      "title": "01  INPUT",
+      "narration": "Crosscheck solves English crosswords from a sample, a JSON file, or a picture.",
+      "duration_seconds": 6.088480725623583
+    },
+    {
+      "image": "02-image-review.png",
+      "title": "02  REVIEW THE TRANSCRIPTION",
+      "narration": "For pictures, it extracts the grid and clues. The user reviews and corrects the transcription before solving.",
+      "duration_seconds": 7.3356462585034015
+    },
+    {
+      "image": "03-solved-grid.png",
+      "title": "03  PROPOSE AND CHECK",
+      "narration": "Nebius G L M proposes answers. Python checks their lengths and crossing letters, then searches for a compatible grid.",
+      "duration_seconds": 8.09814058956916
+    },
+    {
+      "image": "03-run-evidence.png",
+      "title": "04  OBSERVE AND REPAIR",
+      "narration": "The controller revisits blocked clues when needed. Calls, time, and search work are bounded, with partial results on failure.",
+      "duration_seconds": 8.697868480725624
+    },
+    {
+      "image": "04-evaluation.png",
+      "title": "05  MEASURE AGAINST ANSWER KEYS",
+      "narration": "All six small test puzzles matched separate answer keys, but the simple baseline tied. Broader accuracy remains unproven.",
+      "duration_seconds": 8.243083900226758
+    },
+    {
+      "image": "05-architecture.png",
+      "title": "06  SEPARATE RESPONSIBILITIES",
+      "narration": "The code separates the model, search, controller, interface, and evaluation. Ninety five offline tests pass, including repair and cancellation.",
+      "duration_seconds": 9.917823129251701
+    }
+  ]
+}

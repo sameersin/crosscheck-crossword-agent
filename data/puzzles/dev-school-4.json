@@ -1,0 +1,25 @@
+{
+  "id": "dev-school-4",
+  "title": "School words",
+  "author": "Assessment smoke-suite authors",
+  "grid": [
+    "....",
+    "....",
+    "....",
+    "...."
+  ],
+  "clues": {
+    "across": {
+      "1": "School subject involving numbers, in the US",
+      "5": "Length times width, for a rectangle",
+      "6": "Give someone information",
+      "7": "Corridor in a school"
+    },
+    "down": {
+      "1": "Arithmetic and algebra, collectively, in the US",
+      "2": "Amount of surface inside a shape",
+      "3": "Reveal, as a secret",
+      "4": "Passage connecting rooms"
+    }
+  }
+}

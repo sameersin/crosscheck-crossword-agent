@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f4ee">
+  <meta name="description" content="A crossword solving agent that combines language understanding with exact crossing checks.">
+  <title>Crosscheck — A crossword solving agent</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%231a343b'/%3E%3Cpath d='M10 20h20M20 10v20' stroke='%23f6f4ee' stroke-width='6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to workspace</a>
+  <div class="app-shell">
+    <header class="masthead">
+      <a class="brand" href="#solver" aria-label="Crosscheck home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <span>crosscheck<span class="brand-period">.</span></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-button active" data-view="solver" aria-current="page">Workspace</button>
+        <button class="nav-button" data-view="evaluation">Evaluation</button>
+        <button class="nav-button" data-view="architecture">How it works <span aria-hidden="true">↗</span></button>
+      </nav>
+      <div class="provider-indicator" id="provider-indicator"><span class="status-dot"></span><span id="provider-status">Connecting</span></div>
+    </header>
+
+    <main id="main-content">
+      <div id="global-message" class="notice" role="alert" hidden></div>
+
+      <section id="view-solver" class="view" aria-labelledby="workspace-title">
+        <div class="page-intro">
+          <div><p class="eyebrow">LANGUAGE MEETS LOGIC</p><h1 id="workspace-title">Every clue. Every crossing.</h1><p class="intro-copy">An agent that proposes, checks, and revisits. Follow the solve as it happens.</p></div>
+          <div class="intro-note"><span class="small-cross" aria-hidden="true">+</span><span>One shared letter.<br>Two answers to get right.</span></div>
+        </div>
+
+        <section class="input-bar" aria-label="Choose puzzle input">
+          <div class="sample-field"><label class="field-label" for="sample-select">01 <span>/</span> CHOOSE A PUZZLE</label><select id="sample-select" aria-describedby="sample-description"><option value="">Loading samples…</option></select></div>
+          <div class="input-separator" aria-hidden="true">or bring your own</div>
+          <button class="button secondary" id="json-import"><span aria-hidden="true">{ }</span> Upload JSON</button>
+          <button class="button secondary" id="image-import"><svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true"><path d="M3 5h3l1-2h6l1 2h3v12H3zM13 10a3 3 0 1 1-6 0 3 3 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="1.5"/></svg> Screenshot / photo</button>
+          <input id="json-file" type="file" accept=".json,application/json" hidden>
+          <input id="image-file" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+        </section>
+        <p class="input-caption" id="sample-description">Select a sample or import a puzzle. Image imports can be reviewed before solving.</p>
+
+        <section class="workspace-card" aria-label="Puzzle workspace">
+          <div class="workspace-heading"><div><p class="eyebrow" id="puzzle-meta">PUZZLE WORKSPACE</p><h2 id="puzzle-title">Preparing your puzzle</h2></div><span class="state-pill" id="solve-status">Loading</span></div>
+          <div class="workspace-body">
+            <div class="grid-panel">
+              <div id="crossword-grid" class="crossword-grid" aria-label="Crossword grid"></div>
+              <div class="grid-legend"><span><i class="legend-cell"></i> Empty</span><span><i class="legend-cell filled"></i> Proposed</span><span><i class="legend-cell fixed"></i> Given letter</span></div>
+              <div class="selected-clue" id="selected-clue"><span class="selected-clue-label">A CROSSWORD IS A CONVERSATION</span><p>Select a clue to see its crossing cells.</p></div>
+            </div>
+            <div class="clues-panel">
+              <div class="clue-column"><div class="column-heading"><h3>Across <span aria-hidden="true">→</span></h3><span id="across-count" class="count-label">0 clues</span></div><ol id="across-clues" class="clue-list" aria-label="Across clues"></ol></div>
+              <div class="clue-column"><div class="column-heading"><h3>Down <span aria-hidden="true">↓</span></h3><span id="down-count" class="count-label">0 clues</span></div><ol id="down-clues" class="clue-list" aria-label="Down clues"></ol></div>
+            </div>
+          </div>
+          <div class="solve-bar">
+            <div class="progress-area"><div class="progress-text"><span id="progress-label">Ready when you are</span><span id="progress-count">0 / 0 cells</span></div><div class="progress-track"><div id="progress-fill"></div></div></div>
+            <button class="button text-button" id="reset-button" disabled>Reset</button>
+            <button class="button secondary" id="cancel-button" hidden>Stop solve</button>
+            <button class="button primary" id="solve-button" disabled><span>Solve puzzle</span><span aria-hidden="true">↗</span></button>
+          </div>
+        </section>
+
+        <div class="below-workspace">
+          <section class="notebook panel" aria-labelledby="notebook-title">
+            <div class="panel-heading"><div><p class="eyebrow">02 / THE PROCESS</p><h2 id="notebook-title">Agent notebook</h2></div><span class="live-label" id="live-label"><span class="status-dot"></span> Waiting</span></div>
+            <div class="run-metrics"><div><span class="metric-label">Elapsed</span><strong id="metric-time">—</strong></div><div><span class="metric-label">Model calls</span><strong id="metric-calls">—</strong></div><div><span class="metric-label">Tokens</span><strong id="metric-tokens">—</strong></div><div><span class="metric-label">Search nodes</span><strong id="metric-nodes">—</strong></div></div>
+            <div class="timeline" id="event-timeline" role="log" aria-label="Agent activity" aria-live="polite"><div class="timeline-empty"><span class="empty-icon" aria-hidden="true">≋</span><p>The thinking becomes visible here.</p><span>Actual model calls, crossing checks, and repair steps will appear during the solve.</span></div></div>
+            <div id="result-notice" class="result-notice" hidden></div>
+          </section>
+          <aside class="inspector panel" aria-labelledby="inspector-title">
+            <div class="panel-heading"><div><p class="eyebrow">03 / THE EVIDENCE</p><h2 id="inspector-title">Inside an answer</h2></div><span class="inspector-symbol" aria-hidden="true">Aa</span></div>
+            <div id="candidate-inspector"><p class="muted">Select a clue to inspect its letter pattern and the candidates returned by the model.</p></div>
+            <div class="honesty-note"><svg viewBox="0 0 20 20" width="19" height="19" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor"/><path d="M10 9v5m0-9v1" stroke="currentColor" stroke-width="1.5"/></svg><p><strong>Consistency is not correctness.</strong> A filled grid can still misread a clue. Accuracy is measured separately against an answer key.</p></div>
+            <button class="button secondary full-width" id="download-button" disabled>Download result <span aria-hidden="true">↓</span></button>
+          </aside>
+        </div>
+        <details class="advanced-options"><summary>Solver limits <span>Bound the time, calls, and search.</span></summary><div class="options-grid"><label>Time limit, seconds<input id="option-seconds" type="number" value="180" min="5" max="600" step="1"></label><label>Maximum rounds<input id="option-rounds" type="number" value="4" min="1" max="8" step="1"></label><label>Candidates per clue<input id="option-candidates" type="number" value="6" min="1" max="15" step="1"></label><label>Maximum model calls<input id="option-calls" type="number" value="12" min="1" max="30" step="1"></label></div></details>
+      </section>
+
+      <section id="view-evaluation" class="view" aria-labelledby="evaluation-title" hidden>
+        <div class="page-intro"><div><p class="eyebrow">MEASURE THE ANSWERS, NOT THE CONFIDENCE</p><h1 id="evaluation-title">What does “solved” mean?</h1><p class="intro-copy">Separate answer quality from rule compliance. Compare methods on the same puzzles.</p></div></div>
+        <div class="evaluation-summary" id="evaluation-summary"><div class="panel empty-evaluation"><h2>Checking for evaluation results…</h2></div></div>
+        <div class="method-cards"><article class="panel"><span class="step-number">01</span><h2>First answers</h2><p>Use the model’s first choice for each clue. This baseline measures clue understanding before enforcing crossings.</p></article><article class="panel"><span class="step-number">02</span><h2>Answers + search</h2><p>Search the initial candidate lists for compatible answers. This measures the benefit of checking the grid.</p></article><article class="panel"><span class="step-number">03</span><h2>The full agent</h2><p>Revisit unresolved entries with new candidates, within a fixed budget. This measures the benefit and cost of repair.</p></article></div>
+        <section class="panel evaluation-definitions"><div class="panel-heading"><div><p class="eyebrow">AN HONEST SCORECARD</p><h2>What we measure</h2></div></div><div class="definition-grid"><div><h3>Letter accuracy</h3><p>Correct letters ÷ all fillable cells. Empty cells count as incorrect.</p></div><div><h3>Answer accuracy</h3><p>Exactly correct entries ÷ all across and down entries.</p></div><div><h3>Exact puzzle accuracy</h3><p>Puzzles with every letter correct ÷ all evaluated puzzles.</p></div><div><h3>Constraint violations</h3><p>Wrong lengths, crossing conflicts, or changed given letters.</p></div><div><h3>Candidate recall</h3><p>How often the correct answer appeared among the proposed candidates.</p></div><div><h3>Runtime & usage</h3><p>Elapsed time, model calls, and tokens. Better answers have a measurable cost.</p></div></div><p class="evaluation-caveat">The bundled puzzles are an authored smoke benchmark, not evidence of performance on all crosswords. Reference answers remain outside the solving input. Public puzzle performance may be affected by training data overlap.</p></section>
+      </section>
+
+      <section id="view-architecture" class="view" aria-labelledby="architecture-title" hidden>
+        <div class="page-intro"><div><p class="eyebrow">THE APPROACH</p><h1 id="architecture-title">Language proposes. Logic checks.</h1><p class="intro-copy">One agent coordinates the loop. Each component has a small, explicit responsibility.</p></div></div>
+        <section class="panel architecture-panel"><div class="diagram-caption"><span>THE SOLVING LOOP</span><span>Bounded. Observable. Reversible.</span></div>
+          <svg class="architecture-diagram" viewBox="0 0 1100 360" role="img" aria-labelledby="diagram-title diagram-desc">
+            <title id="diagram-title">Crosscheck architecture</title><desc id="diagram-desc">Grid and clues pass through validation to the agent controller. The model proposes candidate answers. Code checks crossing constraints. When unresolved, the agent revisits candidates. A complete or partial result is returned when done or at the budget limit.</desc>
+            <defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#598280"/></marker></defs>
+            <g fill="none" stroke="#598280" stroke-width="2" marker-end="url(#arrow)"><path d="M205 129H255"/><path d="M440 129H490"/><path d="M675 129H725"/><path d="M910 129H959"/><path d="M818 173V252H347V175"/></g>
+            <g class="diagram-node"><rect x="20" y="79" width="185" height="100" rx="7"/><text x="42" y="105" class="diagram-small">01 / INPUT</text><text x="42" y="136" class="diagram-title">Grid + clues</text><text x="42" y="158" class="diagram-small">Validate and map crossings</text></g>
+            <g class="diagram-node accent"><rect x="255" y="79" width="185" height="100" rx="7"/><text x="277" y="105" class="diagram-small">02 / CONTROL</text><text x="277" y="136" class="diagram-title">Agent controller</text><text x="277" y="158" class="diagram-small">State, decisions, budgets</text></g>
+            <g class="diagram-node"><rect x="490" y="79" width="185" height="100" rx="7"/><text x="512" y="105" class="diagram-small">03 / PROPOSE</text><text x="512" y="136" class="diagram-title">Language model</text><text x="512" y="158" class="diagram-small">Several answers per clue</text></g>
+            <g class="diagram-node"><rect x="725" y="79" width="185" height="100" rx="7"/><text x="747" y="105" class="diagram-small">04 / CHECK</text><text x="747" y="136" class="diagram-title">Constraint search</text><text x="747" y="158" class="diagram-small">Lengths, letters, crossings</text></g>
+            <g><circle cx="1009" cy="129" r="48" fill="#e6eeE8" stroke="#bfd1c7"/><path d="m991 127 12 12 24-25" fill="none" stroke="#2f7164" stroke-width="3"/><text x="1009" y="200" text-anchor="middle" class="diagram-small">Return result</text></g>
+            <rect x="448" y="233" width="265" height="38" rx="19" fill="#f3f0e7"/><text x="580" y="256" text-anchor="middle" class="diagram-loop">Unresolved? Revisit and try again.</text>
+            <text x="550" y="323" text-anchor="middle" class="diagram-footnote">A time or call limit returns the best consistent partial result available.</text>
+          </svg>
+        </section>
+        <div class="architecture-explanations"><article class="panel"><span class="step-number">A</span><h2>The model understands the clue.</h2><p>“Financial institution”, four letters, may suggest BANK or FUND. Keeping alternatives lets the rest of the puzzle provide evidence.</p></article><article class="panel"><span class="step-number">B</span><h2>The grid tests the guess.</h2><p>Every shared square must hold the same letter. Search tries combinations and backs out of guesses that block other entries.</p></article><article class="panel"><span class="step-number">C</span><h2>The agent knows when to revisit.</h2><p>If the candidates cannot produce a full grid, the controller requests more answers. Tentative letters can change; supplied letters stay fixed.</p></article></div>
+        <section class="architecture-bottom panel"><div><p class="eyebrow">SCREENSHOT → STRUCTURED PUZZLE</p><h2>Extraction is a separate step.</h2><p>A vision model reads the grid and clues. You review the extracted JSON, validate its structure, and explicitly use the puzzle before solving. A readable image is still no guarantee of a perfect transcription.</p></div><div><p class="eyebrow">A PRACTICAL FIRST SCOPE</p><h2>Standard English crosswords.</h2><p>One A–Z letter per cell. Blocks and supplied letters are supported. Rebus cells, barred grids, and cryptic-specific parsing are outside the first version’s supported format.</p></div></section>
+      </section>
+    </main>
+
+    <footer class="page-footer"><span>crosscheck<span class="brand-period">.</span> <span class="footer-divider">/</span> A little language. A lot of checking.</span><span id="model-label">Local application · credentials stay on the server</span></footer>
+  </div>
+
+  <dialog id="import-dialog" aria-labelledby="import-title">
+    <div class="dialog-heading"><div><p class="eyebrow">REVIEW BEFORE SOLVING</p><h2 id="import-title">Review your puzzle</h2></div><button class="icon-button" id="close-import" aria-label="Close import">×</button></div>
+    <p class="dialog-intro" id="import-description">Check the grid and clues. Use a dot for empty cells, # for blocks, and A–Z for given letters.</p>
+    <div id="import-warnings" class="notice warning" hidden></div>
+    <div id="import-busy" class="extraction-progress" hidden><span class="spinner" aria-hidden="true"></span><div><strong>Reading your image…</strong><p>Extracting the grid and clues. This can take a moment.</p></div></div>
+    <div class="import-body"><div class="import-image-wrap" id="import-image-wrap" hidden><img id="import-image" alt="Your uploaded crossword, for comparison with the extracted data"></div><div class="json-editor-wrap"><label for="puzzle-editor" class="field-label">PUZZLE JSON <span>· editable</span></label><textarea id="puzzle-editor" spellcheck="false" autocapitalize="off" aria-describedby="import-description"></textarea></div></div>
+    <div id="import-validation" class="import-validation" aria-live="polite" hidden></div>
+    <div class="dialog-actions"><button class="button secondary" id="validate-import">Validate puzzle</button><button class="button primary" id="accept-import" disabled>Use this puzzle <span aria-hidden="true">→</span></button></div>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "id": "test-fixed-4",
+  "title": "A few letters supplied",
+  "author": "Assessment smoke-suite authors",
+  "grid": [
+    "R...",
+    "..E.",
+    "....",
+    "...S"
+  ],
+  "clues": {
+    "across": {
+      "1": "Flower often given on Valentine's Day",
+      "5": "Kitchen appliance used for baking",
+      "6": "Dispatch a letter or package",
+      "7": "Finishes or comes to a stop"
+    },
+    "down": {
+      "1": "Thorny-stemmed flower",
+      "2": "Appliance that heats food in an enclosed chamber",
+      "3": "Transmit, as an email",
+      "4": "Opposite of beginnings"
+    }
+  }
+}

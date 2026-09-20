@@ -1,0 +1,25 @@
+{
+  "id": "test-ball-4",
+  "title": "Four by four",
+  "author": "Assessment smoke-suite authors",
+  "grid": [
+    "....",
+    "....",
+    "....",
+    "...."
+  ],
+  "clues": {
+    "across": {
+      "1": "Round object thrown in many sports",
+      "5": "Region or extent of a surface",
+      "6": "Go first and show the way",
+      "7": "Polite term for an adult woman"
+    },
+    "down": {
+      "1": "Sphere used in a game",
+      "2": "Quantity measured in square feet",
+      "3": "Heavy metal with chemical symbol Pb",
+      "4": "Woman, politely"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "test-captain-5x7",
+  "title": "A rectangular crossing",
+  "author": "Assessment smoke-suite authors",
+  "grid": [
+    "###.###",
+    "###.###",
+    ".......",
+    "###.###",
+    "###.###"
+  ],
+  "clues": {
+    "across": {
+      "2": "Person in command of a ship"
+    },
+    "down": {
+      "1": "Liquid made of hydrogen and oxygen, formula H2O"
+    }
+  }
+}

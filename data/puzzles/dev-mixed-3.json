@@ -1,0 +1,22 @@
+{
+  "id": "dev-mixed-3",
+  "title": "Small, different crossings",
+  "author": "Assessment smoke-suite authors",
+  "grid": [
+    "...",
+    "...",
+    "..."
+  ],
+  "clues": {
+    "across": {
+      "1": "Animal whose young are kittens",
+      "4": "Gorilla or chimpanzee",
+      "5": "Grain in some dark breads"
+    },
+    "down": {
+      "1": "Road vehicle with four wheels",
+      "2": "Annual percentage yield, for short",
+      "3": "Small peg that supports a golf ball"
+    }
+  }
+}
