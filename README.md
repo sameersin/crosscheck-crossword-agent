@@ -9,7 +9,7 @@ The agent uses **Nebius GLM-5.3** to propose word answers. Python enforces lengt
 You need **Python 3.11 or newer**, [uv](https://docs.astral.sh/uv/getting-started/installation/), Git, and a Nebius API key with access to the configured models. No Node build or separate database server is required.
 
 ```shell
-git clone https://github.com/OWNER/crosscheck-crossword-agent.git
+git clone https://github.com/sameersin/crosscheck-crossword-agent.git
 cd crosscheck-crossword-agent
 uv sync --frozen
 ```
