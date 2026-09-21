@@ -17,7 +17,7 @@ On Windows PowerShell:
 
 ```powershell
 python -m venv .venv
-.venv\Scripts\python.exe -m pip install -r requirements.lock
+.venv\Scripts\python.exe -m pip install --require-hashes -r requirements-runtime.lock
 .venv\Scripts\python.exe -m pip install --no-deps -e .
 if (-not (Test-Path .env)) { Copy-Item .env.example .env }
 notepad .env
@@ -29,14 +29,43 @@ On macOS/Linux:
 
 ```bash
 python3 -m venv .venv
-.venv/bin/python -m pip install -r requirements.lock
+.venv/bin/python -m pip install --require-hashes -r requirements-runtime.lock
 .venv/bin/python -m pip install --no-deps -e .
 [ -f .env ] || cp .env.example .env
 # Set NEBIUS_API_KEY in .env, save, then run:
 .venv/bin/python -m crossword_agent.cli serve
 ```
 
-The pip lock also includes development tools; installing them does not execute them. Editable installation keeps the package connected to this checkout and its fixture data. Run from the checkout; the wheel alone is not a complete distribution of the root-level sample/evaluation datasets.
+`requirements-runtime.lock` contains hashed runtime dependencies, without development/test tools. Editable installation keeps the package connected to this checkout and its fixture data. Run from the checkout; the wheel alone is not a complete distribution of the root-level sample/evaluation datasets. No virtual-environment activation is necessary when using the explicit Python paths above.
+
+## Use npm as a launcher
+
+Install Node.js 20+ (which includes npm), plus either uv or Python 3.11+. Python remains the application runtime. From the repository root:
+
+```shell
+npm run setup
+```
+
+This creates/reuses `.venv`, installs the locked Python dependencies and creates `.env` from the example only when no `.env` exists. Existing API keys are preserved. It uses uv when available, or a suitable local Python interpreter otherwise. With uv, a new environment uses Python 3.11; an existing compatible environment is retained.
+
+Edit `.env` to set `NEBIUS_API_KEY`, then run:
+
+```shell
+npm start
+```
+
+Open http://127.0.0.1:8000. Press Ctrl+C to stop. Another port can be selected with `npm start -- --port 8001`. You do not need `npm install`; there are no JavaScript dependencies or automatic install hooks. No tests or model calls run during setup. First-time dependency installation needs internet access.
+
+In PowerShell, if `npm` is blocked by the script execution policy, use `npm.cmd run setup` and `npm.cmd start` without changing your system security settings.
+
+## Installation verification
+
+On September 21, 2026, two separate fresh Windows checkouts were used to verify installation and startup:
+
+- Plain Python: Python 3.14, a new virtual environment, hashed runtime dependency installation, editable project installation, and `python -m crossword_agent.cli serve`.
+- npm: Node.js 22.22.0 / npm 11.11.0, `npm run setup` creating a Python 3.11.15 environment through uv, and `npm start -- --port 8004`.
+
+Both served the health endpoint, dashboard, samples, configuration and frontend assets successfully. These were startup checks with blank API keys, not automated puzzle tests or model requests. macOS/Linux startup, the npm fallback without uv, and a Docker image build were not verified in this check.
 
 ## Configure models
 
@@ -73,6 +102,8 @@ SQLite history is created automatically at `artifacts/private/evaluations.sqlite
 | Symptom | Action |
 |---|---|
 | `uv` not found | Install uv using its official instructions, reopen the terminal, or use the pip steps above |
+| `npm start` reports a missing environment | Run `npm run setup` once, set the key in `.env`, then start again |
+| `npm.ps1` is blocked in PowerShell | Use `npm.cmd` instead of `npm` |
 | Python version error | Install Python 3.11+; confirm `python --version` / `python3 --version` |
 | Model not configured | Check `NEBIUS_API_KEY` in the repository-root `.env`, then restart |
 | Provider rejects a request | Check the key, available quota, endpoint and access to both configured model IDs |

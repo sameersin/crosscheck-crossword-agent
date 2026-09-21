@@ -8,7 +8,7 @@ Use the [setup guide](SETUP.md), then install development dependencies only if y
 uv sync --frozen --extra dev
 ```
 
-Python uses a `src/` layout, typed Pydantic boundary models and Ruff formatting. Browser code uses native ES modules and local CSS; there is no npm build or frontend runtime dependency. `.editorconfig` defines whitespace conventions.
+Python uses a `src/` layout, typed Pydantic boundary models and Ruff formatting. Browser code uses native ES modules and local CSS; there is no npm build or frontend runtime dependency. The optional dependency-free Node launcher in `scripts/npm-launcher.mjs` implements `npm run setup` and `npm start` for the same Python backend. `.editorconfig` defines whitespace conventions; `.python-version` selects Python 3.11 for uv.
 
 ## Where to make changes
 

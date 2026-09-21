@@ -8,6 +8,9 @@ ALLOWED_DIRS = ["src", "tests", "data", "docs", "scripts", ".github"]
 ALLOWED_FILES = [
     "README.md",
     "pyproject.toml",
+    "package.json",
+    "package-lock.json",
+    ".python-version",
     "uv.lock",
     "requirements.lock",
     "requirements-runtime.lock",

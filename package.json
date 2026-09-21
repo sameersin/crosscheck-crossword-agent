@@ -1,0 +1,15 @@
+{
+  "name": "crosscheck-crossword-agent",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Convenience commands for the Python Crosscheck application.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "setup": "node scripts/npm-launcher.mjs setup",
+    "start": "node scripts/npm-launcher.mjs start",
+    "dev": "node scripts/npm-launcher.mjs start"
+  }
+}

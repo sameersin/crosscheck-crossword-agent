@@ -8,7 +8,7 @@ The agent uses **Nebius GLM-5.3** to propose word answers. Python enforces lengt
 
 **Docker option:** with Docker Desktop installed, create `.env` from `.env.example`, set `NEBIUS_API_KEY`, then run `docker compose up --build`. Open **http://127.0.0.1:8000**. No local Python or uv installation is needed. See [Docker setup](docs/DOCKER.md) for full steps, saved history, and changing the port.
 
-### Python setup
+### Python setup with uv
 
 You need **Python 3.11 or newer**, [uv](https://docs.astral.sh/uv/getting-started/installation/), Git, and a Nebius API key with access to the configured models. No Node build or separate database server is required.
 
@@ -42,7 +42,35 @@ uv run --frozen crossword serve
 
 Open **http://127.0.0.1:8000**. Keep the terminal running; press **Ctrl+C** to stop. Never commit `.env`. Without a key, you can still inspect samples, saved results, and evaluation methodology.
 
-For a pip-only installation, model configuration, another port, or troubleshooting, see **[Setup](docs/SETUP.md)**.
+The checked-in `.python-version` selects Python 3.11 for uv. For model configuration, another port, or troubleshooting, see **[Setup](docs/SETUP.md)**.
+
+### Plain Python commands (no uv)
+
+From the cloned repository on **Windows PowerShell**, with Python 3.11+ installed:
+
+```powershell
+python -m venv .venv
+.venv\Scripts\python.exe -m pip install --require-hashes -r requirements-runtime.lock
+.venv\Scripts\python.exe -m pip install --no-deps -e .
+if (-not (Test-Path .env)) { Copy-Item .env.example .env }
+notepad .env
+# Set NEBIUS_API_KEY and save, then start:
+.venv\Scripts\python.exe -m crossword_agent.cli serve
+```
+
+On macOS/Linux, use `python3 -m venv .venv`, `.venv/bin/python` in the following commands, and `[ -f .env ] || cp .env.example .env`. No virtual-environment activation is required.
+
+### npm commands
+
+With **Node.js 20+ / npm** and either **uv** or **Python 3.11+** installed, run from the cloned repository:
+
+```shell
+npm run setup
+# Edit the generated .env and set NEBIUS_API_KEY.
+npm start
+```
+
+Setup creates the Python environment and creates `.env` only if it is missing. No `npm install` is required: the launcher has no JavaScript dependencies. npm starts the same Python backend; it does not replace Python. To use a different port, run `npm start -- --port 8001`. If PowerShell blocks `npm.ps1`, use `npm.cmd run setup` and `npm.cmd start`.
 
 ## Use the agent
 
