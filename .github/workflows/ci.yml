@@ -1,5 +1,9 @@
-name: Offline checks
-on: [push, pull_request]
+name: Manual offline checks
+# Run only from the Actions tab when the repository owner chooses to do so.
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -13,6 +17,6 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - run: python -m pip install -r requirements.lock
       - run: python -m pip install --no-deps -e .
-      - run: python -m ruff check .
-      - run: python -m ruff format --check .
+      - run: python -m ruff check src tests scripts
+      - run: python -m ruff format --check src tests scripts
       - run: python -m pytest -q

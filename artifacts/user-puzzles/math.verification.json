@@ -1,0 +1,1013 @@
+{
+  "id": "math",
+  "source_name": "math-crossword-1-1200.png",
+  "result_file": "math.result.json",
+  "verified_at": "2026-09-21T07:42:14.319934+00:00",
+  "scope": "Verification of this saved image-extraction and solving run, not a held-out benchmark or guarantee for other photos.",
+  "reference": {
+    "kind": "independent_arithmetic_reference",
+    "official_key_checked": false,
+    "basis": "All 48 printed arithmetic expressions independently recomputed with integer addition/subtraction and checked against crossings."
+  },
+  "extraction": {
+    "model": "zai-org/GLM-5.3-Flash",
+    "model_provenance": "Actual provider invocation identified by the run owner; extraction artifact records token usage but omits model ID.",
+    "elapsed_seconds": 8.33,
+    "usage": {
+      "model_calls": 1,
+      "prompt_tokens": 2886,
+      "completion_tokens": 520,
+      "total_tokens": 3406,
+      "estimated_cost_usd": null
+    },
+    "grid_matches_reference": true,
+    "entry_geometry_matches_reference": true,
+    "clue_semantics_match_after_typography_normalization": true,
+    "clue_text_differences": [],
+    "recorded_warnings": [
+      "Grid geometry preserved from detected borders; some cells may be misaligned with printed numbers.",
+      "Mixed dash characters (\u2013 vs -) transcribed verbatim from clue text."
+    ],
+    "independent_warning_review": [
+      "Grid and all 48 clue expressions match the independent reference after equivalent Unicode minus/dash normalization; model uncertainty is preserved separately."
+    ]
+  },
+  "solve": {
+    "model": "zai-org/GLM-5.3-Flash",
+    "status": "complete_consistent",
+    "stop_reason": "complete_consistent",
+    "elapsed_seconds": 0.015,
+    "usage": {
+      "model_calls": 0,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0,
+      "estimated_cost_usd": null
+    },
+    "assigned_entries": 48,
+    "total_entries": 48,
+    "constraint_violations": []
+  },
+  "combined_stages": {
+    "attempted_model_calls": 1,
+    "elapsed_seconds_sum": 8.345,
+    "total_tokens": 3406,
+    "note": "Sum of separately recorded extraction and solve durations; excludes human review/dwell time. Failed attempts count when recorded. Unpriced dollar cost is unknown."
+  },
+  "metrics_against_reference": {
+    "puzzle_id": "math",
+    "answer_type": "digits",
+    "status": "complete_consistent",
+    "correct_cells": 68,
+    "total_cells": 68,
+    "letter_accuracy": 1.0,
+    "cell_accuracy": 1.0,
+    "correct_unknown_cells": 68,
+    "unknown_cells": 68,
+    "unknown_letter_accuracy": 1.0,
+    "unknown_cell_accuracy": 1.0,
+    "fixed_cells": 0,
+    "correct_entries": 48,
+    "total_entries": 48,
+    "answer_accuracy": 1.0,
+    "exact_puzzle": true,
+    "filled_cells": 68,
+    "completion": 1.0,
+    "filled_entries": 48,
+    "entry_completion": 1.0,
+    "complete_consistent": true,
+    "constraint_violation_count": 0,
+    "constraint_violations": [],
+    "candidate_hits": 48,
+    "candidate_recall": 1.0,
+    "elapsed_seconds": 0.015,
+    "search_nodes": 48,
+    "rounds": 1,
+    "usage": {
+      "model_calls": 0,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0,
+      "estimated_cost_usd": null
+    },
+    "entries": [
+      {
+        "entry_id": "1A",
+        "answer": "13",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "1D",
+        "answer": "1253",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "2D",
+        "answer": "31",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "3A",
+        "answer": "146",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "3D",
+        "answer": "1566",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "4D",
+        "answer": "467",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "5D",
+        "answer": "62",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "6A",
+        "answer": "1215",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "6D",
+        "answer": "11",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "7D",
+        "answer": "59",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "8A",
+        "answer": "5623",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "9D",
+        "answer": "3102",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "10A",
+        "answer": "15",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "11A",
+        "answer": "9567",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "12D",
+        "answer": "59",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "13A",
+        "answer": "13",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "14D",
+        "answer": "380",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "15A",
+        "answer": "31",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "16D",
+        "answer": "1520",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "17A",
+        "answer": "96",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "18A",
+        "answer": "608",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "18D",
+        "answer": "6481",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "19A",
+        "answer": "59",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "20D",
+        "answer": "96",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "21A",
+        "answer": "9420",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "21D",
+        "answer": "97",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "22A",
+        "answer": "2426",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "22D",
+        "answer": "296",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "23D",
+        "answer": "4972",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "24A",
+        "answer": "78",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "25A",
+        "answer": "990",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "26A",
+        "answer": "54",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "26D",
+        "answer": "5642",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "27D",
+        "answer": "49",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "28A",
+        "answer": "16",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "29D",
+        "answer": "6321",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "30A",
+        "answer": "67",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "31A",
+        "answer": "6695",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "31D",
+        "answer": "620",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "32D",
+        "answer": "51",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "33A",
+        "answer": "34",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "34D",
+        "answer": "45",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "35A",
+        "answer": "2524",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "36D",
+        "answer": "55",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "37A",
+        "answer": "1625",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "38D",
+        "answer": "61",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "39A",
+        "answer": "502",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "40A",
+        "answer": "11",
+        "correct": true,
+        "candidate_hit": true
+      }
+    ]
+  },
+  "entries": [
+    {
+      "entry_id": "1A",
+      "expected": "13",
+      "actual": "13",
+      "matches": true
+    },
+    {
+      "entry_id": "1D",
+      "expected": "1253",
+      "actual": "1253",
+      "matches": true
+    },
+    {
+      "entry_id": "2D",
+      "expected": "31",
+      "actual": "31",
+      "matches": true
+    },
+    {
+      "entry_id": "3A",
+      "expected": "146",
+      "actual": "146",
+      "matches": true
+    },
+    {
+      "entry_id": "3D",
+      "expected": "1566",
+      "actual": "1566",
+      "matches": true
+    },
+    {
+      "entry_id": "4D",
+      "expected": "467",
+      "actual": "467",
+      "matches": true
+    },
+    {
+      "entry_id": "5D",
+      "expected": "62",
+      "actual": "62",
+      "matches": true
+    },
+    {
+      "entry_id": "6A",
+      "expected": "1215",
+      "actual": "1215",
+      "matches": true
+    },
+    {
+      "entry_id": "6D",
+      "expected": "11",
+      "actual": "11",
+      "matches": true
+    },
+    {
+      "entry_id": "7D",
+      "expected": "59",
+      "actual": "59",
+      "matches": true
+    },
+    {
+      "entry_id": "8A",
+      "expected": "5623",
+      "actual": "5623",
+      "matches": true
+    },
+    {
+      "entry_id": "9D",
+      "expected": "3102",
+      "actual": "3102",
+      "matches": true
+    },
+    {
+      "entry_id": "10A",
+      "expected": "15",
+      "actual": "15",
+      "matches": true
+    },
+    {
+      "entry_id": "11A",
+      "expected": "9567",
+      "actual": "9567",
+      "matches": true
+    },
+    {
+      "entry_id": "12D",
+      "expected": "59",
+      "actual": "59",
+      "matches": true
+    },
+    {
+      "entry_id": "13A",
+      "expected": "13",
+      "actual": "13",
+      "matches": true
+    },
+    {
+      "entry_id": "14D",
+      "expected": "380",
+      "actual": "380",
+      "matches": true
+    },
+    {
+      "entry_id": "15A",
+      "expected": "31",
+      "actual": "31",
+      "matches": true
+    },
+    {
+      "entry_id": "16D",
+      "expected": "1520",
+      "actual": "1520",
+      "matches": true
+    },
+    {
+      "entry_id": "17A",
+      "expected": "96",
+      "actual": "96",
+      "matches": true
+    },
+    {
+      "entry_id": "18A",
+      "expected": "608",
+      "actual": "608",
+      "matches": true
+    },
+    {
+      "entry_id": "18D",
+      "expected": "6481",
+      "actual": "6481",
+      "matches": true
+    },
+    {
+      "entry_id": "19A",
+      "expected": "59",
+      "actual": "59",
+      "matches": true
+    },
+    {
+      "entry_id": "20D",
+      "expected": "96",
+      "actual": "96",
+      "matches": true
+    },
+    {
+      "entry_id": "21A",
+      "expected": "9420",
+      "actual": "9420",
+      "matches": true
+    },
+    {
+      "entry_id": "21D",
+      "expected": "97",
+      "actual": "97",
+      "matches": true
+    },
+    {
+      "entry_id": "22A",
+      "expected": "2426",
+      "actual": "2426",
+      "matches": true
+    },
+    {
+      "entry_id": "22D",
+      "expected": "296",
+      "actual": "296",
+      "matches": true
+    },
+    {
+      "entry_id": "23D",
+      "expected": "4972",
+      "actual": "4972",
+      "matches": true
+    },
+    {
+      "entry_id": "24A",
+      "expected": "78",
+      "actual": "78",
+      "matches": true
+    },
+    {
+      "entry_id": "25A",
+      "expected": "990",
+      "actual": "990",
+      "matches": true
+    },
+    {
+      "entry_id": "26A",
+      "expected": "54",
+      "actual": "54",
+      "matches": true
+    },
+    {
+      "entry_id": "26D",
+      "expected": "5642",
+      "actual": "5642",
+      "matches": true
+    },
+    {
+      "entry_id": "27D",
+      "expected": "49",
+      "actual": "49",
+      "matches": true
+    },
+    {
+      "entry_id": "28A",
+      "expected": "16",
+      "actual": "16",
+      "matches": true
+    },
+    {
+      "entry_id": "29D",
+      "expected": "6321",
+      "actual": "6321",
+      "matches": true
+    },
+    {
+      "entry_id": "30A",
+      "expected": "67",
+      "actual": "67",
+      "matches": true
+    },
+    {
+      "entry_id": "31A",
+      "expected": "6695",
+      "actual": "6695",
+      "matches": true
+    },
+    {
+      "entry_id": "31D",
+      "expected": "620",
+      "actual": "620",
+      "matches": true
+    },
+    {
+      "entry_id": "32D",
+      "expected": "51",
+      "actual": "51",
+      "matches": true
+    },
+    {
+      "entry_id": "33A",
+      "expected": "34",
+      "actual": "34",
+      "matches": true
+    },
+    {
+      "entry_id": "34D",
+      "expected": "45",
+      "actual": "45",
+      "matches": true
+    },
+    {
+      "entry_id": "35A",
+      "expected": "2524",
+      "actual": "2524",
+      "matches": true
+    },
+    {
+      "entry_id": "36D",
+      "expected": "55",
+      "actual": "55",
+      "matches": true
+    },
+    {
+      "entry_id": "37A",
+      "expected": "1625",
+      "actual": "1625",
+      "matches": true
+    },
+    {
+      "entry_id": "38D",
+      "expected": "61",
+      "actual": "61",
+      "matches": true
+    },
+    {
+      "entry_id": "39A",
+      "expected": "502",
+      "actual": "502",
+      "matches": true
+    },
+    {
+      "entry_id": "40A",
+      "expected": "11",
+      "actual": "11",
+      "matches": true
+    }
+  ],
+  "reference_keys_supplied_to_solver": false,
+  "independent_arithmetic_checks": [
+    {
+      "entry_id": "1A",
+      "printed_expression": "22 \u2212 9",
+      "computed": "13",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "1D",
+      "printed_expression": "710 + 543",
+      "computed": "1253",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "2D",
+      "printed_expression": "46 \u2212 15",
+      "computed": "31",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "3A",
+      "printed_expression": "159 \u2212 13",
+      "computed": "146",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "3D",
+      "printed_expression": "297 + 1269",
+      "computed": "1566",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "4D",
+      "printed_expression": "235 + 232",
+      "computed": "467",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "5D",
+      "printed_expression": "83 \u2212 21",
+      "computed": "62",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "6A",
+      "printed_expression": "465 + 750",
+      "computed": "1215",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "6D",
+      "printed_expression": "15 \u2212 4",
+      "computed": "11",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "7D",
+      "printed_expression": "29 + 30",
+      "computed": "59",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "8A",
+      "printed_expression": "2329 + 3294",
+      "computed": "5623",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "9D",
+      "printed_expression": "5457 \u2212 2355",
+      "computed": "3102",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "10A",
+      "printed_expression": "25 \u2212 10",
+      "computed": "15",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "11A",
+      "printed_expression": "18833 \u2212 9266",
+      "computed": "9567",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "12D",
+      "printed_expression": "24 + 35",
+      "computed": "59",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "13A",
+      "printed_expression": "20 \u2212 7",
+      "computed": "13",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "14D",
+      "printed_expression": "560 \u2212 180",
+      "computed": "380",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "15A",
+      "printed_expression": "15 + 16",
+      "computed": "31",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "16D",
+      "printed_expression": "381 + 1139",
+      "computed": "1520",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "17A",
+      "printed_expression": "120 \u2212 24",
+      "computed": "96",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "18A",
+      "printed_expression": "952 \u2212 344",
+      "computed": "608",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "18D",
+      "printed_expression": "12346 \u2212 5865",
+      "computed": "6481",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "19A",
+      "printed_expression": "99 \u2212 40",
+      "computed": "59",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "20D",
+      "printed_expression": "27 + 69",
+      "computed": "96",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "21A",
+      "printed_expression": "445 + 8975",
+      "computed": "9420",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "21D",
+      "printed_expression": "183 \u2212 86",
+      "computed": "97",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "22A",
+      "printed_expression": "1496 + 930",
+      "computed": "2426",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "22D",
+      "printed_expression": "338 \u2212 42",
+      "computed": "296",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "23D",
+      "printed_expression": "280 + 4692",
+      "computed": "4972",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "24A",
+      "printed_expression": "124 \u2212 46",
+      "computed": "78",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "25A",
+      "printed_expression": "1290 \u2212 300",
+      "computed": "990",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "26A",
+      "printed_expression": "98 \u2212 44",
+      "computed": "54",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "26D",
+      "printed_expression": "10786 \u2212 5144",
+      "computed": "5642",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "27D",
+      "printed_expression": "27 + 22",
+      "computed": "49",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "28A",
+      "printed_expression": "11 + 5",
+      "computed": "16",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "29D",
+      "printed_expression": "12200 \u2212 5879",
+      "computed": "6321",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "30A",
+      "printed_expression": "27 + 40",
+      "computed": "67",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "31A",
+      "printed_expression": "9284 \u2212 2589",
+      "computed": "6695",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "31D",
+      "printed_expression": "687 \u2212 67",
+      "computed": "620",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "32D",
+      "printed_expression": "62 \u2212 11",
+      "computed": "51",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "33A",
+      "printed_expression": "44 \u2212 10",
+      "computed": "34",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "34D",
+      "printed_expression": "21 + 24",
+      "computed": "45",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "35A",
+      "printed_expression": "3292 \u2212 768",
+      "computed": "2524",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "36D",
+      "printed_expression": "61 \u2212 6",
+      "computed": "55",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "37A",
+      "printed_expression": "9 + 1616",
+      "computed": "1625",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "38D",
+      "printed_expression": "17 + 44",
+      "computed": "61",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "39A",
+      "printed_expression": "858 \u2212 356",
+      "computed": "502",
+      "reference_matches": true,
+      "result_matches": true
+    },
+    {
+      "entry_id": "40A",
+      "printed_expression": "1 + 10",
+      "computed": "11",
+      "reference_matches": true,
+      "result_matches": true
+    }
+  ]
+}

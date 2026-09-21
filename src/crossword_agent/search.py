@@ -12,7 +12,7 @@ from collections import defaultdict, deque
 from dataclasses import dataclass
 from threading import Event
 
-from .domain import normalize_answer, parse_entries
+from .domain import is_valid_answer, normalize_answer, parse_entries
 from .models import Candidate, Puzzle
 
 
@@ -57,8 +57,8 @@ def solve_constraints(
     for entry in entries:
         unique: dict[str, float] = {}
         for candidate in candidates.get(entry.id, []):
-            answer = normalize_answer(candidate.answer)
-            if len(answer) != entry.length or not all("A" <= char <= "Z" for char in answer):
+            answer = normalize_answer(candidate.answer, entry.answer_type)
+            if len(answer) != entry.length or not is_valid_answer(answer, entry.answer_type):
                 continue
             if any(
                 puzzle.grid[row][col] not in (".", char)

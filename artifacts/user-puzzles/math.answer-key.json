@@ -1,0 +1,18 @@
+{
+  "puzzle_id": "math",
+  "puzzle_fingerprint": "c357550462e487fdff30c67d05496e9dd107af058f9c43602a4b88429f743e1d",
+  "reference_grid": [
+    "#13##146##",
+    "1215#5623#",
+    "15#9567#13",
+    "#31#96#608",
+    "##59##9420",
+    "2426##78##",
+    "990#54#16#",
+    "67#6695#34",
+    "#2524#1625",
+    "##502##11#"
+  ],
+  "review_required": true,
+  "provenance": "Prepared from the existing development reference; not independently human-approved. Review every answer before grading."
+}

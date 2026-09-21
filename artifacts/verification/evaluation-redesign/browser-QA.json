@@ -1,0 +1,74 @@
+{
+  "checked_at": "2026-09-21T21:16:48.7632756Z",
+  "environment": "Isolated local QA server http://127.0.0.1:8002; artifacts/private/browser-qa.sqlite3",
+  "real_history_approved": false,
+  "browser": "Chrome, through CUA browser controls",
+  "passed": [
+    "Persisted imported runs open as ungraded; imported dates and saved-first-run labels are explicit",
+    "Manual NESTLES to NESQUIK key correction shows four italic peach cells, while original remains NESTLES",
+    "Cell changes, restore, and incomplete keys invalidate or disable evaluation approval",
+    "JSON file upload requires preview review and separate final approval",
+    "Wrong puzzle_id and wrong puzzle_fingerprint are rejected in preview",
+    "Downloaded answer key includes puzzle_id and puzzle_fingerprint and successfully imports again",
+    "Ctrl+V JSON and clipboard button open reviewed JSON draft; dedicated text-paste fallback opens preview",
+    "Approved isolated Cocoa key scores 60/64 cells and 11/12 answers, 100% completion, exact false, zero violations",
+    "All-attempt and graded-only chart filters preserve explicit 0/1 graded denominator and ungraded counts",
+    "Saved-workspace shortcut opens exact Pets history record",
+    "Fresh GLM-5.3 mini solve completed with one call and opens exact durable run ungraded",
+    "Numeric key displays zero digits and 68/68 complete cells",
+    "Mobile 390 by 844 score cards and key grid stay within layout; viewport reset",
+    "Evaluation JSON includes original result and separately persisted reference-image extraction usage",
+    "Browser console has no error or warning logs; node --check passes"
+  ],
+  "live_reference_image": {
+    "total_cells": 64,
+    "filled_cells": 64,
+    "incorrect_cells_against_recorded_reference": 4,
+    "preview_corrected": true,
+    "total_tokens": 1763,
+    "model": "zai-org/GLM-5.3-Flash",
+    "final_evaluation_required_after_accept": true,
+    "source": "artifacts/verification/cocoa-answer-clear-screenshot.jpg",
+    "model_calls": 1,
+    "autoapproved": false
+  },
+  "isolated_grade": {
+    "cell_accuracy": 0.9375,
+    "reference_version": 1,
+    "run_id": "import-b868a46b4b85fbf70a3bf248ddc3a8b7",
+    "original_tokens": 1087,
+    "correct_cells": 60,
+    "answer_accuracy": 0.9166666666666666,
+    "source": "uploaded_json",
+    "key_6D": "NESQUIK",
+    "reference_extraction_tokens_separate": 1763,
+    "correct_entries": 11,
+    "total_cells": 64,
+    "total_entries": 12,
+    "original_6D": "NESTLES"
+  },
+  "fresh_solve": {
+    "model_calls": 1,
+    "graded": false,
+    "puzzle": "A tiny beginning",
+    "run_id_prefix": "769d092216cf",
+    "model": "zai-org/GLM-5.3",
+    "status": "complete_consistent"
+  },
+  "limitations": [
+    "These are UI workflow checks in an isolated database, not a new benchmark or user approval of production history.",
+    "Drag-and-drop handler and image clipboard handler share the tested file-import path but were not exercised with a real OS file drag or clipboard image.",
+    "No-result history rendering and fixed given-cell locking were source-reviewed; backend validation is covered by the parent test suite.",
+    "Clipboard denial fallback was not forced because explicit clipboard read succeeded.",
+    "The model made OCR mistakes; no perfect image-transcription claim is made."
+  ],
+  "screenshots": [
+    "08-final-recorded-scores.png",
+    "09-final-run-history.png",
+    "10-final-key-editor.png",
+    "04-image-key-preview.png",
+    "05-model-limits.png",
+    "06-mobile-score.png",
+    "07-mobile-key-editor.png"
+  ]
+}

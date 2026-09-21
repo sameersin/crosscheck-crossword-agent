@@ -1,0 +1,115 @@
+{
+  "source_name": "printable-easy-crossword-puzzles-cocoa.jpg",
+  "puzzle": {
+    "id": "image-puzzle",
+    "title": "Cocoa Crossword",
+    "author": "",
+    "answer_type": "letters",
+    "grid": [
+      "#.##############",
+      "............####",
+      "#.#.#.#####.###.",
+      "#.#.#.#.........",
+      "###.#######.###.",
+      "##.....#.##.###.",
+      "######.#.######.",
+      "######.#.######.",
+      "###.........###.",
+      "########.#######",
+      "###......#######"
+    ],
+    "clues": {
+      "across": {
+        "2": "Puffy white treats that make great cocoa toppers",
+        "7": "Ingredient that makes cocoa brown",
+        "8": "Cocoa can be topped with whipped ___",
+        "11": "Whistling container used for heating water",
+        "12": "Cocoa is sometimes served with a cup and ___"
+      },
+      "down": {
+        "1": "Best temperature for drinkable cocoa",
+        "3": "Sweetener that's often used to make cocoa",
+        "4": "Handled drinking container",
+        "5": "Use this to stir your beverage",
+        "6": "Name brand of powdered chocolate that you can add to milk",
+        "9": "This dairy product is cocoa's basic ingredient",
+        "10": "Season in which we drink the most cocoa"
+      }
+    }
+  },
+  "warnings": [
+    "Grid geometry is approximate; detected mask may not perfectly match actual cell layout.",
+    "Clue numbers not printed in grid cells; numbering inferred from clue list order."
+  ],
+  "usage": {
+    "model_calls": 1,
+    "prompt_tokens": 841,
+    "completion_tokens": 390,
+    "total_tokens": 1231,
+    "estimated_cost_usd": null
+  },
+  "seconds": 7.39,
+  "valid": true,
+  "entries": [
+    {
+      "id": "1D",
+      "length": 4,
+      "clue": "Best temperature for drinkable cocoa"
+    },
+    {
+      "id": "2A",
+      "length": 12,
+      "clue": "Puffy white treats that make great cocoa toppers"
+    },
+    {
+      "id": "3D",
+      "length": 5,
+      "clue": "Sweetener that's often used to make cocoa"
+    },
+    {
+      "id": "4D",
+      "length": 3,
+      "clue": "Handled drinking container"
+    },
+    {
+      "id": "5D",
+      "length": 5,
+      "clue": "Use this to stir your beverage"
+    },
+    {
+      "id": "6D",
+      "length": 7,
+      "clue": "Name brand of powdered chocolate that you can add to milk"
+    },
+    {
+      "id": "7A",
+      "length": 9,
+      "clue": "Ingredient that makes cocoa brown"
+    },
+    {
+      "id": "8A",
+      "length": 5,
+      "clue": "Cocoa can be topped with whipped ___"
+    },
+    {
+      "id": "9D",
+      "length": 4,
+      "clue": "This dairy product is cocoa's basic ingredient"
+    },
+    {
+      "id": "10D",
+      "length": 6,
+      "clue": "Season in which we drink the most cocoa"
+    },
+    {
+      "id": "11A",
+      "length": 9,
+      "clue": "Whistling container used for heating water"
+    },
+    {
+      "id": "12A",
+      "length": 6,
+      "clue": "Cocoa is sometimes served with a cup and ___"
+    }
+  ]
+}

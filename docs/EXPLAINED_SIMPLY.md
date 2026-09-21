@@ -92,3 +92,24 @@ The saved test run matched all 108 letters and 40 answers across six small autho
 - **Paired evaluation:** all comparison methods begin with the same generated candidates; extra retries and usage remain visible.
 
 For the exact observed results and limitations, read [RESULTS.md](RESULTS.md). For each module's role, read [ARCHITECTURE.md](ARCHITECTURE.md).
+
+## How your three internet images work now
+
+The model can see images, but reading a crossword accurately has two separate jobs: finding the cells and reading the clues. The app now measures printed cell borders first, so empty worksheet background is not mistaken for more cells. GLM vision reads the clues using that grid layout. You review the transcription, then start solving.
+
+```mermaid
+flowchart LR
+    I[Your screenshot or photo] --> G[Detect cell borders]
+    G --> V[GLM vision reads clues]
+    V --> R[Review the extracted puzzle]
+    R --> T{Clue type}
+    T -->|Words| W[GLM proposes answers]
+    T -->|Arithmetic| N[Python calculates exact answers]
+    W --> C[Check lengths and every crossing]
+    N --> C
+    C --> F[Filled grid and run history]
+```
+
+For the pets puzzle, a six-letter guess like RABBIT cannot fit a five-cell entry; the repair loop finds BUNNY. For math, `22 - 9` becomes `13`, with one digit in each cell. For cocoa, a brand clue has only one crossing letter, so grid checks alone cannot tell every plausible brand apart. The agent now makes one independent extra proposal pass for these weakly constrained entries when budget permits.
+
+The saved cocoa first run used NESTLES and scored 11/12 against the publisher key. The latest run proposed NESQUIK initially and scored 12/12. Its later review kept that answer. This is an honest example of model variability, not proof that review caused the improvement. See the per-image result report in `artifacts/user-puzzles/RESULTS.md`.

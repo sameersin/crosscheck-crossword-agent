@@ -1,0 +1,19 @@
+{
+  "puzzle_id": "cocoa",
+  "puzzle_fingerprint": "0a0643799e0ffd0a848454141e691cad0d79b2f73be50b5d3239527d10f4c6f4",
+  "reference_grid": [
+    "#W##############",
+    "MARSHMALLOWS####",
+    "#R#U#U#####P###N",
+    "#M#G#G#CHOCOLATE",
+    "###A#######O###S",
+    "##CREAM#W##N###Q",
+    "######I#I######U",
+    "######L#N######I",
+    "###TEAKETTLE###K",
+    "########E#######",
+    "###SAUCER#######"
+  ],
+  "review_required": true,
+  "provenance": "Prepared from the existing development reference; not independently human-approved. Review every answer before grading."
+}

@@ -1,0 +1,29 @@
+{
+  "id": "pets",
+  "title": "PETS Crossword Puzzle",
+  "author": "Super Star Worksheets",
+  "answer_type": "letters",
+  "grid": [
+    "####.######",
+    "###...#####",
+    "#.##.######",
+    "#.##.#.....",
+    "#.##.#.####",
+    ".......####",
+    "#.####...##",
+    "#.#########"
+  ],
+  "clues": {
+    "across": {
+      "2": "Furry animal that meows",
+      "4": "Fluffy animal with long ears that hops",
+      "5": "Small animal that runs on a wheel",
+      "6": "Furry animal that barks"
+    },
+    "down": {
+      "1": "Feathered pet that talks",
+      "3": "Scaly pet that crawls",
+      "4": "Small pet that chirps"
+    }
+  }
+}

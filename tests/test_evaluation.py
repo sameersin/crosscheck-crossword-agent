@@ -254,3 +254,60 @@ def test_runner_keeps_provider_failures_in_denominator(tmp_path):
     for metrics in report["summary"].values():
         assert metrics["letter_accuracy"] == 0
         assert metrics["usage"]["model_calls"] == 1
+
+
+def numeric_fixture():
+    puzzle = Puzzle(
+        id="numeric-metric-check",
+        answer_type="digits",
+        grid=["..", ".."],
+        clues={
+            "across": {"1": "Ten", "3": "Two, padded to two cells"},
+            "down": {"1": "Ten", "2": "Two, padded to two cells"},
+        },
+    )
+    reference = ["10", "02"]
+    answers = {
+        entry.id: "".join(reference[r][c] for r, c in entry.cells)
+        for entry in parse_entries(puzzle)
+    }
+    return puzzle, reference, answers
+
+
+def test_numeric_zero_cells_count_as_filled_and_correct():
+    puzzle, reference, answers = numeric_fixture()
+    candidates = {ident: [Candidate(answer=answer)] for ident, answer in answers.items()}
+    result = first_choice_result(puzzle, candidates)
+    metrics = evaluate_result(puzzle, reference, result)
+    assert result.filled_cells == 4
+    assert metrics["filled_cells"] == metrics["correct_cells"] == 4
+    assert metrics["cell_accuracy"] == metrics["letter_accuracy"] == 1
+    assert metrics["unknown_cell_accuracy"] == 1
+    assert metrics["candidate_recall"] == 1
+    assert metrics["exact_puzzle"]
+    summary = aggregate_metrics([metrics])
+    assert summary["cell_accuracy"] == summary["letter_accuracy"] == 1
+
+
+@pytest.mark.parametrize("invalid", ["-10", "1.0", "+10", "1 0"])
+def test_digit_candidate_punctuation_is_not_removed_for_recall_or_baselines(invalid):
+    puzzle, reference, _ = numeric_fixture()
+    result = first_choice_result(puzzle, {"1A": [Candidate(answer=invalid)]})
+    assert result.assignments["1A"] == invalid
+    assert result.grid == ["..", ".."]
+    assert result.filled_cells == 0
+    metrics = evaluate_result(puzzle, reference, result)
+    assert metrics["candidate_recall"] == 0
+    assert metrics["cell_accuracy"] == 0
+    assert metrics["constraint_violation_count"] > 0
+
+
+def test_numeric_fixed_zero_and_invalid_key_are_handled_without_truthiness_errors():
+    puzzle, reference, _ = numeric_fixture()
+    puzzle = puzzle.model_copy(update={"grid": [".0", ".."]})
+    metrics = evaluate_result(puzzle, reference, result_for(puzzle, {}))
+    assert metrics["fixed_cells"] == metrics["correct_cells"] == metrics["filled_cells"] == 1
+    assert metrics["cell_accuracy"] == 0.25
+    assert metrics["unknown_cell_accuracy"] == 0
+    with pytest.raises(ValueError, match="digit"):
+        validate_reference(puzzle, ["A0", "02"])

@@ -1,0 +1,59 @@
+{
+  "puzzle": {
+    "id": "cocoa",
+    "title": "Cocoa Crossword",
+    "grid": [
+      "#.##############",
+      "............####",
+      "#.#.#.#####.###.",
+      "#.#.#.#.........",
+      "###.#######.###.",
+      "##.....#.##.###.",
+      "######.#.######.",
+      "######.#.######.",
+      "###.........###.",
+      "########.#######",
+      "###......#######"
+    ],
+    "clues": {
+      "across": {
+        "2": "Puffy white treats that make great cocoa toppers",
+        "7": "Ingredient that makes cocoa brown",
+        "8": "Cocoa can be topped with whipped ____",
+        "11": "Whistling container used for heating water",
+        "12": "Cocoa is sometimes served with a cup and ___."
+      },
+      "down": {
+        "1": "Best temperature for drinkable cocoa",
+        "3": "Sweetener that's often used to make cocoa",
+        "4": "Handled drinking container",
+        "5": "Use this to stir your beverage",
+        "6": "Name brand of powdered chocolate that you can add to milk",
+        "9": "This dairy product is cocoa's basic ingredient",
+        "10": "Season in which we drink the most cocoa"
+      }
+    }
+  },
+  "assignments": {
+    "1D": "WARM",
+    "2A": "MARSHMALLOWS",
+    "3D": "SUGAR",
+    "4D": "MUG",
+    "5D": "SPOON",
+    "6D": "NESQUIK",
+    "7A": "CHOCOLATE",
+    "8A": "CREAM",
+    "9D": "MILK",
+    "10D": "WINTER",
+    "11A": "TEAKETTLE",
+    "12A": "SAUCER"
+  },
+  "notes": [
+    "Source visually inspected: printable-easy-crossword-puzzles-cocoa.jpg. The visible worksheet credits www.word-game-world.com, copyright 2019; kept as local user-provided analysis material, not added to the authored benchmark.",
+    "The outer cell bounding rectangle is 11 rows by 16 columns. Sparse gaps and broad white page areas are not cells; represent these as #.",
+    "Printed numbers are small but supported by the clue list and crossing geometry. Down 6 starts one row below the long 2 Across answer, at the far-right column. Across 7 begins on the following row.",
+    "Clue alternatives were resolved using cell counts and crossings: WARM is 4 letters, NESQUIK is 7, and TEAKETTLE is 9. NESQUIK has only one checked letter, E from CHOCOLATE, so its semantic answer is a strongly supported manual inference rather than an exhaustive proof of uniqueness.",
+    "Printed numbering matches standard row-major numbering for the reconstructed grid. Underscore lengths in the clue text are typographic blanks, not answer-length indicators.",
+    "All printed entry numbers, starting cells, lengths, and crossings were checked against the visible worksheet and independently validated with the parser; all shared letters agree. These manually derived answers are an analysis reference, not supplied to the live solving model."
+  ]
+}

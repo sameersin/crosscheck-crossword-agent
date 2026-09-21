@@ -118,7 +118,9 @@ def test_job_cleanup_failure_preserves_result_and_releases_slot(puzzle_and_pool)
 
 
 @pytest.mark.parametrize("extraction_fails", [False, True])
-def test_extraction_cleanup_never_hides_response_or_leaks_slot(puzzle_and_pool, extraction_fails):
+def test_extraction_cleanup_never_hides_response_or_leaks_slot(
+    puzzle_and_pool, extraction_fails, tmp_path
+):
     puzzle, _ = puzzle_and_pool
 
     class BadCleanupProvider:
@@ -133,7 +135,14 @@ def test_extraction_cleanup_never_hides_response_or_leaks_slot(puzzle_and_pool, 
     image = io.BytesIO()
     Image.new("RGB", (8, 8), "white").save(image, format="PNG")
     settings = Settings(_env_file=None, nebius_api_key="test-key")
-    with TestClient(create_app(settings, BadCleanupProvider)) as client:
+    with TestClient(
+        create_app(
+            settings,
+            BadCleanupProvider,
+            history_path=tmp_path / "history.sqlite3",
+            import_saved_history=False,
+        )
+    ) as client:
         for _ in range(2):
             response = client.post(
                 "/api/extract", files={"file": ("puzzle.png", image.getvalue(), "image/png")}
@@ -193,10 +202,11 @@ def test_actual_body_limit_cannot_be_bypassed_by_missing_or_false_length(headers
     assert consumed == 2
 
 
-def test_chunked_multipart_is_rejected_before_parsing_or_spooling():
+@pytest.mark.parametrize("path", ["/api/extract", "/api/runs/saved-run/reference-image"])
+def test_chunked_multipart_is_rejected_before_parsing_or_spooling(path):
     status, calls, consumed, _ = run_body_guard(
         [b"x" * 50000, b"x" * 50000, b"x" * 1025],
-        path="/api/extract",
+        path=path,
         headers=[(b"transfer-encoding", b"chunked")],
     )
     assert status == 413
@@ -230,9 +240,11 @@ def test_bad_length_header_rejected_without_reading_body(headers, expected):
     assert consumed == 0
 
 
-def test_api_applies_body_guard_to_streamed_request():
+def test_api_applies_body_guard_to_streamed_request(tmp_path):
     settings = Settings(_env_file=None, nebius_api_key="")
-    with TestClient(create_app(settings)) as client:
+    with TestClient(
+        create_app(settings, history_path=tmp_path / "history.sqlite3", import_saved_history=False)
+    ) as client:
         response = client.post(
             "/api/validate",
             content=iter([b"x" * 256000, b"x" * 256001]),

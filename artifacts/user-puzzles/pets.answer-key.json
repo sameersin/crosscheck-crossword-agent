@@ -1,0 +1,16 @@
+{
+  "puzzle_id": "pets",
+  "puzzle_fingerprint": "69ec8406ae05c1ec3350aa6f74246d9a9aca32625627d0426604ac5477e75596",
+  "reference_grid": [
+    "####P######",
+    "###CAT#####",
+    "#L##R######",
+    "#I##R#BUNNY",
+    "#Z##O#I####",
+    "HAMSTER####",
+    "#R####DOG##",
+    "#D#########"
+  ],
+  "review_required": true,
+  "provenance": "Prepared from the existing development reference; not independently human-approved. Review every answer before grading."
+}

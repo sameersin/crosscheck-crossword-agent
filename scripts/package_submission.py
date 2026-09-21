@@ -13,6 +13,7 @@ ALLOWED_FILES = [
     ".gitignore",
     ".gitattributes",
     ".env.example",
+    ".editorconfig",
 ]
 
 
@@ -20,12 +21,14 @@ def main():
     destination = ROOT / "artifacts/submission/crosscheck-assessment.zip"
     destination.parent.mkdir(parents=True, exist_ok=True)
     files = [ROOT / name for name in ALLOWED_FILES if (ROOT / name).is_file()]
+    files.append(ROOT / "artifacts" / "README.md")
     for folder in ALLOWED_DIRS + [
         "artifacts/evaluation",
         "artifacts/evaluation-dev",
         "artifacts/verification",
         "artifacts/screenshots",
         "artifacts/demo",
+        "artifacts/user-puzzles",
     ]:
         files.extend(path for path in (ROOT / folder).rglob("*") if path.is_file())
     with zipfile.ZipFile(destination, "w", compression=zipfile.ZIP_DEFLATED) as archive:

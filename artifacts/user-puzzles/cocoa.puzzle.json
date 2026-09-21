@@ -1,0 +1,37 @@
+{
+  "id": "cocoa",
+  "title": "Cocoa Crossword",
+  "author": "",
+  "answer_type": "letters",
+  "grid": [
+    "#.##############",
+    "............####",
+    "#.#.#.#####.###.",
+    "#.#.#.#.........",
+    "###.#######.###.",
+    "##.....#.##.###.",
+    "######.#.######.",
+    "######.#.######.",
+    "###.........###.",
+    "########.#######",
+    "###......#######"
+  ],
+  "clues": {
+    "across": {
+      "2": "Puffy white treats that make great cocoa toppers",
+      "7": "Ingredient that makes cocoa brown",
+      "8": "Cocoa can be topped with whipped ___",
+      "11": "Whistling container used for heating water",
+      "12": "Cocoa is sometimes served with a cup and ___"
+    },
+    "down": {
+      "1": "Best temperature for drinkable cocoa",
+      "3": "Sweetener that's often used to make cocoa",
+      "4": "Handled drinking container",
+      "5": "Use this to stir your beverage",
+      "6": "Name brand of powdered chocolate that you can add to milk",
+      "9": "This dairy product is cocoa's basic ingredient",
+      "10": "Season in which we drink the most cocoa"
+    }
+  }
+}

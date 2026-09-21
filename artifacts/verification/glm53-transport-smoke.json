@@ -1,0 +1,21 @@
+{
+  "model": "zai-org/GLM-5.3",
+  "vision_model": "zai-org/GLM-5.3-Flash",
+  "purpose": "One-clue transport smoke test, not an accuracy benchmark",
+  "elapsed_seconds": 0.813,
+  "usage": {
+    "model_calls": 1,
+    "prompt_tokens": 328,
+    "completion_tokens": 24,
+    "total_tokens": 352,
+    "estimated_cost_usd": null
+  },
+  "candidates": {
+    "1A": [
+      {
+        "answer": "CAT",
+        "score": 0.95
+      }
+    ]
+  }
+}

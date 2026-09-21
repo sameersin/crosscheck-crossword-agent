@@ -1,0 +1,31 @@
+{
+  "purpose": "One screenshot transcription check; not general OCR accuracy",
+  "vision_model": "zai-org/GLM-5.3-Flash",
+  "grid": [
+    "#W##############",
+    "MARSHMALLOWS####",
+    "#R#U#U#####P###N",
+    "#M#G#G#CHOCOLATE",
+    "###A#######O###S",
+    "##CREAM#W##O###Q",
+    "######M#I######U",
+    "######L#N######I",
+    "###TEAKETTLE###K",
+    "########E#######",
+    "###SAUCER#######"
+  ],
+  "warnings": [
+    "Unverified draft transcription; human review required"
+  ],
+  "usage": {
+    "model_calls": 1,
+    "prompt_tokens": 1512,
+    "completion_tokens": 383,
+    "total_tokens": 1895,
+    "estimated_cost_usd": null
+  },
+  "elapsed_seconds": 5.265,
+  "correct_cells": 62,
+  "total_cells": 64,
+  "exact_reference_match": false
+}

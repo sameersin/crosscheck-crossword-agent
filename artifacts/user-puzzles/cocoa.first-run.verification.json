@@ -1,0 +1,249 @@
+{
+  "id": "cocoa",
+  "source_name": "printable-easy-crossword-puzzles-cocoa.jpg",
+  "result_file": "cocoa.first-run.result.json",
+  "verified_at": "2026-09-21T07:39:14.851437+00:00",
+  "scope": "Verification of this saved image-extraction and solving run, not a held-out benchmark or guarantee for other photos.",
+  "reference": {
+    "kind": "manual_reference_with_official_publisher_confirmation",
+    "official_key_checked": true,
+    "publisher_key_url": "https://www.word-game-world.com/support-files/cocoa-crossword.pdf",
+    "publisher_key_page": 2,
+    "confirmed_entry": "6D",
+    "publisher_answer": "NESQUIK",
+    "basis": "Manual reference was prepared independently before solver output. Publisher PDF answer-grid text confirms the intended 6D answer NESQUIK, resolving the only first-run answer discrepancy."
+  },
+  "extraction": {
+    "model": "zai-org/GLM-5.3-Flash",
+    "model_provenance": "Actual provider invocation identified by the run owner; extraction artifact records token usage but omits model ID.",
+    "elapsed_seconds": 7.39,
+    "usage": {
+      "model_calls": 1,
+      "prompt_tokens": 841,
+      "completion_tokens": 390,
+      "total_tokens": 1231,
+      "estimated_cost_usd": null
+    },
+    "grid_matches_reference": true,
+    "entry_geometry_matches_reference": true,
+    "clue_semantics_match_after_typography_normalization": true,
+    "clue_text_differences": [],
+    "recorded_warnings": [
+      "Grid geometry is approximate; detected mask may not perfectly match actual cell layout.",
+      "Clue numbers not printed in grid cells; numbering inferred from clue list order."
+    ],
+    "independent_warning_review": [
+      "The recorded warning that clue numbers are not printed is contradicted by the visible numbered worksheet. It is model-generated warning text, not a verified fact.",
+      "The extracted cell mask and every entry number/length match the independent visual reference despite the recorded approximate-geometry warning."
+    ]
+  },
+  "solve": {
+    "model": "zai-org/GLM-5.3-Flash",
+    "status": "complete_consistent",
+    "stop_reason": "complete_consistent",
+    "elapsed_seconds": 4.922,
+    "usage": {
+      "model_calls": 1,
+      "prompt_tokens": 808,
+      "completion_tokens": 279,
+      "total_tokens": 1087,
+      "estimated_cost_usd": null
+    },
+    "assigned_entries": 12,
+    "total_entries": 12,
+    "constraint_violations": []
+  },
+  "combined_stages": {
+    "attempted_model_calls": 2,
+    "elapsed_seconds_sum": 12.312,
+    "total_tokens": 2318,
+    "note": "Sum of separately recorded extraction and solve durations; excludes human review/dwell time. Failed attempts count when recorded. Unpriced dollar cost is unknown."
+  },
+  "metrics_against_reference": {
+    "puzzle_id": "cocoa",
+    "answer_type": "letters",
+    "status": "complete_consistent",
+    "correct_cells": 60,
+    "total_cells": 64,
+    "letter_accuracy": 0.9375,
+    "cell_accuracy": 0.9375,
+    "correct_unknown_cells": 60,
+    "unknown_cells": 64,
+    "unknown_letter_accuracy": 0.9375,
+    "unknown_cell_accuracy": 0.9375,
+    "fixed_cells": 0,
+    "correct_entries": 11,
+    "total_entries": 12,
+    "answer_accuracy": 0.9166666666666666,
+    "exact_puzzle": false,
+    "filled_cells": 64,
+    "completion": 1.0,
+    "filled_entries": 12,
+    "entry_completion": 1.0,
+    "complete_consistent": true,
+    "constraint_violation_count": 0,
+    "constraint_violations": [],
+    "candidate_hits": 11,
+    "candidate_recall": 0.9166666666666666,
+    "elapsed_seconds": 4.922,
+    "search_nodes": 12,
+    "rounds": 1,
+    "usage": {
+      "model_calls": 1,
+      "prompt_tokens": 808,
+      "completion_tokens": 279,
+      "total_tokens": 1087,
+      "estimated_cost_usd": null
+    },
+    "entries": [
+      {
+        "entry_id": "1D",
+        "answer": "WARM",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "2A",
+        "answer": "MARSHMALLOWS",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "3D",
+        "answer": "SUGAR",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "4D",
+        "answer": "MUG",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "5D",
+        "answer": "SPOON",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "6D",
+        "answer": "NESTLES",
+        "correct": false,
+        "candidate_hit": false
+      },
+      {
+        "entry_id": "7A",
+        "answer": "CHOCOLATE",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "8A",
+        "answer": "CREAM",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "9D",
+        "answer": "MILK",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "10D",
+        "answer": "WINTER",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "11A",
+        "answer": "TEAKETTLE",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "12A",
+        "answer": "SAUCER",
+        "correct": true,
+        "candidate_hit": true
+      }
+    ]
+  },
+  "entries": [
+    {
+      "entry_id": "1D",
+      "expected": "WARM",
+      "actual": "WARM",
+      "matches": true
+    },
+    {
+      "entry_id": "2A",
+      "expected": "MARSHMALLOWS",
+      "actual": "MARSHMALLOWS",
+      "matches": true
+    },
+    {
+      "entry_id": "3D",
+      "expected": "SUGAR",
+      "actual": "SUGAR",
+      "matches": true
+    },
+    {
+      "entry_id": "4D",
+      "expected": "MUG",
+      "actual": "MUG",
+      "matches": true
+    },
+    {
+      "entry_id": "5D",
+      "expected": "SPOON",
+      "actual": "SPOON",
+      "matches": true
+    },
+    {
+      "entry_id": "6D",
+      "expected": "NESQUIK",
+      "actual": "NESTLES",
+      "matches": false
+    },
+    {
+      "entry_id": "7A",
+      "expected": "CHOCOLATE",
+      "actual": "CHOCOLATE",
+      "matches": true
+    },
+    {
+      "entry_id": "8A",
+      "expected": "CREAM",
+      "actual": "CREAM",
+      "matches": true
+    },
+    {
+      "entry_id": "9D",
+      "expected": "MILK",
+      "actual": "MILK",
+      "matches": true
+    },
+    {
+      "entry_id": "10D",
+      "expected": "WINTER",
+      "actual": "WINTER",
+      "matches": true
+    },
+    {
+      "entry_id": "11A",
+      "expected": "TEAKETTLE",
+      "actual": "TEAKETTLE",
+      "matches": true
+    },
+    {
+      "entry_id": "12A",
+      "expected": "SAUCER",
+      "actual": "SAUCER",
+      "matches": true
+    }
+  ],
+  "reference_keys_supplied_to_solver": false,
+  "semantic_note": "NESTLES and NESQUIK both satisfy the seven-cell length and checked E at their second position; the publisher key establishes NESQUIK as the intended answer. Crossing consistency alone cannot resolve this clue."
+}

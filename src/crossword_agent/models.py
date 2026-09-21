@@ -2,7 +2,9 @@
 
 from typing import Any, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, ValidationInfo, field_validator
+
+AnswerType = Literal["letters", "digits"]
 
 
 class StrictModel(BaseModel):
@@ -32,18 +34,22 @@ class Puzzle(StrictModel):
     id: str = Field(default="uploaded-puzzle", min_length=1, max_length=100)
     title: str = Field(default="Untitled crossword", max_length=200)
     author: str = Field(default="", max_length=200)
+    answer_type: AnswerType = "letters"
     grid: list[str] = Field(min_length=2, max_length=25)
     clues: Clues
 
     @field_validator("grid")
     @classmethod
-    def valid_grid(cls, value: list[str]) -> list[str]:
+    def valid_grid(cls, value: list[str], info: ValidationInfo) -> list[str]:
         rows = [row.upper() for row in value]
         width = len(rows[0])
         if not 2 <= width <= 25 or any(len(row) != width for row in rows):
             raise ValueError("Grid must be rectangular, between 2 and 25 cells per side.")
-        if any(char not in ".#ABCDEFGHIJKLMNOPQRSTUVWXYZ" for row in rows for char in row):
-            raise ValueError("Use '.' for empty cells, '#' for blocks, and A-Z for fixed letters.")
+        digits = info.data.get("answer_type") == "digits"
+        alphabet = "0123456789" if digits else "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        if any(char not in ".#" + alphabet for row in rows for char in row):
+            label = "0-9 for fixed digits" if digits else "A-Z for fixed letters"
+            raise ValueError(f"Use '.' for empty cells, '#' for blocks, and {label}.")
         if all(char == "#" for row in rows for char in row):
             raise ValueError("Grid must contain at least one open cell.")
         return rows

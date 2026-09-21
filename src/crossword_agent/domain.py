@@ -4,7 +4,7 @@ import unicodedata
 from collections import defaultdict
 from dataclasses import dataclass
 
-from .models import Puzzle
+from .models import AnswerType, Puzzle
 
 
 class PuzzleValidationError(ValueError):
@@ -21,14 +21,19 @@ class Entry:
     length: int
     cells: tuple[tuple[int, int], ...]
     clue: str
+    answer_type: AnswerType = "letters"
 
 
-def normalize_answer(text: str) -> str:
-    """Uppercase answers and remove spaces, punctuation, and accent marks.
+def normalize_answer(text: str, answer_type: AnswerType = "letters") -> str:
+    """Normalize words; for digits, strip surrounding whitespace only.
 
-    Unsupported symbols and digits are deliberately retained so validation rejects
-    them instead of silently turning a malformed response into a different answer.
+    Numeric signs, punctuation, and internal spaces stay intact so a negative or
+    decimal answer can never become a different valid number. For letter answers,
+    remove spaces, punctuation, and accent marks; keep unsupported symbols/digits
+    so subsequent validation rejects them.
     """
+    if answer_type == "digits":
+        return text.strip()
     return "".join(
         char
         for char in unicodedata.normalize("NFKD", text.upper())
@@ -38,8 +43,9 @@ def normalize_answer(text: str) -> str:
     )
 
 
-def _is_answer(answer: str) -> bool:
-    return bool(answer) and all("A" <= char <= "Z" for char in answer)
+def is_valid_answer(answer: str, answer_type: AnswerType = "letters") -> bool:
+    alphabet = "0123456789" if answer_type == "digits" else "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    return bool(answer) and all(char in alphabet for char in answer)
 
 
 def parse_entries(puzzle: Puzzle) -> list[Entry]:
@@ -85,7 +91,7 @@ def parse_entries(puzzle: Puzzle) -> list[Entry]:
     ]
     if uncovered:
         raise PuzzleValidationError(
-            f"Open cells must belong to an entry of at least two letters; "
+            f"Open cells must belong to an entry of at least two cells; "
             f"isolated cells (row, column): {uncovered}."
         )
 
@@ -112,6 +118,7 @@ def parse_entries(puzzle: Puzzle) -> list[Entry]:
             length=len(cells),
             cells=cells,
             clue=getattr(puzzle.clues, direction)[str(number)],
+            answer_type=puzzle.answer_type,
         )
         for number, direction, cells in specifications
     ]
@@ -127,20 +134,22 @@ def validate_assignments(puzzle: Puzzle, assignments: dict[str, str]) -> list[st
         if entry is None:
             violations.append(f"Unknown entry: {entry_id}.")
             continue
-        answer = normalize_answer(raw_answer)
-        if not _is_answer(answer):
-            violations.append(f"{entry_id}: answer must contain only A-Z letters.")
+        answer = normalize_answer(raw_answer, entry.answer_type)
+        label = "digits" if entry.answer_type == "digits" else "letters"
+        alphabet_label = "0-9 digits" if entry.answer_type == "digits" else "A-Z letters"
+        if not is_valid_answer(answer, entry.answer_type):
+            violations.append(f"{entry_id}: answer must contain only {alphabet_label}.")
             continue
         if len(answer) != entry.length:
             violations.append(
-                f"{entry_id}: expected {entry.length} letters, received {len(answer)}."
+                f"{entry_id}: expected {entry.length} {label}, received {len(answer)}."
             )
             continue
         for (row, col), char in zip(entry.cells, answer, strict=True):
             fixed = puzzle.grid[row][col]
             if fixed != "." and fixed != char:
                 violations.append(
-                    f"{entry_id}: fixed letter {fixed} at row {row + 1}, "
+                    f"{entry_id}: fixed {'digit' if entry.answer_type == 'digits' else 'letter'} {fixed} at row {row + 1}, "
                     f"column {col + 1} conflicts with {char}."
                 )
             other = occupied.get((row, col))
@@ -162,7 +171,7 @@ def render_grid(puzzle: Puzzle, assignments: dict[str, str]) -> list[str]:
     grid = [list(row) for row in puzzle.grid]
     for entry in parse_entries(puzzle):
         if entry.id in assignments:
-            answer = normalize_answer(assignments[entry.id])
+            answer = normalize_answer(assignments[entry.id], entry.answer_type)
             for (row, col), char in zip(entry.cells, answer, strict=True):
                 grid[row][col] = char
     return ["".join(row) for row in grid]
@@ -181,8 +190,8 @@ def entry_pattern(puzzle: Puzzle, entry: Entry, assignments: dict[str, str] | No
         for other in parse_entries(puzzle):
             if other.id not in assignments:
                 continue
-            answer = normalize_answer(assignments[other.id])
-            if len(answer) != other.length or not _is_answer(answer):
+            answer = normalize_answer(assignments[other.id], other.answer_type)
+            if len(answer) != other.length or not is_valid_answer(answer, other.answer_type):
                 continue
             if any(
                 puzzle.grid[row][col] not in (".", char)

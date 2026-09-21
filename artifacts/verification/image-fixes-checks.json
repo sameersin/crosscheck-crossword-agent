@@ -1,0 +1,25 @@
+{
+  "scope": "Sparse image extraction and numeric crossword fixes",
+  "offline_tests": {
+    "passed": 180,
+    "warnings": 2,
+    "details": "Third-party Starlette/httpx deprecation warnings"
+  },
+  "lint": "ruff check src tests scripts passed",
+  "dependency_lock": "uv sync --frozen --extra dev passed",
+  "image_cases": [
+    "pets",
+    "cocoa",
+    "math"
+  ],
+  "reference_report": "artifacts/user-puzzles/RESULTS.md",
+  "limitations": "Development regression cases; not a held-out general crossword benchmark.",
+  "browser_validation": {
+    "browser": "Chrome",
+    "saved_puzzles": "Pets7/7, Cocoa12/12, Math48/48 with4zeros; reset clears verification",
+    "original_math_upload": "Real PNG upload, auto-validate48entries withoutJSONedits, accept, solve68/68cells and48/48entries",
+    "solver_model_calls_for_math": 0,
+    "image_extraction": "Separate real GLMvisioncall",
+    "intermittent_nested_warnings": "Fixed and regressiontested"
+  }
+}

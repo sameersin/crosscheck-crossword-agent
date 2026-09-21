@@ -1,0 +1,45 @@
+{
+  "puzzle": {
+    "id": "pets",
+    "title": "Pets Crossword Puzzle",
+    "grid": [
+      "####.######",
+      "###...#####",
+      "#.##.######",
+      "#.##.#.....",
+      "#.##.#.####",
+      ".......####",
+      "#.####...##",
+      "#.#########"
+    ],
+    "clues": {
+      "across": {
+        "2": "Furry animal that meows",
+        "4": "Fluffy animal with long ears that hops",
+        "5": "Small animal that runs on a wheel",
+        "6": "Furry animal that barks"
+      },
+      "down": {
+        "1": "Feathered pet that talks",
+        "3": "Scaly pet that crawls",
+        "4": "Small pet that chirps"
+      }
+    }
+  },
+  "assignments": {
+    "1D": "PARROT",
+    "2A": "CAT",
+    "3D": "LIZARD",
+    "4A": "BUNNY",
+    "4D": "BIRD",
+    "5A": "HAMSTER",
+    "6A": "DOG"
+  },
+  "notes": [
+    "Source visually inspected: EasyPetsCrosswordPuzzle.jpg.",
+    "The worksheet is sparse: empty page/background is not an open cell. The internal rectangle is 8 rows by 11 columns; nonexistent cells are represented by #.",
+    "4 Across has exactly five cells, so BUNNY fits the clue. RABBIT has six letters and does not fit. Its first letter crosses BIRD.",
+    "Printed numbering is standard row-major numbering for this geometry. 4 Across and 4 Down share the same starting cell.",
+    "All printed entry numbers, starting cells, lengths, and crossings were checked against the visible worksheet and independently validated with the parser; all shared letters agree. These manually derived answers are an analysis reference, not supplied to the live solving model."
+  ]
+}

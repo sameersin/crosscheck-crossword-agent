@@ -1,12 +1,15 @@
 """State-dependent propose/check/repair loop with explicit resource budgets."""
 
 import time
+from collections import Counter
 from collections.abc import Callable
 from threading import Event
 
+from crossword_agent.arithmetic import arithmetic_candidates, evaluate_expression
 from crossword_agent.domain import (
     Entry,
     entry_pattern,
+    is_valid_answer,
     normalize_answer,
     parse_entries,
     render_grid,
@@ -44,10 +47,10 @@ def merge_candidates(
         current = {item.answer: item for item in pool.get(entry.id, [])}
         fixed = entry_pattern(puzzle, entry)
         for candidate in incoming.get(entry.id, []):
-            word = normalize_answer(candidate.answer)
+            word = normalize_answer(candidate.answer, entry.answer_type)
             if (
                 len(word) != entry.length
-                or not all("A" <= c <= "Z" for c in word)
+                or not is_valid_answer(word, entry.answer_type)
                 or any(c != "." and c != word[i] for i, c in enumerate(fixed))
             ):
                 rejected += 1
@@ -108,6 +111,10 @@ class CrosswordAgent:
         provider_failed = False
         blocked: list[str] = []
         stagnant_rounds = 0
+        cell_owners = Counter(cell for entry in entries for cell in entry.cells)
+        reviewed: set[str] = set()
+        review_pending: list[Entry] = []
+        review_scheduled = False
 
         def emit(kind: str, message: str, **data: object) -> None:
             event = AgentEvent(
@@ -137,6 +144,40 @@ class CrosswordAgent:
         )
         if initial_candidates is not None:
             merge_candidates(puzzle, entries, candidates, initial_candidates)
+        exact = arithmetic_candidates(entries)
+        # A calculated answer is a fact about the clue, not another ranked guess.
+        # Include length mismatches here so the model cannot "repair" bad geometry
+        # by inventing a different arithmetic answer.
+        calculated = {
+            entry.id: answer
+            for entry in entries
+            if entry.answer_type == "digits"
+            and (answer := evaluate_expression(entry.clue)) is not None
+        }
+        arithmetic_issues = [
+            f"{entry.id}: arithmetic evaluates to {calculated[entry.id]}, which does not fit {entry.length} cells."
+            for entry in entries
+            if entry.id in calculated and len(calculated[entry.id]) != entry.length
+        ]
+        arithmetic_issues.extend(
+            validate_assignments(puzzle, {key: values[0].answer for key, values in exact.items()})
+        )
+        for entry_id in calculated:
+            candidates[entry_id] = []
+        if exact:
+            merge_candidates(puzzle, entries, candidates, exact)
+            emit(
+                "arithmetic",
+                f"Calculated {len(exact)} numeric entries exactly; checking their crossings next.",
+                entry_ids=list(exact),
+                model_calls=0,
+            )
+        if arithmetic_issues:
+            emit(
+                "input_warning",
+                "Calculated arithmetic conflicts with the supplied cells, entry lengths, or crossings. Review the transcription.",
+                issues=arithmetic_issues,
+            )
 
         for round_index in range(options.max_rounds):
             if reason := budget_reason():
@@ -144,10 +185,36 @@ class CrosswordAgent:
                 break
             rounds = round_index + 1
             new_count = 0
-            if round_index == 0:
-                targets = entries if initial_candidates is None else []
+            review_round = bool(review_pending)
+            if review_round:
+                targets = review_pending
+                review_pending = []
+                emit(
+                    "review",
+                    f"Requesting independent proposals for {len(targets)} entries with few crossings and only one candidate.",
+                    entry_ids=[entry.id for entry in targets],
+                    round=rounds,
+                    performed=True,
+                )
+            elif round_index == 0:
+                targets = (
+                    [e for e in entries if e.id not in calculated]
+                    if initial_candidates is None and not arithmetic_issues
+                    else []
+                )
             else:
-                targets = repair_targets(entries, assignments, blocked, attempts)
+                targets = [
+                    e
+                    for e in repair_targets(entries, assignments, blocked, attempts)
+                    if e.id not in calculated
+                ]
+                if not targets:
+                    stop_reason = "inconsistent_arithmetic_input"
+                    emit(
+                        "input_warning",
+                        "Exact arithmetic answers do not fit the extracted geometry or crossings. Review the transcription.",
+                    )
+                    break
                 emit(
                     "repair",
                     f"Revisiting {len(targets)} unresolved or neighboring entries; earlier guesses remain reversible.",
@@ -170,6 +237,11 @@ class CrosswordAgent:
                     for e in batch
                 }
                 previous = {e.id: [c.answer for c in candidates.get(e.id, [])] for e in batch}
+                if review_round:
+                    # Keep crossing evidence, but avoid anchoring the second
+                    # proposal to the model's own first answer.
+                    previous = {e.id: [] for e in batch}
+                    reviewed.update(e.id for e in batch)
                 for entry in batch:
                     attempts[entry.id] = attempts.get(entry.id, 0) + 1
                 for transport_attempt in range(2):
@@ -258,7 +330,34 @@ class CrosswordAgent:
                 if cancelled.is_set():
                     stop_reason = "cancelled"
                     break
+                if arithmetic_issues:
+                    stop_reason = "inconsistent_arithmetic_input"
+                    break
                 if search.complete:
+                    weak_entries = [
+                        entry
+                        for entry in entries
+                        if entry.answer_type == "letters"
+                        and entry.id not in reviewed
+                        and len(candidates.get(entry.id, [])) == 1
+                        and sum(cell_owners[cell] > 1 for cell in entry.cells) * 2 < entry.length
+                    ]
+                    if weak_entries and not review_scheduled:
+                        if (
+                            round_index + 1 < options.max_rounds
+                            and usage.model_calls < options.max_calls
+                            and nodes < options.max_search_nodes
+                            and budget_reason() is None
+                        ):
+                            review_pending = weak_entries
+                            review_scheduled = True
+                            continue
+                        emit(
+                            "review",
+                            "The grid is consistent; independent review of entries with few crossings was skipped because the run budget is exhausted.",
+                            entry_ids=[entry.id for entry in weak_entries],
+                            performed=False,
+                        )
                     stop_reason = "complete_consistent"
                     break
             if provider_failed or budget_reason():

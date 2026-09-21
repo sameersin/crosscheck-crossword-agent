@@ -35,12 +35,12 @@ SCENES = [
     (
         "04-evaluation.png",
         "05  MEASURE AGAINST ANSWER KEYS",
-        "All six small test puzzles matched separate answer keys, but the simple baseline tied. Broader accuracy remains unproven.",
+        "An earlier development evaluation matched separate answer keys on six small puzzles, but the simple baseline tied. Broader accuracy remains unproven.",
     ),
     (
         "05-architecture.png",
         "06  SEPARATE RESPONSIBILITIES",
-        "The code separates the model, search, controller, interface, and evaluation. Ninety five offline tests pass, including repair and cancellation.",
+        "The code separates the model, search, controller, interface, and evaluation. Reference comparisons measure correct letters, whole answers, and fully correct puzzles.",
     ),
 ]
 

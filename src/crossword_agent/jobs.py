@@ -7,6 +7,7 @@ from collections.abc import Callable
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import suppress
 from dataclasses import dataclass, field
+from datetime import UTC, datetime
 
 from crossword_agent.agent import CrosswordAgent
 from crossword_agent.models import AgentEvent, SolveRequest, SolveResult
@@ -24,14 +25,23 @@ class Job:
     result: SolveResult | None = None
     error: str | None = None
     created_at: float = field(default_factory=time.monotonic)
+    created_at_iso: str = field(default_factory=lambda: datetime.now(UTC).isoformat())
+    history_saved: bool = False
+    history_error: str | None = None
     cancel: threading.Event = field(default_factory=threading.Event)
 
 
 class JobManager:
-    """Two active jobs maximum; completed jobs expire and never persist secrets/uploads."""
+    """Bound live workers and optionally snapshot final runs before exposing completion."""
 
-    def __init__(self, agent_factory: Callable[[], CrosswordAgent], capacity: int = 2):
+    def __init__(
+        self,
+        agent_factory: Callable[[], CrosswordAgent],
+        capacity: int = 2,
+        on_finished: Callable[[Job, SolveRequest], None] | None = None,
+    ):
         self.agent_factory = agent_factory
+        self.on_finished = on_finished
         self.executor = ThreadPoolExecutor(max_workers=capacity, thread_name_prefix="crossword")
         self.slots = threading.BoundedSemaphore(capacity)
         self.lock = threading.RLock()
@@ -61,6 +71,7 @@ class JobManager:
 
     def _run(self, job: Job, request: SolveRequest) -> None:
         agent = None
+        final_status = "failed"
         try:
             with self.lock:
                 job.status = "running"
@@ -75,14 +86,26 @@ class JobManager:
             )
             with self.lock:
                 job.result = result
-                job.status = "cancelled" if result.status == "cancelled" else "completed"
+                final_status = "cancelled" if result.status == "cancelled" else "completed"
         except Exception:
             # Do not send raw provider exceptions, request headers, or keys to the browser/log.
             with self.lock:
-                job.status = "failed"
                 job.error = "The run failed unexpectedly. Check the input and server configuration, then retry."
         finally:
             try:
+                if self.on_finished is not None:
+                    try:
+                        self.on_finished(job, request)
+                        with self.lock:
+                            job.history_saved = True
+                    except Exception:
+                        # Keep a usable result even if local persistence fails.
+                        with self.lock:
+                            job.history_error = (
+                                "The run finished, but its local history could not be saved."
+                            )
+                with self.lock:
+                    job.status = final_status
                 # A transport cleanup failure must not replace a recorded result.
                 with suppress(Exception):
                     if agent and callable(getattr(agent.provider, "close", None)):
@@ -99,6 +122,8 @@ class JobManager:
                 "events": [event.model_dump() for event in job.events],
                 "result": job.result.model_dump() if job.result else None,
                 "error": job.error,
+                "run_id": job.id if job.history_saved else None,
+                "history_error": job.history_error,
             }
 
     def cancel(self, job_id: str) -> None:

@@ -1,0 +1,79 @@
+{
+  "source_name": "EasyPetsCrosswordPuzzle.jpg",
+  "puzzle": {
+    "id": "image-puzzle",
+    "title": "PETS Crossword Puzzle",
+    "author": "Super Star Worksheets",
+    "answer_type": "letters",
+    "grid": [
+      "####.######",
+      "###...#####",
+      "#.##.######",
+      "#.##.#.....",
+      "#.##.#.####",
+      ".......####",
+      "#.####...##",
+      "#.#########"
+    ],
+    "clues": {
+      "across": {
+        "2": "Furry animal that meows",
+        "4": "Fluffy animal with long ears that hops",
+        "5": "Small animal that runs on a wheel",
+        "6": "Furry animal that barks"
+      },
+      "down": {
+        "1": "Feathered pet that talks",
+        "3": "Scaly pet that crawls",
+        "4": "Small pet that chirps"
+      }
+    }
+  },
+  "warnings": [],
+  "usage": {
+    "model_calls": 1,
+    "prompt_tokens": 894,
+    "completion_tokens": 256,
+    "total_tokens": 1150,
+    "estimated_cost_usd": null
+  },
+  "seconds": 5.53,
+  "valid": true,
+  "entries": [
+    {
+      "id": "1D",
+      "length": 6,
+      "clue": "Feathered pet that talks"
+    },
+    {
+      "id": "2A",
+      "length": 3,
+      "clue": "Furry animal that meows"
+    },
+    {
+      "id": "3D",
+      "length": 6,
+      "clue": "Scaly pet that crawls"
+    },
+    {
+      "id": "4A",
+      "length": 5,
+      "clue": "Fluffy animal with long ears that hops"
+    },
+    {
+      "id": "4D",
+      "length": 4,
+      "clue": "Small pet that chirps"
+    },
+    {
+      "id": "5A",
+      "length": 7,
+      "clue": "Small animal that runs on a wheel"
+    },
+    {
+      "id": "6A",
+      "length": 3,
+      "clue": "Furry animal that barks"
+    }
+  ]
+}

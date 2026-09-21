@@ -2,6 +2,8 @@
 
 The main question is **whether the returned letters match a separate answer key**. A grid can be completely filled, have no crossing conflicts, and still answer a clue incorrectly. The solver reports `complete_consistent`; only the evaluator, which has an answer key, can establish exact correctness on a benchmark puzzle.
 
+The browser also supports interactive evaluation of saved runs. You can create a key by reviewing a copy of the solved grid, importing JSON, or transcribing a solved image. This uses the same deterministic scoring function as the benchmark. Human-approved copies are labelled with their provenance; approval does not establish independent ground truth. See [INTERACTIVE_EVALUATION.md](INTERACTIVE_EVALUATION.md) for the complete workflow and trust boundaries.
+
 ## Included data and honest scope
 
 `data/manifest.json` records the provenance, split, shape, and difficulty label for every fixture. The ten fixtures are locally authored assessment examples: four development puzzles and six test puzzles. These are **smoke tests, not a representative newspaper-crossword benchmark**. We make no claim that common word-square arrangements are new or unknown to the model.
@@ -31,6 +33,8 @@ Reported per-arm token/call usage includes the shared initial generation. These 
 ## Metrics
 
 All accuracy/coverage values in the JSON report are fractions between 0 and 1.
+
+Numeric crossword inputs declare `answer_type: "digits"` and use one digit per cell. For these puzzles, `cell_accuracy` is the clearer metric name; it is identical to the retained `letter_accuracy` field for backward compatibility. Likewise, `unknown_cell_accuracy` aliases `unknown_letter_accuracy`. A `0` is an ordinary filled digit, never a blank. Numeric candidate normalization preserves signs, decimal points, and internal spaces so `-10` or `1.0` cannot silently become the valid answer `10`. Reference keys and candidate recall use the puzzle's declared answer type.
 
 | Metric | Definition |
 | --- | --- |
@@ -72,6 +76,8 @@ python -m pytest tests/test_evaluation.py -q
 5. Evaluate images separately using exact grid/block recovery, clue-text recovery, numbering/entry mapping, and fraction requiring human correction. Compare solving the verified JSON against solving its extracted counterpart. Screenshot upload always requires a preview because extraction errors should not silently become crossword failures.
 
 This separation makes interview claims precise: the tests establish program behavior; live saved reports establish performance on the stated small suite; neither establishes general production crossword accuracy.
+
+Geometry regressions in `tests/test_vision.py` generate portable dense, blocked, sparse, supplied-character, and decorative-shape images. Three additional tests compare the user's local pets, cocoa, and math worksheets with independent visual transcriptions; these tests skip when those local files are unavailable. All three local images passed the geometry comparison in the September 21 validation run. This verifies their cell masks, not general OCR accuracy or complete clue extraction. Saved actual extraction/solving case studies and their limitations are documented separately in `artifacts/user-puzzles/RESULTS.md`; they are development reproductions, not additions to the held-out smoke split.
 
 ## Controlled robustness checks
 

@@ -1,0 +1,12 @@
+{
+  "purpose": "Actual screenshot transcription smoke check",
+  "error": "The model response was incomplete. Try a smaller clue batch.",
+  "usage": {
+    "model_calls": 1,
+    "prompt_tokens": 2245,
+    "completion_tokens": 10000,
+    "total_tokens": 12245,
+    "estimated_cost_usd": null
+  },
+  "elapsed_seconds": 137.125
+}

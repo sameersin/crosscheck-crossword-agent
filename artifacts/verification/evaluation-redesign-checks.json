@@ -1,0 +1,38 @@
+{
+  "scope": "Saved-run evaluation, reviewed answer keys, image and JSON import, GLM-5.3 solving and matching UI",
+  "checked_date": "2026-09-21",
+  "offline_tests": {
+    "passed": 270,
+    "warnings": 2,
+    "warning_details": "Third-party FastAPI/Starlette deprecation warnings"
+  },
+  "lint": "ruff check src tests scripts passed",
+  "javascript_syntax": "node --check src/crossword_agent/static/app.js passed",
+  "live_main_config": {
+    "provider_ready": true,
+    "model": "zai-org/GLM-5.3",
+    "vision_model": "zai-org/GLM-5.3-Flash"
+  },
+  "browser_evidence": "artifacts/verification/evaluation-redesign/browser-QA.json",
+  "live_model_smoke": "artifacts/verification/glm53-transport-smoke.json",
+  "live_image_smoke": "artifacts/verification/answer-image-live-smoke-focused.json",
+  "grading_example": {
+    "environment": "Isolated QA database, not user approval of main history",
+    "case": "Original Cocoa development run compared with reviewed development key",
+    "correct_cells": 60,
+    "total_cells": 64,
+    "correct_answers": 11,
+    "total_answers": 12,
+    "completion": 1.0,
+    "exact_puzzle": false,
+    "constraint_violations": 0
+  },
+  "boundaries": [
+    "Original solver results are immutable; approved keys and evaluations are separately versioned.",
+    "Existing references were prepared during development and still require independent human review.",
+    "No broad GLM-5.3 crossword accuracy benchmark was performed for this change.",
+    "Live image transcription made errors; extracted keys remain drafts requiring review.",
+    "Graded-attempt history is not an all-attempt or representative benchmark.",
+    "Browser checks do not exercise a real OS file drag or image clipboard event; see the browser evidence for coverage limits."
+  ]
+}

@@ -1,0 +1,455 @@
+{
+  "puzzle_id": "cocoa",
+  "status": "complete_consistent",
+  "grid": [
+    "#W##############",
+    "MARSHMALLOWS####",
+    "#R#U#U#####P###N",
+    "#M#G#G#CHOCOLATE",
+    "###A#######O###S",
+    "##CREAM#W##N###Q",
+    "######I#I######U",
+    "######L#N######I",
+    "###TEAKETTLE###K",
+    "########E#######",
+    "###SAUCER#######"
+  ],
+  "assignments": {
+    "2A": "MARSHMALLOWS",
+    "7A": "CHOCOLATE",
+    "8A": "CREAM",
+    "10D": "WINTER",
+    "9D": "MILK",
+    "1D": "WARM",
+    "3D": "SUGAR",
+    "4D": "MUG",
+    "5D": "SPOON",
+    "11A": "TEAKETTLE",
+    "12A": "SAUCER",
+    "6D": "NESQUIK"
+  },
+  "unresolved_entries": [],
+  "constraint_violations": [],
+  "filled_cells": 64,
+  "total_cells": 64,
+  "elapsed_seconds": 6.813,
+  "rounds": 2,
+  "search_nodes": 24,
+  "stop_reason": "complete_consistent",
+  "usage": {
+    "model_calls": 2,
+    "prompt_tokens": 1587,
+    "completion_tokens": 871,
+    "total_tokens": 2458,
+    "estimated_cost_usd": null
+  },
+  "candidates": {
+    "1D": [
+      {
+        "answer": "WARM",
+        "score": 0.9
+      },
+      {
+        "answer": "LUKE",
+        "score": 0.3
+      }
+    ],
+    "2A": [
+      {
+        "answer": "MARSHMALLOWS",
+        "score": 0.98
+      }
+    ],
+    "3D": [
+      {
+        "answer": "SUGAR",
+        "score": 0.95
+      }
+    ],
+    "4D": [
+      {
+        "answer": "MUG",
+        "score": 0.97
+      }
+    ],
+    "5D": [
+      {
+        "answer": "SPOON",
+        "score": 0.97
+      }
+    ],
+    "6D": [
+      {
+        "answer": "NESQUIK",
+        "score": 0.9
+      },
+      {
+        "answer": "HERSHEY",
+        "score": 0.5
+      }
+    ],
+    "7A": [
+      {
+        "answer": "CHOCOLATE",
+        "score": 0.95
+      }
+    ],
+    "8A": [
+      {
+        "answer": "CREAM",
+        "score": 0.97
+      }
+    ],
+    "9D": [
+      {
+        "answer": "MILK",
+        "score": 0.95
+      }
+    ],
+    "10D": [
+      {
+        "answer": "WINTER",
+        "score": 0.97
+      }
+    ],
+    "11A": [
+      {
+        "answer": "TEAKETTLE",
+        "score": 0.9
+      },
+      {
+        "answer": "KETTLEFUL",
+        "score": 0.2
+      }
+    ],
+    "12A": [
+      {
+        "answer": "SAUCER",
+        "score": 0.95
+      }
+    ]
+  },
+  "initial_candidates": {
+    "1D": [
+      {
+        "answer": "WARM",
+        "score": 0.9
+      },
+      {
+        "answer": "LUKE",
+        "score": 0.3
+      }
+    ],
+    "2A": [
+      {
+        "answer": "MARSHMALLOWS",
+        "score": 0.95
+      }
+    ],
+    "3D": [
+      {
+        "answer": "SUGAR",
+        "score": 0.9
+      }
+    ],
+    "4D": [
+      {
+        "answer": "MUG",
+        "score": 0.95
+      }
+    ],
+    "5D": [
+      {
+        "answer": "SPOON",
+        "score": 0.95
+      }
+    ],
+    "6D": [
+      {
+        "answer": "NESQUIK",
+        "score": 0.9
+      }
+    ],
+    "7A": [
+      {
+        "answer": "CHOCOLATE",
+        "score": 0.9
+      }
+    ],
+    "8A": [
+      {
+        "answer": "CREAM",
+        "score": 0.95
+      }
+    ],
+    "9D": [
+      {
+        "answer": "MILK",
+        "score": 0.95
+      }
+    ],
+    "10D": [
+      {
+        "answer": "WINTER",
+        "score": 0.95
+      }
+    ],
+    "11A": [
+      {
+        "answer": "TEAKETTLE",
+        "score": 0.9
+      },
+      {
+        "answer": "KETTLEFUL",
+        "score": 0.2
+      }
+    ],
+    "12A": [
+      {
+        "answer": "SAUCER",
+        "score": 0.9
+      }
+    ]
+  },
+  "events": [
+    {
+      "sequence": 1,
+      "kind": "started",
+      "message": "Validated 12 entries. Beginning bounded solve.",
+      "elapsed_seconds": 0.0,
+      "data": {
+        "entry_count": 12,
+        "grid": [
+          "#.##############",
+          "............####",
+          "#.#.#.#####.###.",
+          "#.#.#.#.........",
+          "###.#######.###.",
+          "##.....#.##.###.",
+          "######.#.######.",
+          "######.#.######.",
+          "###.........###.",
+          "########.#######",
+          "###......#######"
+        ],
+        "model": "zai-org/GLM-5.3-Flash"
+      }
+    },
+    {
+      "sequence": 2,
+      "kind": "generating",
+      "message": "Requesting candidates for 1D, 2A, 3D, 4D, 5D, 6D, 7A, 8A, 9D, 10D, 11A, 12A.",
+      "elapsed_seconds": 0.0,
+      "data": {
+        "entry_ids": [
+          "1D",
+          "2A",
+          "3D",
+          "4D",
+          "5D",
+          "6D",
+          "7A",
+          "8A",
+          "9D",
+          "10D",
+          "11A",
+          "12A"
+        ],
+        "round": 1,
+        "call": 1
+      }
+    },
+    {
+      "sequence": 3,
+      "kind": "candidates_generated",
+      "message": "Accepted 14 new candidates; rejected 1 invalid fits.",
+      "elapsed_seconds": 4.641,
+      "data": {
+        "entry_ids": [
+          "1D",
+          "2A",
+          "3D",
+          "4D",
+          "5D",
+          "6D",
+          "7A",
+          "8A",
+          "9D",
+          "10D",
+          "11A",
+          "12A"
+        ],
+        "accepted": 14,
+        "rejected": 1,
+        "model_calls": 1
+      }
+    },
+    {
+      "sequence": 4,
+      "kind": "searching",
+      "message": "Checking candidate combinations against lengths, fixed letters, and crossings.",
+      "elapsed_seconds": 4.641,
+      "data": {}
+    },
+    {
+      "sequence": 5,
+      "kind": "search_complete",
+      "message": "Placed 12 of 12 entries consistently.",
+      "elapsed_seconds": 4.641,
+      "data": {
+        "grid": [
+          "#W##############",
+          "MARSHMALLOWS####",
+          "#R#U#U#####P###N",
+          "#M#G#G#CHOCOLATE",
+          "###A#######O###S",
+          "##CREAM#W##N###Q",
+          "######I#I######U",
+          "######L#N######I",
+          "###TEAKETTLE###K",
+          "########E#######",
+          "###SAUCER#######"
+        ],
+        "assignments": {
+          "2A": "MARSHMALLOWS",
+          "7A": "CHOCOLATE",
+          "8A": "CREAM",
+          "10D": "WINTER",
+          "9D": "MILK",
+          "1D": "WARM",
+          "3D": "SUGAR",
+          "4D": "MUG",
+          "5D": "SPOON",
+          "6D": "NESQUIK",
+          "11A": "TEAKETTLE",
+          "12A": "SAUCER"
+        },
+        "nodes": 12,
+        "round": 1,
+        "filled_cells": 64,
+        "total_cells": 64
+      }
+    },
+    {
+      "sequence": 6,
+      "kind": "review",
+      "message": "Requesting independent proposals for 9 entries with few crossings and only one candidate.",
+      "elapsed_seconds": 4.641,
+      "data": {
+        "entry_ids": [
+          "2A",
+          "3D",
+          "4D",
+          "5D",
+          "6D",
+          "7A",
+          "8A",
+          "10D",
+          "12A"
+        ],
+        "round": 2,
+        "performed": true
+      }
+    },
+    {
+      "sequence": 7,
+      "kind": "generating",
+      "message": "Requesting candidates for 2A, 3D, 4D, 5D, 6D, 7A, 8A, 10D, 12A.",
+      "elapsed_seconds": 4.641,
+      "data": {
+        "entry_ids": [
+          "2A",
+          "3D",
+          "4D",
+          "5D",
+          "6D",
+          "7A",
+          "8A",
+          "10D",
+          "12A"
+        ],
+        "round": 2,
+        "call": 2
+      }
+    },
+    {
+      "sequence": 8,
+      "kind": "candidates_generated",
+      "message": "Accepted 1 new candidates; rejected 1 invalid fits.",
+      "elapsed_seconds": 6.813,
+      "data": {
+        "entry_ids": [
+          "2A",
+          "3D",
+          "4D",
+          "5D",
+          "6D",
+          "7A",
+          "8A",
+          "10D",
+          "12A"
+        ],
+        "accepted": 1,
+        "rejected": 1,
+        "model_calls": 2
+      }
+    },
+    {
+      "sequence": 9,
+      "kind": "searching",
+      "message": "Checking candidate combinations against lengths, fixed letters, and crossings.",
+      "elapsed_seconds": 6.813,
+      "data": {}
+    },
+    {
+      "sequence": 10,
+      "kind": "search_complete",
+      "message": "Placed 12 of 12 entries consistently.",
+      "elapsed_seconds": 6.813,
+      "data": {
+        "grid": [
+          "#W##############",
+          "MARSHMALLOWS####",
+          "#R#U#U#####P###N",
+          "#M#G#G#CHOCOLATE",
+          "###A#######O###S",
+          "##CREAM#W##N###Q",
+          "######I#I######U",
+          "######L#N######I",
+          "###TEAKETTLE###K",
+          "########E#######",
+          "###SAUCER#######"
+        ],
+        "assignments": {
+          "2A": "MARSHMALLOWS",
+          "7A": "CHOCOLATE",
+          "8A": "CREAM",
+          "10D": "WINTER",
+          "9D": "MILK",
+          "1D": "WARM",
+          "3D": "SUGAR",
+          "4D": "MUG",
+          "5D": "SPOON",
+          "11A": "TEAKETTLE",
+          "12A": "SAUCER",
+          "6D": "NESQUIK"
+        },
+        "nodes": 24,
+        "round": 2,
+        "filled_cells": 64,
+        "total_cells": 64
+      }
+    },
+    {
+      "sequence": 11,
+      "kind": "finished",
+      "message": "All entries fit. Correctness requires an independent answer key.",
+      "elapsed_seconds": 6.813,
+      "data": {
+        "status": "complete_consistent",
+        "stop_reason": "complete_consistent"
+      }
+    }
+  ],
+  "model": "zai-org/GLM-5.3-Flash"
+}

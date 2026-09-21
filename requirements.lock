@@ -43,7 +43,17 @@ iniconfig==2.3.0
     # via pytest
 jiter==0.17.0
     # via openai
+numpy==2.4.6 ; python_full_version < '3.12'
+    # via
+    #   crossword-agent
+    #   opencv-python-headless
+numpy==2.5.3 ; python_full_version >= '3.12'
+    # via
+    #   crossword-agent
+    #   opencv-python-headless
 openai==2.54.0
+    # via crossword-agent
+opencv-python-headless==4.14.0.94
     # via crossword-agent
 packaging==26.3
     # via pytest

@@ -1,0 +1,178 @@
+{
+  "id": "pets",
+  "source_name": "EasyPetsCrosswordPuzzle.jpg",
+  "result_file": "pets.result.json",
+  "verified_at": "2026-09-21T07:42:14.319934+00:00",
+  "scope": "Verification of this saved image-extraction and solving run, not a held-out benchmark or guarantee for other photos.",
+  "reference": {
+    "kind": "independent_manual_visual_transcription",
+    "official_key_checked": false,
+    "basis": "Answers manually derived from visible clues and verified against all crossings; no official publisher answer key was used."
+  },
+  "extraction": {
+    "model": "zai-org/GLM-5.3-Flash",
+    "model_provenance": "Actual provider invocation identified by the run owner; extraction artifact records token usage but omits model ID.",
+    "elapsed_seconds": 5.53,
+    "usage": {
+      "model_calls": 1,
+      "prompt_tokens": 894,
+      "completion_tokens": 256,
+      "total_tokens": 1150,
+      "estimated_cost_usd": null
+    },
+    "grid_matches_reference": true,
+    "entry_geometry_matches_reference": true,
+    "clue_semantics_match_after_typography_normalization": true,
+    "clue_text_differences": [],
+    "recorded_warnings": [],
+    "independent_warning_review": []
+  },
+  "solve": {
+    "model": "zai-org/GLM-5.3-Flash",
+    "status": "complete_consistent",
+    "stop_reason": "complete_consistent",
+    "elapsed_seconds": 3.328,
+    "usage": {
+      "model_calls": 3,
+      "prompt_tokens": 1411,
+      "completion_tokens": 302,
+      "total_tokens": 1713,
+      "estimated_cost_usd": null
+    },
+    "assigned_entries": 7,
+    "total_entries": 7,
+    "constraint_violations": []
+  },
+  "combined_stages": {
+    "attempted_model_calls": 4,
+    "elapsed_seconds_sum": 8.858,
+    "total_tokens": 2863,
+    "note": "Sum of separately recorded extraction and solve durations; excludes human review/dwell time. Failed attempts count when recorded. Unpriced dollar cost is unknown."
+  },
+  "metrics_against_reference": {
+    "puzzle_id": "pets",
+    "answer_type": "letters",
+    "status": "complete_consistent",
+    "correct_cells": 28,
+    "total_cells": 28,
+    "letter_accuracy": 1.0,
+    "cell_accuracy": 1.0,
+    "correct_unknown_cells": 28,
+    "unknown_cells": 28,
+    "unknown_letter_accuracy": 1.0,
+    "unknown_cell_accuracy": 1.0,
+    "fixed_cells": 0,
+    "correct_entries": 7,
+    "total_entries": 7,
+    "answer_accuracy": 1.0,
+    "exact_puzzle": true,
+    "filled_cells": 28,
+    "completion": 1.0,
+    "filled_entries": 7,
+    "entry_completion": 1.0,
+    "complete_consistent": true,
+    "constraint_violation_count": 0,
+    "constraint_violations": [],
+    "candidate_hits": 7,
+    "candidate_recall": 1.0,
+    "elapsed_seconds": 3.328,
+    "search_nodes": 20,
+    "rounds": 3,
+    "usage": {
+      "model_calls": 3,
+      "prompt_tokens": 1411,
+      "completion_tokens": 302,
+      "total_tokens": 1713,
+      "estimated_cost_usd": null
+    },
+    "entries": [
+      {
+        "entry_id": "1D",
+        "answer": "PARROT",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "2A",
+        "answer": "CAT",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "3D",
+        "answer": "LIZARD",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "4A",
+        "answer": "BUNNY",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "4D",
+        "answer": "BIRD",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "5A",
+        "answer": "HAMSTER",
+        "correct": true,
+        "candidate_hit": true
+      },
+      {
+        "entry_id": "6A",
+        "answer": "DOG",
+        "correct": true,
+        "candidate_hit": true
+      }
+    ]
+  },
+  "entries": [
+    {
+      "entry_id": "1D",
+      "expected": "PARROT",
+      "actual": "PARROT",
+      "matches": true
+    },
+    {
+      "entry_id": "2A",
+      "expected": "CAT",
+      "actual": "CAT",
+      "matches": true
+    },
+    {
+      "entry_id": "3D",
+      "expected": "LIZARD",
+      "actual": "LIZARD",
+      "matches": true
+    },
+    {
+      "entry_id": "4A",
+      "expected": "BUNNY",
+      "actual": "BUNNY",
+      "matches": true
+    },
+    {
+      "entry_id": "4D",
+      "expected": "BIRD",
+      "actual": "BIRD",
+      "matches": true
+    },
+    {
+      "entry_id": "5A",
+      "expected": "HAMSTER",
+      "actual": "HAMSTER",
+      "matches": true
+    },
+    {
+      "entry_id": "6A",
+      "expected": "DOG",
+      "actual": "DOG",
+      "matches": true
+    }
+  ],
+  "reference_keys_supplied_to_solver": false
+}

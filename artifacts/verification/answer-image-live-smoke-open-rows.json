@@ -1,0 +1,33 @@
+{
+  "purpose": "Actual screenshot transcription smoke check; not general OCR accuracy",
+  "vision_model": "zai-org/GLM-5.3-Flash",
+  "grid": [
+    "#W##############",
+    "MARSHMALLOWS####",
+    "#R#U#U#####S###N",
+    "#M#G#G#CHOCOLATE",
+    "###A#######O###S",
+    "##CREAM#O##N###Q",
+    "######M#O######S",
+    "######I#N######U",
+    "###TEAKETTLE###I",
+    "########E#######",
+    "###SAUCER#######"
+  ],
+  "warnings": [
+    "Transcription is an unverified draft; small clue numbers were treated as labels, not answers."
+  ],
+  "usage": {
+    "model_calls": 1,
+    "prompt_tokens": 2663,
+    "completion_tokens": 497,
+    "total_tokens": 3160,
+    "estimated_cost_usd": null
+  },
+  "elapsed_seconds": 27.578,
+  "reference_fields": [
+    "puzzle",
+    "assignments",
+    "notes"
+  ]
+}

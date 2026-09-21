@@ -6,11 +6,13 @@ build-backend = "hatchling.build"
 name = "crossword-agent"
 version = "0.1.0"
 description = "A bounded crossword-solving agent with visual input and reproducible evaluation."
+readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
   "fastapi>=0.115,<1", "uvicorn>=0.30,<1", "pydantic>=2.10,<3",
   "pydantic-settings>=2.7,<3", "openai>=1.60,<3", "python-multipart>=0.0.20,<1",
   "pillow>=11,<13", "httpx>=0.28,<1",
+  "opencv-python-headless>=4.10,<5", "numpy>=2,<3",
 ]
 
 [project.optional-dependencies]

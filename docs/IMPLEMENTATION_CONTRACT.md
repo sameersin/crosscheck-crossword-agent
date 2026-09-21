@@ -1,27 +1,45 @@
-# Internal implementation contract
+# Interface contracts
 
-Shared models are in `src/crossword_agent/models.py`; root owns this file.
+This is the current component/API map. Interactive request schemas are available at **http://127.0.0.1:8000/docs** while the server is running; the generated OpenAPI document is at `/openapi.json`.
 
-## Domain and search (solver agent owns)
+## Domain contracts
 
-`domain.py`: dataclass `Entry(id: str, number: int, direction: str, row: int, col: int, length: int, cells: tuple[tuple[int,int],...], clue: str)`; `parse_entries(puzzle: Puzzle) -> list[Entry]` derives standard row-major numbering and checks exact clue mapping; raise `PuzzleValidationError(ValueError)` for structural errors. Runs >=2 supported; every open cell must belong to an entry. `render_grid(puzzle, assignments: dict[str,str]) -> list[str]`; `validate_assignments(puzzle, assignments) -> list[str]`; `entry_pattern(puzzle, entry, assignments=None) -> str` using '.' unknown, supplied letters plus compatible tentative letters. `normalize_answer(text: str) -> str`.
+- `Puzzle` in `models.py`: ID, title, rectangular grid, across/down clues and optional `answer_type` (`letters` or `digits`).
+- `parse_entries` in `domain.py`: derive row-major numbering, entry positions, lengths and crossings; reject invalid topology or clue mappings.
+- `SolveOptions`: bounded rounds, calls, time, candidates and search work.
+- `CrosswordAgent.solve`: returns `SolveResult` with grid, assignments, candidates, usage and events, including partial/error/cancelled outcomes.
+- `evaluate_result` in `evaluation.py`: compare a result with a separately supplied reference.
+- `EvaluationStore`: preserve original snapshots, version approved keys and retain reference-image extraction records separately.
 
-`search.py`: `SearchResult` dataclass fields `assignments: dict[str,str]`, `complete: bool`, `nodes: int`, `exhausted: bool`, `blocked_entries: list[str]`, `score: float`. `solve_constraints(puzzle: Puzzle, candidates: dict[str,list[Candidate]], *, max_nodes: int=100000, deadline: float|None=None) -> SearchResult`; deadline is time.monotonic absolute. Return best consistent partial assignment on infeasibility/budget. Never modify supplied letters. Reconsider previous guesses on every call. Search ranks candidates and entries; report limit honestly. Agent owns domain/search and their tests only.
+The model does not control grid topology or bypass the constraints. Reference answers are evaluation inputs only.
 
-## Provider/controller (root owns)
+## HTTP endpoints
 
-Provider protocol `generate(entries: list[Entry], *, patterns: dict[str,str], previous: dict[str,list[str]], limit: int, timeout: float) -> GenerationBatch`; `GenerationBatch.candidates` mapping, `.usage` Usage. Provider raises sanitized `ProviderError` with retryable bool. `CrosswordAgent(provider, model="...").solve(puzzle, options=None, on_event=None, cancel_event=None) -> SolveResult`. Event callbacks receive AgentEvent. Provider text/image JSON schema validated. Every actual attempt counted; bounded transport retries in controller.
+| Method and path | Purpose |
+|---|---|
+| `GET /health`, `/api/health` | Version and model metadata |
+| `GET /api/config` | Safe public settings; never the API key |
+| `GET /api/samples` | Authored input catalog |
+| `GET /api/samples/{puzzle_id}` | One authored puzzle input |
+| `GET /api/user-puzzles` | Saved development case catalog |
+| `GET /api/user-puzzles/{puzzle_id}` | Saved input/result and development verification |
+| `POST /api/validate` | Validate a `Puzzle`; return normalized puzzle and entries |
+| `POST /api/solve` | Submit `{puzzle, options}`; return HTTP 202 and `job_id` |
+| `GET /api/jobs/{job_id}` | Job status, trace and result/error |
+| `POST /api/jobs/{job_id}/cancel` | Request cooperative cancellation |
+| `POST /api/extract` | Multipart `file`; return a draft puzzle transcription |
+| `GET /api/runs` | Paginated durable history (`limit`, `offset`) |
+| `GET /api/runs/{run_id}` | Original snapshot and reference/evaluation history |
+| `POST /api/runs/{run_id}/reference-image` | Multipart `file`; return an unapproved draft key |
+| `POST /api/runs/{run_id}/evaluate` | Grade the stored original against an explicitly approved key |
+| `GET /api/evaluation` | Separately labelled historical benchmark report |
 
-## API (root owns) and browser (frontend agent owns static/)
+Validation errors use HTTP 422, missing records 404, capacity limits 429, missing provider configuration 503, and handled provider failures 502 for image endpoints. Solve-provider failures appear in job/result status.
 
-GET `/api/config` -> `{provider_ready:bool, model:str, limits:{max_image_bytes:int}, version:str}`.
-GET `/api/samples` -> `{samples:[{id,title,rows,cols,description}]}`. GET `/api/samples/{id}` -> Puzzle.
-POST `/api/validate` with Puzzle -> `{puzzle: Puzzle, entries:[{id,number,direction,row,col,length,cells,clue}]}`; validation errors 422 `{detail:...}`.
-POST `/api/solve` with SolveRequest -> 202 `{job_id:str}`. GET `/api/jobs/{job_id}` -> `{job_id,status:'queued'|'running'|'completed'|'failed'|'cancelled',events:AgentEvent[],result:SolveResult|null,error:str|null}`. POST `/api/jobs/{id}/cancel` requests cancellation.
-POST `/api/extract` multipart `file` image -> `{puzzle:Puzzle,warnings:list[str]}`. Always preview/edit/validate extraction before solve. PNG/JPEG/WebP, <=10MB. No uploads retained.
-GET `/api/evaluation` -> saved public evaluation summary JSON (or `{available:false}`).
-Serve static/index.html at `/`, CSS/JS under `/static/`. No external CDN needed. Frontend root owns no API files. Provide responsive polished accessible app with grid/clue highlight, actual event timeline, JSON upload, image extraction preview editor, candidate/result inspection, download result, evaluation + architecture explanations. Never claim accuracy without reference. Escape untrusted text.
+## Reference approval
 
-## Evaluation (evaluation agent owns)
+The grading request requires `reference_grid`, `source` and boolean `approved: true`. Optional `puzzle_id` and `puzzle_fingerprint` prevent accidental mismatches when supplied. `source_note` stores provenance. Supported sources are `human_reviewed_agent_copy`, `human_entered`, `uploaded_json`, `publisher_key` and `uploaded_image`.
 
-Data: `data/puzzles/*.json` only Puzzle inputs; `data/solutions/*.json` keys `{puzzle_id,grid:[solved rows]}`; `data/manifest.json` provenance/split/difficulty metadata. APIs must never serve solution keys to solver. Build 6-10 small original fixtures incl blocked rectangular examples and 5x5 word squares; document these as authored smoke benchmark, not public heldout production benchmark. Validate clues/keys carefully. `evaluation.py` evaluates real outputs vs separate keys, baseline first-choice vs search vs full agent (same initial candidates for paired comparison when feasible), metrics letter/entry/puzzle accuracy, completion, violations, candidate recall, tokens/time. CLI root will wire; export simple `evaluate_result(puzzle, reference_grid, result) -> dict` and `run_evaluation(...)` if feasible agree root. Tests verify blanks denominator and conflicts not correct. Do not fake live metrics. Write docs/EVALUATION.md with methodology; docs/DEMO_SCRIPT.md <=60s. Evaluation report generated under artifacts/evaluation/ by live run later.
+The server validates shape, blocks, givens and completeness, and scores its own stored original result. A client cannot submit a replacement original result to improve the score. An approved reference is a user's reviewed key, not automatic proof of independent ground truth.
+
+See [the user guide](USER_GUIDE.md) for examples and [the architecture](ARCHITECTURE.md) for module ownership.

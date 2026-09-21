@@ -1,0 +1,322 @@
+{
+  "puzzle_id": "pets",
+  "status": "complete_consistent",
+  "grid": [
+    "####P######",
+    "###CAT#####",
+    "#L##R######",
+    "#I##R#BUNNY",
+    "#Z##O#I####",
+    "HAMSTER####",
+    "#R####DOG##",
+    "#D#########"
+  ],
+  "assignments": {
+    "4D": "BIRD",
+    "1D": "PARROT",
+    "5A": "HAMSTER",
+    "2A": "CAT",
+    "3D": "LIZARD",
+    "6A": "DOG",
+    "4A": "BUNNY"
+  },
+  "unresolved_entries": [],
+  "constraint_violations": [],
+  "filled_cells": 28,
+  "total_cells": 28,
+  "elapsed_seconds": 5.063,
+  "rounds": 2,
+  "search_nodes": 13,
+  "stop_reason": "complete_consistent",
+  "usage": {
+    "model_calls": 2,
+    "prompt_tokens": 890,
+    "completion_tokens": 251,
+    "total_tokens": 1141,
+    "estimated_cost_usd": null
+  },
+  "candidates": {
+    "1D": [
+      {
+        "answer": "PARROT",
+        "score": 0.95
+      }
+    ],
+    "2A": [
+      {
+        "answer": "CAT",
+        "score": 0.95
+      }
+    ],
+    "3D": [
+      {
+        "answer": "LIZARD",
+        "score": 0.9
+      },
+      {
+        "answer": "TURTLE",
+        "score": 0.7
+      }
+    ],
+    "4A": [
+      {
+        "answer": "BUNNY",
+        "score": 0.95
+      },
+      {
+        "answer": "BILBY",
+        "score": 0.3
+      }
+    ],
+    "4D": [
+      {
+        "answer": "BIRD",
+        "score": 0.98
+      }
+    ],
+    "5A": [
+      {
+        "answer": "HAMSTER",
+        "score": 0.95
+      }
+    ],
+    "6A": [
+      {
+        "answer": "DOG",
+        "score": 0.95
+      }
+    ]
+  },
+  "initial_candidates": {
+    "1D": [
+      {
+        "answer": "PARROT",
+        "score": 0.95
+      }
+    ],
+    "2A": [
+      {
+        "answer": "CAT",
+        "score": 0.95
+      }
+    ],
+    "3D": [
+      {
+        "answer": "LIZARD",
+        "score": 0.9
+      },
+      {
+        "answer": "TURTLE",
+        "score": 0.7
+      }
+    ],
+    "4A": [],
+    "4D": [
+      {
+        "answer": "BIRD",
+        "score": 0.9
+      }
+    ],
+    "5A": [
+      {
+        "answer": "HAMSTER",
+        "score": 0.95
+      }
+    ],
+    "6A": [
+      {
+        "answer": "DOG",
+        "score": 0.95
+      }
+    ]
+  },
+  "events": [
+    {
+      "sequence": 1,
+      "kind": "started",
+      "message": "Validated 7 entries. Beginning bounded solve.",
+      "elapsed_seconds": 0.0,
+      "data": {
+        "entry_count": 7,
+        "grid": [
+          "####.######",
+          "###...#####",
+          "#.##.######",
+          "#.##.#.....",
+          "#.##.#.####",
+          ".......####",
+          "#.####...##",
+          "#.#########"
+        ],
+        "model": "zai-org/GLM-5.3-Flash"
+      }
+    },
+    {
+      "sequence": 2,
+      "kind": "generating",
+      "message": "Requesting candidates for 1D, 2A, 3D, 4A, 4D, 5A, 6A.",
+      "elapsed_seconds": 0.0,
+      "data": {
+        "entry_ids": [
+          "1D",
+          "2A",
+          "3D",
+          "4A",
+          "4D",
+          "5A",
+          "6A"
+        ],
+        "round": 1,
+        "call": 1
+      }
+    },
+    {
+      "sequence": 3,
+      "kind": "candidates_generated",
+      "message": "Accepted 7 new candidates; rejected 3 invalid fits.",
+      "elapsed_seconds": 4.188,
+      "data": {
+        "entry_ids": [
+          "1D",
+          "2A",
+          "3D",
+          "4A",
+          "4D",
+          "5A",
+          "6A"
+        ],
+        "accepted": 7,
+        "rejected": 3,
+        "model_calls": 1
+      }
+    },
+    {
+      "sequence": 4,
+      "kind": "searching",
+      "message": "Checking candidate combinations against lengths, fixed letters, and crossings.",
+      "elapsed_seconds": 4.188,
+      "data": {}
+    },
+    {
+      "sequence": 5,
+      "kind": "search_complete",
+      "message": "Placed 6 of 7 entries consistently.",
+      "elapsed_seconds": 4.203,
+      "data": {
+        "grid": [
+          "####P######",
+          "###CAT#####",
+          "#L##R######",
+          "#I##R#B....",
+          "#Z##O#I####",
+          "HAMSTER####",
+          "#R####DOG##",
+          "#D#########"
+        ],
+        "assignments": {
+          "5A": "HAMSTER",
+          "1D": "PARROT",
+          "4D": "BIRD",
+          "2A": "CAT",
+          "3D": "LIZARD",
+          "6A": "DOG"
+        },
+        "nodes": 6,
+        "round": 1,
+        "filled_cells": 24,
+        "total_cells": 28
+      }
+    },
+    {
+      "sequence": 6,
+      "kind": "repair",
+      "message": "Revisiting 2 unresolved or neighboring entries; earlier guesses remain reversible.",
+      "elapsed_seconds": 4.203,
+      "data": {
+        "entry_ids": [
+          "4A",
+          "4D"
+        ],
+        "round": 2
+      }
+    },
+    {
+      "sequence": 7,
+      "kind": "generating",
+      "message": "Requesting candidates for 4A, 4D.",
+      "elapsed_seconds": 4.203,
+      "data": {
+        "entry_ids": [
+          "4A",
+          "4D"
+        ],
+        "round": 2,
+        "call": 2
+      }
+    },
+    {
+      "sequence": 8,
+      "kind": "candidates_generated",
+      "message": "Accepted 2 new candidates; rejected 0 invalid fits.",
+      "elapsed_seconds": 5.047,
+      "data": {
+        "entry_ids": [
+          "4A",
+          "4D"
+        ],
+        "accepted": 2,
+        "rejected": 0,
+        "model_calls": 2
+      }
+    },
+    {
+      "sequence": 9,
+      "kind": "searching",
+      "message": "Checking candidate combinations against lengths, fixed letters, and crossings.",
+      "elapsed_seconds": 5.047,
+      "data": {}
+    },
+    {
+      "sequence": 10,
+      "kind": "search_complete",
+      "message": "Placed 7 of 7 entries consistently.",
+      "elapsed_seconds": 5.063,
+      "data": {
+        "grid": [
+          "####P######",
+          "###CAT#####",
+          "#L##R######",
+          "#I##R#BUNNY",
+          "#Z##O#I####",
+          "HAMSTER####",
+          "#R####DOG##",
+          "#D#########"
+        ],
+        "assignments": {
+          "4D": "BIRD",
+          "1D": "PARROT",
+          "5A": "HAMSTER",
+          "2A": "CAT",
+          "3D": "LIZARD",
+          "6A": "DOG",
+          "4A": "BUNNY"
+        },
+        "nodes": 13,
+        "round": 2,
+        "filled_cells": 28,
+        "total_cells": 28
+      }
+    },
+    {
+      "sequence": 11,
+      "kind": "finished",
+      "message": "All entries fit. Correctness requires an independent answer key.",
+      "elapsed_seconds": 5.063,
+      "data": {
+        "status": "complete_consistent",
+        "stop_reason": "complete_consistent"
+      }
+    }
+  ],
+  "model": "zai-org/GLM-5.3-Flash"
+}

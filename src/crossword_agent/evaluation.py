@@ -13,7 +13,7 @@ from pathlib import Path
 from statistics import mean
 from typing import Any
 
-from .domain import normalize_answer, parse_entries, validate_assignments
+from .domain import is_valid_answer, normalize_answer, parse_entries, validate_assignments
 from .models import Candidate, Puzzle, SolveOptions, SolveResult, Usage
 
 
@@ -29,10 +29,11 @@ def validate_reference(puzzle: Puzzle, reference_grid: list[str]) -> None:
             if supplied == "#":
                 if expected != "#":
                     raise ValueError("Reference black squares do not match puzzle.")
-            elif expected not in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
-                raise ValueError("Every open reference cell must contain one uppercase letter.")
+            elif not is_valid_answer(expected, puzzle.answer_type):
+                label = "digit" if puzzle.answer_type == "digits" else "uppercase letter"
+                raise ValueError(f"Every open reference cell must contain one {label}.")
             elif supplied != "." and supplied != expected:
-                raise ValueError("Reference solution disagrees with a supplied letter.")
+                raise ValueError("Reference solution disagrees with a supplied letter or digit.")
 
 
 def _reference_answers(puzzle: Puzzle, grid: list[str]) -> dict[str, str]:
@@ -72,9 +73,7 @@ def evaluate_result(
         answer = result.assignments.get(entry.id)
         if answer is None:
             continue
-        if len(answer) != entry.length or any(
-            char not in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" for char in answer
-        ):
+        if len(answer) != entry.length or not is_valid_answer(answer, entry.answer_type):
             invalid_cells.update(entry.cells)
             violations.append(f"{entry.id} has a malformed output assignment.")
             continue
@@ -99,9 +98,9 @@ def evaluate_result(
             if supplied != ".":
                 fixed_cells += 1
                 if actual != supplied:
-                    violations.append(f"Result changes supplied letter ({row}, {col}).")
+                    violations.append(f"Result changes supplied character ({row}, {col}).")
                     invalid_cells.add((row, col))
-            if actual in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" and len(actual) == 1:
+            if len(actual) == 1 and is_valid_answer(actual, puzzle.answer_type):
                 filled_cells += 1
             elif actual != ".":
                 violations.append(f"Invalid result cell ({row}, {col}).")
@@ -114,12 +113,12 @@ def evaluate_result(
     details = []
     for entry in entries:
         actual = "".join(displayed(row, col) for row, col in entry.cells)
-        filled = all(char in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" for char in actual)
+        filled = is_valid_answer(actual, entry.answer_type)
         correct = actual == references[entry.id] and not any(
             cell in invalid_cells for cell in entry.cells
         )
         hit = any(
-            normalize_answer(candidate.answer) == references[entry.id]
+            normalize_answer(candidate.answer, entry.answer_type) == references[entry.id]
             for candidate in result.candidates.get(entry.id, [])
         )
         correct_entries += int(correct)
@@ -133,13 +132,16 @@ def evaluate_result(
     unknown_cells = total_cells - fixed_cells
     return {
         "puzzle_id": puzzle.id,
+        "answer_type": puzzle.answer_type,
         "status": result.status,
         "correct_cells": correct_cells,
         "total_cells": total_cells,
         "letter_accuracy": correct_cells / total_cells,
+        "cell_accuracy": correct_cells / total_cells,
         "correct_unknown_cells": correct_unknown_cells,
         "unknown_cells": unknown_cells,
         "unknown_letter_accuracy": correct_unknown_cells / unknown_cells if unknown_cells else None,
+        "unknown_cell_accuracy": correct_unknown_cells / unknown_cells if unknown_cells else None,
         "fixed_cells": fixed_cells,
         "correct_entries": correct_entries,
         "total_entries": len(entries),
@@ -180,10 +182,14 @@ def aggregate_metrics(rows: list[dict[str, Any]]) -> dict[str, Any]:
         "correct_cells": sum(row["correct_cells"] for row in rows),
         "total_cells": cell_total,
         "letter_accuracy": sum(row["correct_cells"] for row in rows) / cell_total,
+        "cell_accuracy": sum(row["correct_cells"] for row in rows) / cell_total,
         "correct_entries": sum(row["correct_entries"] for row in rows),
         "total_entries": entry_total,
         "answer_accuracy": sum(row["correct_entries"] for row in rows) / entry_total,
         "unknown_letter_accuracy": sum(row["correct_unknown_cells"] for row in rows) / unknown_total
+        if unknown_total
+        else None,
+        "unknown_cell_accuracy": sum(row["correct_unknown_cells"] for row in rows) / unknown_total
         if unknown_total
         else None,
         "exact_puzzle_accuracy": mean(int(row["exact_puzzle"]) for row in rows),
@@ -201,7 +207,11 @@ def _conflict_aware_grid(puzzle: Puzzle, assignments: dict[str, str]) -> list[st
     claims: dict[tuple[int, int], set[str]] = {}
     for entry in parse_entries(puzzle):
         answer = assignments.get(entry.id)
-        if answer is None or len(answer) != entry.length:
+        if (
+            answer is None
+            or len(answer) != entry.length
+            or not is_valid_answer(answer, entry.answer_type)
+        ):
             continue
         for cell, char in zip(entry.cells, answer, strict=True):
             claims.setdefault(cell, set()).add(char)
@@ -228,7 +238,7 @@ def first_choice_result(
         choices = candidates.get(entry.id, [])
         if choices:
             assignments[entry.id] = normalize_answer(
-                max(choices, key=lambda item: item.score).answer
+                max(choices, key=lambda item: item.score).answer, entry.answer_type
             )
     grid = _conflict_aware_grid(puzzle, assignments)
     violations = validate_assignments(puzzle, assignments)
@@ -240,7 +250,7 @@ def first_choice_result(
         assignments=assignments,
         unresolved_entries=[entry.id for entry in entries if entry.id not in assignments],
         constraint_violations=violations,
-        filled_cells=sum(char in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" for row in grid for char in row),
+        filled_cells=sum(is_valid_answer(char, puzzle.answer_type) for row in grid for char in row),
         total_cells=sum(char != "#" for row in puzzle.grid for char in row),
         elapsed_seconds=elapsed_seconds,
         rounds=1,
@@ -365,7 +375,9 @@ def run_evaluation(
                 ],
                 "constraint_violations": validate_assignments(puzzle, searched.assignments),
                 "filled_cells": sum(
-                    char in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" for row in searched_grid for char in row
+                    is_valid_answer(char, puzzle.answer_type)
+                    for row in searched_grid
+                    for char in row
                 ),
                 "elapsed_seconds": generation_seconds + time.monotonic() - search_start,
                 "search_nodes": searched.nodes,

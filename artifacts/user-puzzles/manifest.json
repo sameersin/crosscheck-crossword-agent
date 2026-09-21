@@ -1,0 +1,16 @@
+{
+  "puzzles": [
+    {
+      "id": "pets",
+      "source_name": "EasyPetsCrosswordPuzzle.jpg"
+    },
+    {
+      "id": "cocoa",
+      "source_name": "printable-easy-crossword-puzzles-cocoa.jpg"
+    },
+    {
+      "id": "math",
+      "source_name": "math-crossword-1-1200.png"
+    }
+  ]
+}
