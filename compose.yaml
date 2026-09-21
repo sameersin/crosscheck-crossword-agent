@@ -1,0 +1,28 @@
+name: crosscheck
+
+services:
+  crosscheck:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: crosscheck-crossword-agent:local
+    init: true
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:${CROSSCHECK_PORT:-8000}:8000"
+    volumes:
+      - history:/app/artifacts/private
+    read_only: true
+    tmpfs:
+      - /tmp:size=67108864,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+    stop_grace_period: 30s
+
+volumes:
+  history:
+    name: crosscheck-history

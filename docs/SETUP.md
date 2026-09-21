@@ -1,5 +1,7 @@
 # Setup and troubleshooting
 
+For an installation that only requires Docker and your API key, use [Docker setup](DOCKER.md). The instructions below are for running Python directly.
+
 ## Requirements
 
 - Python 3.11+ and Git.
@@ -50,6 +52,8 @@ MODEL_MAX_TOKENS=10000
 ```
 
 Put your key only in `.env` or the process environment. Environment variables override `.env`. Restart after changing settings. Workspace → Solver limits displays the selected models.
+
+The two model settings are deliberate: the [official GLM-5.3 documentation](https://docs.z.ai/guides/llm/glm-5.3) specifies text-only input, while the [GLM-5.3-Flash model card](https://huggingface.co/zai-org/GLM-5.3-Flash) documents image input. Both IDs are available in the configured Nebius account. Flash transcribes images; GLM-5.3 receives the resulting text and proposes crossword answers. Keeping settings separate also allows either stage to change independently.
 
 Optional token prices are documented in `.env.example`. Leave them unset if unknown; an unknown cost is displayed as unknown rather than zero. Model calls use your Nebius quota. Reviewing/approving a JSON or manually edited answer key makes no model call; reading an image does.
 

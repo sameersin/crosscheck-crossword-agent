@@ -63,4 +63,6 @@ uv run --frozen python scripts/package_submission.py
 
 The ZIP appears in `artifacts/submission/`. Packaging uses an explicit project-directory allowlist and excludes credentials and private runtime data. The repository checkout is the supported runtime distribution: sample datasets live outside the Python wheel.
 
+The [Docker setup](DOCKER.md) includes those datasets and runtime assets in one image. Regenerate its hashed, runtime-only lock after intentional dependency updates with `uv export --frozen --no-dev --no-emit-project -o requirements-runtime.lock`. Compose builds do not run tests.
+
 Keep `.env`, SQLite history, user uploads and unrelated local projects out of Git. The default server is a single local process; do not expose it publicly or start multiple workers without adding user isolation, authentication and durable job infrastructure. See [architecture](ARCHITECTURE.md).

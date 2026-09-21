@@ -6,6 +6,10 @@ The agent uses **Nebius GLM-5.3** to propose word answers. Python enforces lengt
 
 ## Quick start
 
+**Docker option:** with Docker Desktop installed, create `.env` from `.env.example`, set `NEBIUS_API_KEY`, then run `docker compose up --build`. Open **http://127.0.0.1:8000**. No local Python or uv installation is needed. See [Docker setup](docs/DOCKER.md) for full steps, saved history, and changing the port.
+
+### Python setup
+
 You need **Python 3.11 or newer**, [uv](https://docs.astral.sh/uv/getting-started/installation/), Git, and a Nebius API key with access to the configured models. No Node build or separate database server is required.
 
 ```shell
@@ -96,6 +100,7 @@ artifacts/                 Clearly labelled historical development evidence
 ```
 
 - [Setup and troubleshooting](docs/SETUP.md)
+- [Docker setup](docs/DOCKER.md)
 - [User guide and input/output examples](docs/USER_GUIDE.md)
 - [Architecture and design decisions](docs/ARCHITECTURE.md)
 - [Developer guide](docs/DEVELOPMENT.md) and [API contracts](docs/IMPLEMENTATION_CONTRACT.md)

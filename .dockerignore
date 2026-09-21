@@ -1,0 +1,25 @@
+# Default-deny build context: credentials, local history, caches, and alternate
+# implementations never enter the build. Only Dockerfile COPY sources are allowed.
+**
+!Dockerfile
+!.dockerignore
+!requirements-runtime.lock
+!src/
+!src/crossword_agent/
+!src/crossword_agent/**
+!data/
+!data/**
+!artifacts/
+!artifacts/evaluation/
+!artifacts/evaluation/report.json
+!artifacts/user-puzzles/
+!artifacts/user-puzzles/manifest.json
+!artifacts/user-puzzles/*.puzzle.json
+!artifacts/user-puzzles/*.result.json
+!artifacts/user-puzzles/*.verification.json
+
+# Keep generated Python files and nested environment files out of allowed trees.
+**/__pycache__/
+**/*.py[cod]
+**/.env
+**/.env.*
